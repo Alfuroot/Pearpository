@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		719790252970051000232432 /* BookingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719790242970051000232432 /* BookingView.swift */; };
 		946EBE30296F0495003105D0 /* MySmartRestaurantApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946EBE2F296F0495003105D0 /* MySmartRestaurantApp.swift */; };
 		946EBE32296F0495003105D0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946EBE31296F0495003105D0 /* ContentView.swift */; };
 		946EBE34296F0496003105D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 946EBE33296F0496003105D0 /* Assets.xcassets */; };
@@ -34,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		719790242970051000232432 /* BookingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingView.swift; sourceTree = "<group>"; };
 		946EBE2C296F0495003105D0 /* MySmartRestaurant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MySmartRestaurant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		946EBE2F296F0495003105D0 /* MySmartRestaurantApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySmartRestaurantApp.swift; sourceTree = "<group>"; };
 		946EBE31296F0495003105D0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 			children = (
 				946EBE2F296F0495003105D0 /* MySmartRestaurantApp.swift */,
 				946EBE31296F0495003105D0 /* ContentView.swift */,
+				719790242970051000232432 /* BookingView.swift */,
 				946EBE33296F0496003105D0 /* Assets.xcassets */,
 				946EBE35296F0496003105D0 /* MySmartRestaurant.entitlements */,
 				946EBE36296F0496003105D0 /* Preview Content */,
@@ -259,6 +262,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				719790252970051000232432 /* BookingView.swift in Sources */,
 				946EBE32296F0495003105D0 /* ContentView.swift in Sources */,
 				946EBE30296F0495003105D0 /* MySmartRestaurantApp.swift in Sources */,
 			);
