@@ -7,13 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-Main-View
-		50A342F9296F207500A3C16F /* FilterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A342F8296F207500A3C16F /* FilterButton.swift */; };
-		50A342FB296F279C00A3C16F /* FilterType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A342FA296F279C00A3C16F /* FilterType.swift */; };
-		50A342FD296F2D4B00A3C16F /* ReservationCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A342FC296F2D4B00A3C16F /* ReservationCardView.swift */; };
-		50A342FF296F353B00A3C16F /* ButtonAddReservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A342FE296F353B00A3C16F /* ButtonAddReservation.swift */; };
 		719790252970051000232432 /* BookingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719790242970051000232432 /* BookingView.swift */; };
-main
 		946EBE30296F0495003105D0 /* MySmartRestaurantApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946EBE2F296F0495003105D0 /* MySmartRestaurantApp.swift */; };
 		946EBE32296F0495003105D0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946EBE31296F0495003105D0 /* ContentView.swift */; };
 		946EBE34296F0496003105D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 946EBE33296F0496003105D0 /* Assets.xcassets */; };
@@ -41,14 +35,7 @@ main
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-Main-View
-		50A342F8296F207500A3C16F /* FilterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterButton.swift; sourceTree = "<group>"; };
-		50A342FA296F279C00A3C16F /* FilterType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterType.swift; sourceTree = "<group>"; };
-		50A342FC296F2D4B00A3C16F /* ReservationCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationCardView.swift; sourceTree = "<group>"; };
-		50A342FE296F353B00A3C16F /* ButtonAddReservation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonAddReservation.swift; sourceTree = "<group>"; };
-
 		719790242970051000232432 /* BookingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingView.swift; sourceTree = "<group>"; };
-main
 		946EBE2C296F0495003105D0 /* MySmartRestaurant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MySmartRestaurant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		946EBE2F296F0495003105D0 /* MySmartRestaurantApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySmartRestaurantApp.swift; sourceTree = "<group>"; };
 		946EBE31296F0495003105D0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -112,14 +99,7 @@ main
 			children = (
 				946EBE2F296F0495003105D0 /* MySmartRestaurantApp.swift */,
 				946EBE31296F0495003105D0 /* ContentView.swift */,
-Main-View
-				50A342FE296F353B00A3C16F /* ButtonAddReservation.swift */,
-				50A342FA296F279C00A3C16F /* FilterType.swift */,
-				50A342F8296F207500A3C16F /* FilterButton.swift */,
-				50A342FC296F2D4B00A3C16F /* ReservationCardView.swift */,
-
 				719790242970051000232432 /* BookingView.swift */,
-main
 				946EBE33296F0496003105D0 /* Assets.xcassets */,
 				946EBE35296F0496003105D0 /* MySmartRestaurant.entitlements */,
 				946EBE36296F0496003105D0 /* Preview Content */,
@@ -282,16 +262,9 @@ main
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-Main-View
-				50A342FD296F2D4B00A3C16F /* ReservationCardView.swift in Sources */,
-
 				719790252970051000232432 /* BookingView.swift in Sources */,
-main
 				946EBE32296F0495003105D0 /* ContentView.swift in Sources */,
-				50A342F9296F207500A3C16F /* FilterButton.swift in Sources */,
 				946EBE30296F0495003105D0 /* MySmartRestaurantApp.swift in Sources */,
-				50A342FF296F353B00A3C16F /* ButtonAddReservation.swift in Sources */,
-				50A342FB296F279C00A3C16F /* FilterType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
