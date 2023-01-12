@@ -9,19 +9,16 @@ import SwiftUI
 
 struct BookingView: View {
     @Environment (\.dismiss) var dismiss
-    
     @State var name = ""
     @State var selectedNumber = 2
     @State var reservationDate = Date.now
     @State var smokingArea = false
     @State var petArea = false
     @State var isCeliac = false
-    
     var body: some View {
-        
         NavigationStack {
         GeometryReader { g in
-                VStack (alignment: .leading){
+                VStack(alignment: .leading) {
                         Text("Name")
                             .fontWeight(.semibold)
                             .padding()
@@ -34,7 +31,7 @@ struct BookingView: View {
                         Text("Number of People")
                             .fontWeight(.semibold)
                             .padding()
-                            Picker("Number of people", selection: $selectedNumber){
+                            Picker("Number of people", selection: $selectedNumber) {
                                 ForEach(1...20, id: \.self) {
                                         Text("\($0)")
                                     }
@@ -82,7 +79,7 @@ struct BookingView: View {
             }
         }
         
-        
+    
     }
 }
 
