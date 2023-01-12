@@ -8,12 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		946EBE30296F0495003105D0 /* MySmartRestaurantApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946EBE2F296F0495003105D0 /* MySmartRestaurantApp.swift */; };
-		946EBE32296F0495003105D0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946EBE31296F0495003105D0 /* ContentView.swift */; };
+		946EBE32296F0495003105D0 /* UIDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946EBE31296F0495003105D0 /* UIDetailView.swift */; };
 		946EBE34296F0496003105D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 946EBE33296F0496003105D0 /* Assets.xcassets */; };
 		946EBE38296F0496003105D0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 946EBE37296F0496003105D0 /* Preview Assets.xcassets */; };
 		946EBE42296F0496003105D0 /* MySmartRestaurantTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946EBE41296F0496003105D0 /* MySmartRestaurantTests.swift */; };
 		946EBE4C296F0496003105D0 /* MySmartRestaurantUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946EBE4B296F0496003105D0 /* MySmartRestaurantUITests.swift */; };
 		946EBE4E296F0496003105D0 /* MySmartRestaurantUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946EBE4D296F0496003105D0 /* MySmartRestaurantUITestsLaunchTests.swift */; };
+		B76830E029705053005F0979 /* ParamTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76830DF29705053005F0979 /* ParamTextField.swift */; };
+		B79E02F1297078EC000C8661 /* PickerPeople.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79E02F0297078EC000C8661 /* PickerPeople.swift */; };
+		B79E02F329707983000C8661 /* PickerDateTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79E02F229707983000C8661 /* PickerDateTime.swift */; };
+		B79E02F529707B57000C8661 /* AdditionalInformations.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79E02F429707B57000C8661 /* AdditionalInformations.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +40,7 @@
 /* Begin PBXFileReference section */
 		946EBE2C296F0495003105D0 /* MySmartRestaurant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MySmartRestaurant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		946EBE2F296F0495003105D0 /* MySmartRestaurantApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySmartRestaurantApp.swift; sourceTree = "<group>"; };
-		946EBE31296F0495003105D0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		946EBE31296F0495003105D0 /* UIDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDetailView.swift; sourceTree = "<group>"; };
 		946EBE33296F0496003105D0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		946EBE35296F0496003105D0 /* MySmartRestaurant.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MySmartRestaurant.entitlements; sourceTree = "<group>"; };
 		946EBE37296F0496003105D0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -45,6 +49,10 @@
 		946EBE47296F0496003105D0 /* MySmartRestaurantUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MySmartRestaurantUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		946EBE4B296F0496003105D0 /* MySmartRestaurantUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySmartRestaurantUITests.swift; sourceTree = "<group>"; };
 		946EBE4D296F0496003105D0 /* MySmartRestaurantUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySmartRestaurantUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		B76830DF29705053005F0979 /* ParamTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParamTextField.swift; sourceTree = "<group>"; };
+		B79E02F0297078EC000C8661 /* PickerPeople.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerPeople.swift; sourceTree = "<group>"; };
+		B79E02F229707983000C8661 /* PickerDateTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerDateTime.swift; sourceTree = "<group>"; };
+		B79E02F429707B57000C8661 /* AdditionalInformations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalInformations.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,7 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				946EBE2F296F0495003105D0 /* MySmartRestaurantApp.swift */,
-				946EBE31296F0495003105D0 /* ContentView.swift */,
+				B76830DE2970475F005F0979 /* UIDetailView */,
 				946EBE33296F0496003105D0 /* Assets.xcassets */,
 				946EBE35296F0496003105D0 /* MySmartRestaurant.entitlements */,
 				946EBE36296F0496003105D0 /* Preview Content */,
@@ -129,6 +137,18 @@
 			path = MySmartRestaurantUITests;
 			sourceTree = "<group>";
 		};
+		B76830DE2970475F005F0979 /* UIDetailView */ = {
+			isa = PBXGroup;
+			children = (
+				946EBE31296F0495003105D0 /* UIDetailView.swift */,
+				B76830DF29705053005F0979 /* ParamTextField.swift */,
+				B79E02F0297078EC000C8661 /* PickerPeople.swift */,
+				B79E02F229707983000C8661 /* PickerDateTime.swift */,
+				B79E02F429707B57000C8661 /* AdditionalInformations.swift */,
+			);
+			path = UIDetailView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -139,6 +159,7 @@
 				946EBE28296F0495003105D0 /* Sources */,
 				946EBE29296F0495003105D0 /* Frameworks */,
 				946EBE2A296F0495003105D0 /* Resources */,
+				B796DFFC2970412800FE51EE /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -193,7 +214,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1410;
-				LastUpgradeCheck = 1410;
+				LastUpgradeCheck = 1420;
 				TargetAttributes = {
 					946EBE2B296F0495003105D0 = {
 						CreatedOnToolsVersion = 14.1;
@@ -254,13 +275,37 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		B796DFFC2970412800FE51EE /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 8;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nexport PATH=\"$PATH:/opt/homebrew/bin\"\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		946EBE28296F0495003105D0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				946EBE32296F0495003105D0 /* ContentView.swift in Sources */,
+				B79E02F1297078EC000C8661 /* PickerPeople.swift in Sources */,
+				B76830E029705053005F0979 /* ParamTextField.swift in Sources */,
+				946EBE32296F0495003105D0 /* UIDetailView.swift in Sources */,
+				B79E02F529707B57000C8661 /* AdditionalInformations.swift in Sources */,
 				946EBE30296F0495003105D0 /* MySmartRestaurantApp.swift in Sources */,
+				B79E02F329707983000C8661 /* PickerDateTime.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -330,6 +375,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -388,6 +434,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -412,10 +459,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = MySmartRestaurant/MySmartRestaurant.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"MySmartRestaurant/Preview Content\"";
-				DEVELOPMENT_TEAM = A7VJFCG77Y;
+				DEVELOPMENT_TEAM = D253Y3VSCC;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -450,10 +499,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = MySmartRestaurant/MySmartRestaurant.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"MySmartRestaurant/Preview Content\"";
-				DEVELOPMENT_TEAM = A7VJFCG77Y;
+				DEVELOPMENT_TEAM = D253Y3VSCC;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -489,6 +540,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = A7VJFCG77Y;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
@@ -512,6 +564,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = A7VJFCG77Y;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
@@ -534,6 +587,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = A7VJFCG77Y;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
@@ -556,6 +610,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = A7VJFCG77Y;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
