@@ -20,13 +20,13 @@ struct BookingView: View {
     var body: some View {
         
         NavigationStack {
-        GeometryReader { g in
+        GeometryReader { geo in
                 VStack (alignment: .leading){
                         Text("Name")
                             .fontWeight(.semibold)
                             .padding()
                         TextField("", text: $name)
-                            .frame(width: g.size.width * 0.9, height: g.size.height * 0.05)
+                            .frame(width: geo.size.width * 0.9, height: geo.size.height * 0.05)
                             .multilineTextAlignment(.leading)
                             .background(RoundedRectangle(cornerRadius: 10)
                                 .fill(Color.gray.opacity(0.09)))
@@ -40,7 +40,7 @@ struct BookingView: View {
                                     }
                             }
                             .pickerStyle(.wheel)
-                            .frame(height: g.size.height * 0.16)
+                            .frame(height: geo.size.height * 0.16)
                             Divider()
                          
                         

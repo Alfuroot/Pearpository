@@ -8,5 +8,5 @@
 import Foundation
 
 enum FilterType: String, CaseIterable {
-	case Lunch, Dinner
+	case lunch, dinner
 }
