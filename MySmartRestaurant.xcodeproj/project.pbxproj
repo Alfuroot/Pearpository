@@ -14,12 +14,14 @@
 		500D22902970794600869AFC /* FirstView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500D228B2970794600869AFC /* FirstView.swift */; };
 		719790252970051000232432 /* BookingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719790242970051000232432 /* BookingView.swift */; };
 		946EBE30296F0495003105D0 /* MySmartRestaurantApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946EBE2F296F0495003105D0 /* MySmartRestaurantApp.swift */; };
-		946EBE32296F0495003105D0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946EBE31296F0495003105D0 /* ContentView.swift */; };
 		946EBE34296F0496003105D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 946EBE33296F0496003105D0 /* Assets.xcassets */; };
 		946EBE38296F0496003105D0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 946EBE37296F0496003105D0 /* Preview Assets.xcassets */; };
 		946EBE42296F0496003105D0 /* MySmartRestaurantTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946EBE41296F0496003105D0 /* MySmartRestaurantTests.swift */; };
 		946EBE4C296F0496003105D0 /* MySmartRestaurantUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946EBE4B296F0496003105D0 /* MySmartRestaurantUITests.swift */; };
 		946EBE4E296F0496003105D0 /* MySmartRestaurantUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946EBE4D296F0496003105D0 /* MySmartRestaurantUITestsLaunchTests.swift */; };
+		9484D67B29707D1600522801 /* Data Models in Resources */ = {isa = PBXBuildFile; fileRef = 9484D67A29707D1500522801 /* Data Models */; };
+		9484D68229707DDA00522801 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9484D68129707DDA00522801 /* ContentView.swift */; };
+		9484D68529707DF800522801 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9484D68329707DF800522801 /* Model.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,7 +50,6 @@
 		719790242970051000232432 /* BookingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingView.swift; sourceTree = "<group>"; };
 		946EBE2C296F0495003105D0 /* MySmartRestaurant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MySmartRestaurant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		946EBE2F296F0495003105D0 /* MySmartRestaurantApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySmartRestaurantApp.swift; sourceTree = "<group>"; };
-		946EBE31296F0495003105D0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		946EBE33296F0496003105D0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		946EBE35296F0496003105D0 /* MySmartRestaurant.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MySmartRestaurant.entitlements; sourceTree = "<group>"; };
 		946EBE37296F0496003105D0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -57,6 +58,9 @@
 		946EBE47296F0496003105D0 /* MySmartRestaurantUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MySmartRestaurantUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		946EBE4B296F0496003105D0 /* MySmartRestaurantUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySmartRestaurantUITests.swift; sourceTree = "<group>"; };
 		946EBE4D296F0496003105D0 /* MySmartRestaurantUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySmartRestaurantUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		9484D67A29707D1500522801 /* Data Models */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "Data Models"; path = "MySmartRestaurant/Data Models"; sourceTree = "<group>"; };
+		9484D68129707DDA00522801 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		9484D68429707DF800522801 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +91,8 @@
 		946EBE23296F0495003105D0 = {
 			isa = PBXGroup;
 			children = (
+				9484D68329707DF800522801 /* Model.xcdatamodeld */,
+				9484D67A29707D1500522801 /* Data Models */,
 				946EBE2E296F0495003105D0 /* MySmartRestaurant */,
 				946EBE40296F0496003105D0 /* MySmartRestaurantTests */,
 				946EBE4A296F0496003105D0 /* MySmartRestaurantUITests */,
@@ -114,6 +120,7 @@
 				500D22872970794600869AFC /* FilterButton.swift */,
 				500D228A2970794600869AFC /* FilterType.swift */,
 				500D22882970794600869AFC /* ReservationCardView.swift */,
+				9484D68129707DDA00522801 /* ContentView.swift */,
 				719790242970051000232432 /* BookingView.swift */,
 				946EBE33296F0496003105D0 /* Assets.xcassets */,
 				946EBE35296F0496003105D0 /* MySmartRestaurant.entitlements */,
@@ -253,6 +260,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				946EBE38296F0496003105D0 /* Preview Assets.xcassets in Resources */,
+				9484D67B29707D1600522801 /* Data Models in Resources */,
 				946EBE34296F0496003105D0 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -301,11 +309,12 @@
 				500D228F2970794600869AFC /* FilterType.swift in Sources */,
 				500D228D2970794600869AFC /* ReservationCardView.swift in Sources */,
 				719790252970051000232432 /* BookingView.swift in Sources */,
-				946EBE32296F0495003105D0 /* ContentView.swift in Sources */,
 				946EBE30296F0495003105D0 /* MySmartRestaurantApp.swift in Sources */,
 				500D22902970794600869AFC /* FirstView.swift in Sources */,
 				500D228E2970794600869AFC /* ButtonAddReservation.swift in Sources */,
 				500D228C2970794600869AFC /* FilterButton.swift in Sources */,
+				9484D68229707DDA00522801 /* ContentView.swift in Sources */,
+				9484D68529707DF800522801 /* Model.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -657,6 +666,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		9484D68329707DF800522801 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				9484D68429707DF800522801 /* Model.xcdatamodel */,
+			);
+			currentVersion = 9484D68429707DF800522801 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 946EBE24296F0495003105D0 /* Project object */;
 }
