@@ -22,8 +22,11 @@ struct FilterButton: View {
 						RoundedRectangle(cornerRadius: 8)
 							.strokeBorder(.black, lineWidth: 3)
 							.background(RoundedRectangle(cornerRadius: 8).fill(isSelected ? .black.opacity(0.7) : .white))
+							  
 					)
+
 		}
+
 	}
 }
 

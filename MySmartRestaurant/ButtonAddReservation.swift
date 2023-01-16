@@ -8,8 +8,11 @@
 import SwiftUI
 
 struct ButtonAddReservation: View {
+    
     @Binding var isShowingReservation: Bool
+    
 	var body: some View {
+		
 		Button {
 			// Add reservation
             isShowingReservation.toggle()
@@ -21,11 +24,12 @@ struct ButtonAddReservation: View {
 				.background(.blue)
 				.cornerRadius(12)
 		}
+		
 	}
 }
 
-// struct ButtonAddReservation_Previews: PreviewProvider {
+//struct ButtonAddReservation_Previews: PreviewProvider {
 //    static var previews: some View {
 //        ButtonAddReservation(false)
 //    }
-// }
+//}

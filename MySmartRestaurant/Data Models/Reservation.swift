@@ -8,6 +8,7 @@
 import Foundation
 
 public class Reservation: NSObject {
+    
     var name: String?
     var numberOfPeople: Int?
     var date: Date?

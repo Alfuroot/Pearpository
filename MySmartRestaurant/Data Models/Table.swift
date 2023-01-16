@@ -8,6 +8,7 @@
 import Foundation
 
 public class Table {
+    
     var tableName: String?
     var isReserved: Reservation?
     
@@ -21,12 +22,12 @@ public class Table {
         self.isReserved = isReserved
     }
     
-    init(coreDataEntity: CoreTable) {
+    init(coreDataEntity: CoreTable){
         self.tableName = coreDataEntity.tableName
         self.isReserved = coreDataEntity.isReserved as? Reservation
     }
     
-    func copyInEntity(coreDataEntity: CoreTable) {
+    func copyInEntity(coreDataEntity: CoreTable){
         coreDataEntity.tableName = self.tableName
         coreDataEntity.isReserved = self.isReserved
     }
