@@ -25,7 +25,7 @@ public class Reservation: NSObject {
         self.glutenFree = glutenFree
     }
     
-    init(coreDataEntity: CoreReservation){
+    init(coreDataEntity: CoreReservation) {
         self.name = coreDataEntity.name
         self.numberOfPeople = Int(coreDataEntity.numberOfPeople)
         self.date = coreDataEntity.date
@@ -34,7 +34,7 @@ public class Reservation: NSObject {
         self.glutenFree = coreDataEntity.glutenFree
     }
     
-    func copyInEntity(coreDataEntity: CoreReservation){
+    func copyInEntity(coreDataEntity: CoreReservation) {
         coreDataEntity.name = self.name
         coreDataEntity.numberOfPeople = Int16(self.numberOfPeople!)
         coreDataEntity.date = self.date!

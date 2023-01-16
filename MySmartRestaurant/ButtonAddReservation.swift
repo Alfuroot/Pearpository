@@ -8,10 +8,14 @@
 import SwiftUI
 
 struct ButtonAddReservation: View {
+    
+    @Binding var isShowingReservation: Bool
+    
 	var body: some View {
 		
 		Button {
-			//Add reservation
+			// Add reservation
+            isShowingReservation.toggle()
 		} label: {
 			Text("Add Reservation")
 				.font(.title2)
@@ -24,8 +28,8 @@ struct ButtonAddReservation: View {
 	}
 }
 
-struct ButtonAddReservation_Previews: PreviewProvider {
-    static var previews: some View {
-        ButtonAddReservation()
-    }
-}
+//struct ButtonAddReservation_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ButtonAddReservation(false)
+//    }
+//}

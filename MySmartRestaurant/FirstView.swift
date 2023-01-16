@@ -8,12 +8,15 @@
 import SwiftUI
 
 struct FirstView: View {
+    
 	@State private var isSelected = false
 	
 	@State private var isShowingCalendar = false
 	
 	@State private var date = Date.now
 	
+    @State private var isShowingReservation: Bool = false
+    
 	let columns = [
 		GridItem(.flexible()),
 		GridItem(.flexible())
@@ -27,7 +30,7 @@ struct FirstView: View {
 			VStack(alignment: .leading) {
 				HStack {
 					Button {
-						//show calendar
+						// show calendar
 						isShowingCalendar.toggle()
 					} label: {
 						Image(systemName: "calendar.badge.clock")
@@ -37,7 +40,7 @@ struct FirstView: View {
 					Text("\(date.formatted(date: .abbreviated, time: .omitted))")
 						.bold()
 					
-					//Number of tables available
+					// Number of tables available
 					Text("2/10")
 						.font(.title).bold()
 						.padding(.horizontal)
@@ -54,20 +57,18 @@ struct FirstView: View {
 				Text("Reserved Tables")
 					.font(.headline)
 					
-				
 				ScrollView {
 					LazyVGrid(columns: columns, spacing: 11) {
 						ForEach(0..<10) { _ in
 							ReservationCardView()
 								
-							
 						}
 					}
 				}
 				.overlay {
 					VStack {
 						Spacer()
-						ButtonAddReservation()
+                        ButtonAddReservation(isShowingReservation: $isShowingReservation)
 						
 					}
 				}
@@ -81,17 +82,18 @@ struct FirstView: View {
 						.onTapGesture {
 							isShowingCalendar.toggle()
 						}
-					DatePicker("Date", selection: $date, in: Date.now...)
-						.datePickerStyle(.graphical)
+                    DatePicker("Date", selection: $date, in: Date.now..., displayedComponents: .date)
+                        .datePickerStyle(.graphical)
 						.background(.white)
 						.cornerRadius(10)
-						
+                    
 				}
 					
-				
 		}
 			
-		}
+        }.sheet(isPresented: $isShowingReservation, content: {
+            BookingView()
+        })
 	}
 }
 

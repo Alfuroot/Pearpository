@@ -20,60 +20,59 @@ struct BookingView: View {
     var body: some View {
         
         NavigationStack {
-        GeometryReader { geo in
-                VStack (alignment: .leading){
-                        Text("Name")
-                            .fontWeight(.semibold)
-                            .padding()
-                        TextField("", text: $name)
-                            .frame(width: geo.size.width * 0.9, height: geo.size.height * 0.05)
-                            .multilineTextAlignment(.leading)
-                            .background(RoundedRectangle(cornerRadius: 10)
-                                .fill(Color.gray.opacity(0.09)))
-                        Divider()
-                        Text("Number of People")
-                            .fontWeight(.semibold)
-                            .padding()
-                            Picker("Number of people", selection: $selectedNumber){
-                                ForEach(1...20, id: \.self) {
-                                        Text("\($0)")
-                                    }
-                            }
-                            .pickerStyle(.wheel)
-                            .frame(height: geo.size.height * 0.16)
-                            Divider()
-                         
-                        
-                        DatePicker(selection: $reservationDate, in: Date.now... , displayedComponents: .date) {
-                            Text("Date to reserve")
-                                .fontWeight(.semibold)
-                        }
+            GeometryReader { geo in
+                VStack(alignment: .leading) {
+                    Text("Name")
+                        .fontWeight(.semibold)
                         .padding()
-                        Divider()
+                    TextField("", text: $name)
+                        .frame(width: geo.size.width * 0.9, height: geo.size.height * 0.05)
+                        .multilineTextAlignment(.leading)
+                        .background(RoundedRectangle(cornerRadius: 10)
+                            .fill(Color.gray.opacity(0.09)))
+                    Divider()
+                    Text("Number of People")
+                        .fontWeight(.semibold)
+                        .padding()
+                    Picker("Number of people", selection: $selectedNumber) {
+                        ForEach(1...20, id: \.self) {
+                            Text("\($0)")
+                        }
+                    }
+                    .pickerStyle(.wheel)
+                    .frame(height: geo.size.height * 0.16)
+                    Divider()
+                    
+                    DatePicker(selection: $reservationDate, in: Date.now...) {
+                        Text("Date to reserve")
+                            .fontWeight(.semibold)
+                    }
+                    .padding()
+                    Divider()
                     Text("Preferences")
                         .fontWeight(.semibold)
                         .padding()
-                        VStack {
-                            Toggle(isOn: $smokingArea) {
-                                Text("Smoking Area")
-                            }
-                            Toggle(isOn: $petArea) {
-                                Text("Animals")
-                            }
-                            Toggle(isOn: $isCeliac) {
-                                Text("Gluten Free")
-                            }
+                    VStack {
+                        Toggle(isOn: $smokingArea) {
+                            Text("Smoking Area")
                         }
-                        .padding(.horizontal)
+                        Toggle(isOn: $petArea) {
+                            Text("Animals")
+                        }
+                        Toggle(isOn: $isCeliac) {
+                            Text("Gluten Free")
+                        }
                     }
+                    .padding(.horizontal)
+                }
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
-                        Button("Done"){
+                        Button("Done") {
                             // More actions to come
                         }
                     }
-                    ToolbarItem(placement: .navigationBarLeading){
-                        Button("Cancel"){
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        Button("Cancel") {
                             dismiss()
                         }
                     }
@@ -81,7 +80,6 @@ struct BookingView: View {
                 .padding()
             }
         }
-        
         
     }
 }
