@@ -16,16 +16,13 @@ struct ReservationCardView: View {
 				.fontWeight(.semibold)
 			Text("12:30")
 				.foregroundColor(.secondary)
-				.font(.title2).bold()
-			
+				.font(.title2)
+                .bold()
 		}.padding()
 		.background {
 			Color(.white)
 				.cornerRadius(10)
-				
 		}
-		
-		
 	}
 }
 

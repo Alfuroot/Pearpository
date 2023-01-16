@@ -18,7 +18,6 @@ struct BookingView: View {
     @State var isCeliac = false
     
     var body: some View {
-        
         NavigationStack {
             GeometryReader { geo in
                 VStack(alignment: .leading) {
@@ -80,7 +79,6 @@ struct BookingView: View {
                 .padding()
             }
         }
-        
     }
 }
 
