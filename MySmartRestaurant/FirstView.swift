@@ -81,10 +81,9 @@ struct FirstView: View {
                         .cornerRadius(10)
                 }
             }
-        }
-        .sheet(isPresented: $isShowingReservation, content: {
+        }.sheet(isPresented: $isShowingReservation) {
             BookingView()
-        })
+        }
     }
 }
 
