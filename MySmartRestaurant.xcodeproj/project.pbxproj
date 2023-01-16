@@ -27,6 +27,7 @@
 		94C41EAB29759F1500ABD1AC /* ParamTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C41EA629759F1500ABD1AC /* ParamTextField.swift */; };
 		94C41EAC29759F1500ABD1AC /* PickerDateTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C41EA729759F1500ABD1AC /* PickerDateTime.swift */; };
 		94C41EAD29759F1500ABD1AC /* UIDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C41EA829759F1500ABD1AC /* UIDetailView.swift */; };
+		94C41EB02975AE6000ABD1AC /* FMProKit in Frameworks */ = {isa = PBXBuildFile; productRef = 94C41EAF2975AE6000ABD1AC /* FMProKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94C41EB02975AE6000ABD1AC /* FMProKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -193,6 +195,9 @@
 			dependencies = (
 			);
 			name = MySmartRestaurant;
+			packageProductDependencies = (
+				94C41EAF2975AE6000ABD1AC /* FMProKit */,
+			);
 			productName = MySmartRestaurant;
 			productReference = 946EBE2C296F0495003105D0 /* MySmartRestaurant.app */;
 			productType = "com.apple.product-type.application";
@@ -265,6 +270,9 @@
 				Base,
 			);
 			mainGroup = 946EBE23296F0495003105D0;
+			packageReferences = (
+				94C41EAE2975AE6000ABD1AC /* XCRemoteSwiftPackageReference "FMProKit" */,
+			);
 			productRefGroup = 946EBE2D296F0495003105D0 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -693,6 +701,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		94C41EAE2975AE6000ABD1AC /* XCRemoteSwiftPackageReference "FMProKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/The-Pier/FMProKit";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		94C41EAF2975AE6000ABD1AC /* FMProKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 94C41EAE2975AE6000ABD1AC /* XCRemoteSwiftPackageReference "FMProKit" */;
+			productName = FMProKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		9484D68329707DF800522801 /* Model.xcdatamodeld */ = {
