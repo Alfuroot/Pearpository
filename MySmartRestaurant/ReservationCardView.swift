@@ -12,8 +12,10 @@ struct ReservationCardView: View {
 		VStack(spacing: 4) {
 			Text("Table 3")
 				.font(.largeTitle).bold()
+            
 			Text("Scognamiglio")
 				.fontWeight(.semibold)
+            
 			Text("12:30")
 				.foregroundColor(.secondary)
 				.font(.title2)

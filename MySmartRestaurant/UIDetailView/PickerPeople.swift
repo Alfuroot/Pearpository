@@ -8,25 +8,25 @@
 import SwiftUI
 
 struct PickerPeople: View {
-    @State var numberPeople : Int
-
+    @State var numberPeople: Int
+    
     var body: some View {
-
-        VStack{
-            HStack{
+        
+        VStack {
+            HStack {
                 Text("Number of people")
                     .font(.system(size: 12, weight: .bold))
                     .padding()
                 Spacer()
             }
             
-            HStack{
-                Picker("numberPeople", selection: $numberPeople){
+            HStack {
+                Picker("numberPeople", selection: $numberPeople) {
                     ForEach((1...10), id: \.self) {
                         Text("\($0)").tag($0)
-                        }
+                    }
                 }
-                .background{
+                .background {
                     RoundedRectangle(cornerRadius: 10).fill(Color(.gray).opacity(0.5))
                         .frame(height: 45)
                 }
@@ -34,7 +34,6 @@ struct PickerPeople: View {
                 
                 Spacer()
             }
-                
         }
     }
 }

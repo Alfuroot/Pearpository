@@ -15,7 +15,7 @@ struct UIDetailView: View {
 
     var body: some View {
 
-        VStack{
+        VStack {
             ParamTextField(name: name)
             
             PickerPeople(numberPeople: numberPeople)
@@ -25,12 +25,11 @@ struct UIDetailView: View {
             
             AdditionalInformations(isSmockingArea: true, hasAnimal: true, isCeliac: true)
             Spacer()
-                
         }
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct UIContentView_Previews: PreviewProvider {
     static var previews: some View {
         UIDetailView()
     }

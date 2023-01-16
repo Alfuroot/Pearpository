@@ -11,6 +11,7 @@ disabled_rules:
   - unused_capture_list
   - indentation_width
   - trailing_whitespace
+  - vertical_whitespace_opening_braces
   
 opt_in_rules:
   - array_init

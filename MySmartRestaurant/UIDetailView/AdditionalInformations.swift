@@ -8,14 +8,15 @@
 import SwiftUI
 
 struct AdditionalInformations: View {
+    
     var isSmockingArea, hasAnimal, isCeliac: Bool
 
     var body: some View {
 
-        VStack{
+        VStack {
             
-            if(isSmockingArea){
-                HStack{
+            if isSmockingArea {
+                HStack {
                     Image("smoking")
                     Text("No Smoking Area")
                     
@@ -23,9 +24,8 @@ struct AdditionalInformations: View {
                 }
             }
             
-            
-            if(hasAnimal){
-                HStack{
+            if hasAnimal {
+                HStack {
                     Image(systemName: "pawprint.fill")
                     Text("Animals")
                     
@@ -33,16 +33,14 @@ struct AdditionalInformations: View {
                 }
             }
             
-            if(isCeliac){
-                HStack{
+            if isCeliac {
+                HStack {
                     Image("celiac")
                     Text("Gluten Free")
                     
                     Spacer()
                 }
             }
-            
-                
         }
     }
 }
