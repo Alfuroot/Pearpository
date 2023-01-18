@@ -24,11 +24,6 @@
 		9484D67B29707D1600522801 /* Data Models in Resources */ = {isa = PBXBuildFile; fileRef = 9484D67A29707D1500522801 /* Data Models */; };
 		9484D68229707DDA00522801 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9484D68129707DDA00522801 /* ContentView.swift */; };
 		9484D68529707DF800522801 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9484D68329707DF800522801 /* Model.xcdatamodeld */; };
-		94C41EA929759F1500ABD1AC /* PickerPeople.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C41EA429759F1500ABD1AC /* PickerPeople.swift */; };
-		94C41EAA29759F1500ABD1AC /* AdditionalInformations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C41EA529759F1500ABD1AC /* AdditionalInformations.swift */; };
-		94C41EAB29759F1500ABD1AC /* ParamTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C41EA629759F1500ABD1AC /* ParamTextField.swift */; };
-		94C41EAC29759F1500ABD1AC /* PickerDateTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C41EA729759F1500ABD1AC /* PickerDateTime.swift */; };
-		94C41EAD29759F1500ABD1AC /* UIDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C41EA829759F1500ABD1AC /* UIDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,11 +65,6 @@
 		9484D67A29707D1500522801 /* Data Models */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "Data Models"; path = "MySmartRestaurant/Data Models"; sourceTree = "<group>"; };
 		9484D68129707DDA00522801 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		9484D68429707DF800522801 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
-		94C41EA429759F1500ABD1AC /* PickerPeople.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerPeople.swift; sourceTree = "<group>"; };
-		94C41EA529759F1500ABD1AC /* AdditionalInformations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdditionalInformations.swift; sourceTree = "<group>"; };
-		94C41EA629759F1500ABD1AC /* ParamTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParamTextField.swift; sourceTree = "<group>"; };
-		94C41EA729759F1500ABD1AC /* PickerDateTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerDateTime.swift; sourceTree = "<group>"; };
-		94C41EA829759F1500ABD1AC /* UIDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,11 +161,6 @@
 		94C41EA329759F0700ABD1AC /* UIDetailView */ = {
 			isa = PBXGroup;
 			children = (
-				94C41EA529759F1500ABD1AC /* AdditionalInformations.swift */,
-				94C41EA629759F1500ABD1AC /* ParamTextField.swift */,
-				94C41EA729759F1500ABD1AC /* PickerDateTime.swift */,
-				94C41EA429759F1500ABD1AC /* PickerPeople.swift */,
-				94C41EA829759F1500ABD1AC /* UIDetailView.swift */,
 				5078B4352978386300DA8B65 /* DetailView.swift */,
 				5078B4372978403100DA8B65 /* EditView.swift */,
 			);
@@ -335,17 +320,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				500D228F2970794600869AFC /* FilterType.swift in Sources */,
-				94C41EAB29759F1500ABD1AC /* ParamTextField.swift in Sources */,
-				94C41EAC29759F1500ABD1AC /* PickerDateTime.swift in Sources */,
-				94C41EAD29759F1500ABD1AC /* UIDetailView.swift in Sources */,
 				500D228D2970794600869AFC /* ReservationCardView.swift in Sources */,
-				94C41EA929759F1500ABD1AC /* PickerPeople.swift in Sources */,
 				719790252970051000232432 /* BookingView.swift in Sources */,
 				946EBE30296F0495003105D0 /* MySmartRestaurantApp.swift in Sources */,
 				500D22902970794600869AFC /* FirstView.swift in Sources */,
 				500D228E2970794600869AFC /* ButtonAddReservation.swift in Sources */,
 				5078B4382978403100DA8B65 /* EditView.swift in Sources */,
-				94C41EAA29759F1500ABD1AC /* AdditionalInformations.swift in Sources */,
 				500D228C2970794600869AFC /* FilterButton.swift in Sources */,
 				9484D68229707DDA00522801 /* ContentView.swift in Sources */,
 				5078B4362978386300DA8B65 /* DetailView.swift in Sources */,
