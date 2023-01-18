@@ -1,13 +1,15 @@
 //
-//  BookingView.swift
+//  EditView.swift
 //  MySmartRestaurant
 //
-//  Created by Antonio Scognamiglio on 11/01/23.
+//  Created by Alessia Andrisani on 18/01/23.
 //
 
 import SwiftUI
 
-struct BookingView: View {
+struct EditView: View {
+   
+    
     @Environment (\.dismiss) var dismiss
     
     @State var name = ""
@@ -16,6 +18,8 @@ struct BookingView: View {
     @State var smokingArea = false
     @State var petArea = false
     @State var isCeliac = false
+    
+    @Binding var isEditMode: Bool
     
     var body: some View {
         NavigationStack {
@@ -29,8 +33,7 @@ struct BookingView: View {
                         .frame(width: geo.size.width * 0.9, height: geo.size.height * 0.05)
                         .multilineTextAlignment(.leading)
                         .background(RoundedRectangle(cornerRadius: 10)
-                        .fill(Color.gray.opacity(0.09)))
-                       
+                            .fill(Color.gray.opacity(0.09)))
                     Divider()
                     Text("Number of People")
                         .fontWeight(.semibold)
@@ -70,12 +73,16 @@ struct BookingView: View {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button("Done") {
                             // More actions to come
-                            dismiss()
+                            withAnimation {
+                                isEditMode.toggle()
+                            }
                         }
                     }
                     ToolbarItem(placement: .navigationBarLeading) {
                         Button("Cancel") {
-                            dismiss()
+                            withAnimation {
+                                isEditMode.toggle()
+                            }
                         }
                     }
                 }
@@ -85,8 +92,8 @@ struct BookingView: View {
     }
 }
 
-struct BookingView_Previews: PreviewProvider {
+struct EditView_Previews: PreviewProvider {
     static var previews: some View {
-        BookingView()
+        EditView(isEditMode: .constant(true))
     }
 }

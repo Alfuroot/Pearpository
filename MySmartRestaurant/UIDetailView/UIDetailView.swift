@@ -29,7 +29,7 @@ struct UIDetailView: View {
     }
 }
 
-struct UIContentView_Previews: PreviewProvider {
+struct UIDetailView_Previews: PreviewProvider {
     static var previews: some View {
         UIDetailView()
     }

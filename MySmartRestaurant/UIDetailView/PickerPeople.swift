@@ -37,3 +37,9 @@ struct PickerPeople: View {
         }
     }
 }
+
+struct  PickerPeople_Previews: PreviewProvider {
+    static var previews: some View {
+        PickerPeople(numberPeople: 4)
+    }
+}

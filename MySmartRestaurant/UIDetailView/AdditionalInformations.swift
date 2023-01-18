@@ -44,3 +44,11 @@ struct AdditionalInformations: View {
         }
     }
 }
+
+struct  AdditionalInformations_Previews: PreviewProvider {
+    static var previews: some View {
+        AdditionalInformations(isSmockingArea: true, hasAnimal: true, isCeliac: true)
+    }
+}
+
+

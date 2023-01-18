@@ -32,3 +32,9 @@ struct ParamTextField: View {
         }
     }
 }
+
+struct  ParamTextField_Previews: PreviewProvider {
+    static var previews: some View {
+        ParamTextField(name: "Andrisani")
+    }
+}

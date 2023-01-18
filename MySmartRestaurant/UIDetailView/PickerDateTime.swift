@@ -34,3 +34,10 @@ struct PickerDateTime: View {
         }
     }
 }
+
+
+struct  PickerDateTime_Previews: PreviewProvider {
+    static var previews: some View {
+        PickerDateTime(dateTime: .now)
+    }
+}
