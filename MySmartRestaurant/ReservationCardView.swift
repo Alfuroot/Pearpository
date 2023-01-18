@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ReservationCardView: View {
+    @State var tableName: String
+    
 	var body: some View {
 		VStack(spacing: 4) {
 			Text("Table 3")
@@ -30,6 +32,6 @@ struct ReservationCardView: View {
 
 struct ReservationCardView_Previews: PreviewProvider {
     static var previews: some View {
-        ReservationCardView()
+        ReservationCardView(tableName: "")
     }
 }

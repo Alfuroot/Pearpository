@@ -10,9 +10,10 @@ import SwiftUI
 struct BookingView: View {
     @Environment (\.dismiss) var dismiss
     
+    @Binding var tableName: String
     @State var name = ""
     @State var selectedNumber = 2
-    @State var reservationDate = Date.now
+    @State var date = Date.now
     @State var smokingArea = false
     @State var petArea = false
     @State var isCeliac = false
@@ -42,7 +43,7 @@ struct BookingView: View {
                     .frame(height: geo.size.height * 0.16)
                     Divider()
                     
-                    DatePicker(selection: $reservationDate, in: Date.now...) {
+                    DatePicker(selection: $date, in: Date.now...) {
                         Text("Date to reserve")
                             .fontWeight(.semibold)
                     }
@@ -68,6 +69,9 @@ struct BookingView: View {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button("Done") {
                             // More actions to come
+                            let tmpRes = Reservation(foreignTableName: tableName, name: name, numberOfPeople: selectedNumber, date: date, smoking: smokingArea, animals: petArea, glutenFree: isCeliac)
+
+                            PersistenceController.shared.saveNewReservation(tmpRes, tableName)
                         }
                     }
                     ToolbarItem(placement: .navigationBarLeading) {
@@ -82,8 +86,8 @@ struct BookingView: View {
     }
 }
 
-struct BookingView_Previews: PreviewProvider {
-    static var previews: some View {
-        BookingView()
-    }
-}
+//struct BookingView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        BookingView()
+//    }
+//}

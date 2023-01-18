@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct FirstView: View {
+    
+    @State private var tmpTableName: String = ""
+    @State private var tableList: [Table] = []
     @State private var isSelected = false
     @State private var isShowingCalendar = false
     @State private var date = Date.now
@@ -53,8 +56,12 @@ struct FirstView: View {
                     
                     ScrollView {
                         LazyVGrid(columns: columns, spacing: 11) {
-                            ForEach(0..<10) { _ in
-                                ReservationCardView()
+                            ForEach(tableList, id: \.tableName) { table in
+                                ReservationCardView(tableName: table.tableName ?? "Missing")
+                                    .onTapGesture {
+                                        tmpTableName = table.tableName ?? "Missing"
+                                        isShowingReservation.toggle()
+                                }
                             }
                         }
                     }
@@ -81,14 +88,19 @@ struct FirstView: View {
                         .cornerRadius(10)
                 }
             }
-        }.sheet(isPresented: $isShowingReservation) {
-            BookingView()
+        }
+        .sheet(isPresented: $isShowingReservation) {
+            BookingView(tableName: $tmpTableName)
+        }
+        .onAppear {
+            
+            tableList = PersistenceController.shared.fetchLocalTables()
         }
     }
 }
 
-struct FirstView_Previews: PreviewProvider {
-    static var previews: some View {
-        FirstView()
-    }
-}
+// struct FirstView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        FirstView(tableList: [Table(tableName: "aa")])
+//    }
+// }
