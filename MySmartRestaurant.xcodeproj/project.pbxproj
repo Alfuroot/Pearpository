@@ -13,6 +13,7 @@
 		500D228F2970794600869AFC /* FilterType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500D228A2970794600869AFC /* FilterType.swift */; };
 		500D22902970794600869AFC /* FirstView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500D228B2970794600869AFC /* FirstView.swift */; };
 		719790252970051000232432 /* BookingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719790242970051000232432 /* BookingView.swift */; };
+		71D4F44D2978387D00A7D7C7 /* OnBoardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D4F44C2978387D00A7D7C7 /* OnBoardingView.swift */; };
 		943206E32977ED9900C18B32 /* Reservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943206E12977ED9900C18B32 /* Reservation.swift */; };
 		943206E42977ED9900C18B32 /* Table.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943206E22977ED9900C18B32 /* Table.swift */; };
 		943206E72977EDE400C18B32 /* Persistence Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943206E62977EDE400C18B32 /* Persistence Controller.swift */; };
@@ -55,6 +56,7 @@
 		500D228A2970794600869AFC /* FilterType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterType.swift; sourceTree = "<group>"; };
 		500D228B2970794600869AFC /* FirstView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstView.swift; sourceTree = "<group>"; };
 		719790242970051000232432 /* BookingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingView.swift; sourceTree = "<group>"; };
+		71D4F44C2978387D00A7D7C7 /* OnBoardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingView.swift; sourceTree = "<group>"; };
 		943206E12977ED9900C18B32 /* Reservation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reservation.swift; sourceTree = "<group>"; };
 		943206E22977ED9900C18B32 /* Table.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Table.swift; sourceTree = "<group>"; };
 		943206E62977EDE400C18B32 /* Persistence Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Persistence Controller.swift"; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 				943206E02977ED8D00C18B32 /* DataModels */,
 				946EBE2F296F0495003105D0 /* MySmartRestaurantApp.swift */,
 				500D228B2970794600869AFC /* FirstView.swift */,
+				71D4F44C2978387D00A7D7C7 /* OnBoardingView.swift */,
 				500D22892970794600869AFC /* ButtonAddReservation.swift */,
 				500D22872970794600869AFC /* FilterButton.swift */,
 				500D228A2970794600869AFC /* FilterType.swift */,
@@ -355,6 +358,7 @@
 				94C41EA929759F1500ABD1AC /* PickerPeople.swift in Sources */,
 				719790252970051000232432 /* BookingView.swift in Sources */,
 				946EBE30296F0495003105D0 /* MySmartRestaurantApp.swift in Sources */,
+				71D4F44D2978387D00A7D7C7 /* OnBoardingView.swift in Sources */,
 				500D22902970794600869AFC /* FirstView.swift in Sources */,
 				500D228E2970794600869AFC /* ButtonAddReservation.swift in Sources */,
 				94C41EAA29759F1500ABD1AC /* AdditionalInformations.swift in Sources */,
@@ -516,7 +520,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MySmartRestaurant/Preview Content\"";
-				DEVELOPMENT_TEAM = A7VJFCG77Y;
+				DEVELOPMENT_TEAM = WK692DVRUX;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -554,7 +558,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MySmartRestaurant/Preview Content\"";
-				DEVELOPMENT_TEAM = A7VJFCG77Y;
+				DEVELOPMENT_TEAM = WK692DVRUX;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
