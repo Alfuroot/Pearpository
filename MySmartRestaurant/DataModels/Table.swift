@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class Table {
+public class Table: Codable {
     var tableName: String?
     
     init(tableName: String) {
