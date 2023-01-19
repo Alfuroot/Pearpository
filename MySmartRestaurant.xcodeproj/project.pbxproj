@@ -17,6 +17,8 @@
 		943206E32977ED9900C18B32 /* Reservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943206E12977ED9900C18B32 /* Reservation.swift */; };
 		943206E42977ED9900C18B32 /* Table.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943206E22977ED9900C18B32 /* Table.swift */; };
 		943206E72977EDE400C18B32 /* Persistence Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943206E62977EDE400C18B32 /* Persistence Controller.swift */; };
+		943206F12979477500C18B32 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943206F02979477500C18B32 /* DetailView.swift */; };
+		943206F32979479600C18B32 /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943206F22979479500C18B32 /* EditView.swift */; };
 		946EBE30296F0495003105D0 /* MySmartRestaurantApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946EBE2F296F0495003105D0 /* MySmartRestaurantApp.swift */; };
 		946EBE34296F0496003105D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 946EBE33296F0496003105D0 /* Assets.xcassets */; };
 		946EBE38296F0496003105D0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 946EBE37296F0496003105D0 /* Preview Assets.xcassets */; };
@@ -28,7 +30,6 @@
 		94C41EAA29759F1500ABD1AC /* AdditionalInformations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C41EA529759F1500ABD1AC /* AdditionalInformations.swift */; };
 		94C41EAB29759F1500ABD1AC /* ParamTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C41EA629759F1500ABD1AC /* ParamTextField.swift */; };
 		94C41EAC29759F1500ABD1AC /* PickerDateTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C41EA729759F1500ABD1AC /* PickerDateTime.swift */; };
-		94C41EAD29759F1500ABD1AC /* UIDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C41EA829759F1500ABD1AC /* UIDetailView.swift */; };
 		94C41EB02975AE6000ABD1AC /* FMProKit in Frameworks */ = {isa = PBXBuildFile; productRef = 94C41EAF2975AE6000ABD1AC /* FMProKit */; };
 /* End PBXBuildFile section */
 
@@ -60,6 +61,8 @@
 		943206E12977ED9900C18B32 /* Reservation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reservation.swift; sourceTree = "<group>"; };
 		943206E22977ED9900C18B32 /* Table.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Table.swift; sourceTree = "<group>"; };
 		943206E62977EDE400C18B32 /* Persistence Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Persistence Controller.swift"; sourceTree = "<group>"; };
+		943206F02979477500C18B32 /* DetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		943206F22979479500C18B32 /* EditView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
 		946EBE2C296F0495003105D0 /* MySmartRestaurant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MySmartRestaurant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		946EBE2F296F0495003105D0 /* MySmartRestaurantApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySmartRestaurantApp.swift; sourceTree = "<group>"; };
 		946EBE33296F0496003105D0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -75,7 +78,6 @@
 		94C41EA529759F1500ABD1AC /* AdditionalInformations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdditionalInformations.swift; sourceTree = "<group>"; };
 		94C41EA629759F1500ABD1AC /* ParamTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParamTextField.swift; sourceTree = "<group>"; };
 		94C41EA729759F1500ABD1AC /* PickerDateTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerDateTime.swift; sourceTree = "<group>"; };
-		94C41EA829759F1500ABD1AC /* UIDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,11 +185,12 @@
 		94C41EA329759F0700ABD1AC /* UIDetailView */ = {
 			isa = PBXGroup;
 			children = (
+				943206F22979479500C18B32 /* EditView.swift */,
+				943206F02979477500C18B32 /* DetailView.swift */,
 				94C41EA529759F1500ABD1AC /* AdditionalInformations.swift */,
 				94C41EA629759F1500ABD1AC /* ParamTextField.swift */,
 				94C41EA729759F1500ABD1AC /* PickerDateTime.swift */,
 				94C41EA429759F1500ABD1AC /* PickerPeople.swift */,
-				94C41EA829759F1500ABD1AC /* UIDetailView.swift */,
 			);
 			path = UIDetailView;
 			sourceTree = "<group>";
@@ -351,9 +354,9 @@
 			files = (
 				500D228F2970794600869AFC /* FilterType.swift in Sources */,
 				94C41EAB29759F1500ABD1AC /* ParamTextField.swift in Sources */,
+				943206F12979477500C18B32 /* DetailView.swift in Sources */,
 				943206E32977ED9900C18B32 /* Reservation.swift in Sources */,
 				94C41EAC29759F1500ABD1AC /* PickerDateTime.swift in Sources */,
-				94C41EAD29759F1500ABD1AC /* UIDetailView.swift in Sources */,
 				500D228D2970794600869AFC /* ReservationCardView.swift in Sources */,
 				94C41EA929759F1500ABD1AC /* PickerPeople.swift in Sources */,
 				719790252970051000232432 /* BookingView.swift in Sources */,
@@ -363,6 +366,7 @@
 				500D228E2970794600869AFC /* ButtonAddReservation.swift in Sources */,
 				94C41EAA29759F1500ABD1AC /* AdditionalInformations.swift in Sources */,
 				500D228C2970794600869AFC /* FilterButton.swift in Sources */,
+				943206F32979479600C18B32 /* EditView.swift in Sources */,
 				943206E42977ED9900C18B32 /* Table.swift in Sources */,
 				943206E72977EDE400C18B32 /* Persistence Controller.swift in Sources */,
 				9484D68529707DF800522801 /* Model.xcdatamodeld in Sources */,
