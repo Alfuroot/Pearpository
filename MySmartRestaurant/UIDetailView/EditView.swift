@@ -25,15 +25,17 @@ struct EditView: View {
         NavigationStack {
             GeometryReader { geo in
                 VStack(alignment: .leading) {
-                    Text("Name")
-                        .fontWeight(.semibold)
-                        .padding()
-                    TextField("", text: $name)
-                        .padding(.horizontal)
-                        .frame(width: geo.size.width * 0.9, height: geo.size.height * 0.05)
-                        .multilineTextAlignment(.leading)
-                        .background(RoundedRectangle(cornerRadius: 10)
-                            .fill(Color.gray.opacity(0.09)))
+                    Group {
+                        Text("Name")
+                            .fontWeight(.semibold)
+                            .padding()
+                        TextField("", text: $name)
+                            .padding(.horizontal)
+                            .frame(width: geo.size.width * 0.9, height: geo.size.height * 0.05)
+                            .multilineTextAlignment(.leading)
+                            .background(RoundedRectangle(cornerRadius: 10)
+                                .fill(Color.gray.opacity(0.09)))
+                    }
                     Divider()
                     Text("Number of People")
                         .fontWeight(.semibold)
@@ -68,6 +70,19 @@ struct EditView: View {
                         }
                     }
                     .padding(.horizontal)
+                    
+                    Button {
+                        // Delete reservation
+                
+                    } label: {
+                        Text("Delete Reservation")
+                            .font(.title2)
+                            .frame(width: UIScreen.main.bounds.width / 1.10, height: UIScreen.main.bounds.height / 12)
+                            .foregroundColor(.white)
+                            .background(.red)
+                            .cornerRadius(12)
+                    }
+                    .padding(.vertical)
                 }
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
