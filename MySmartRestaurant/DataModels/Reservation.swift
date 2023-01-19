@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class Reservation: NSObject {
+public class Reservation: NSObject, Codable {
     var foreignTableName: String?
     var name: String?
     var numberOfPeople: Int?

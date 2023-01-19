@@ -30,6 +30,7 @@
 		94C41EAA29759F1500ABD1AC /* AdditionalInformations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C41EA529759F1500ABD1AC /* AdditionalInformations.swift */; };
 		94C41EAB29759F1500ABD1AC /* ParamTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C41EA629759F1500ABD1AC /* ParamTextField.swift */; };
 		94C41EAC29759F1500ABD1AC /* PickerDateTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C41EA729759F1500ABD1AC /* PickerDateTime.swift */; };
+		B7C5306D297997D30046C2ED /* APICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C5306C297997D30046C2ED /* APICaller.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,7 @@
 		94C41EA529759F1500ABD1AC /* AdditionalInformations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdditionalInformations.swift; sourceTree = "<group>"; };
 		94C41EA629759F1500ABD1AC /* ParamTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParamTextField.swift; sourceTree = "<group>"; };
 		94C41EA729759F1500ABD1AC /* PickerDateTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerDateTime.swift; sourceTree = "<group>"; };
+		B7C5306C297997D30046C2ED /* APICaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICaller.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +142,7 @@
 			children = (
 				943206E02977ED8D00C18B32 /* DataModels */,
 				946EBE2F296F0495003105D0 /* MySmartRestaurantApp.swift */,
+				B7C5306C297997D30046C2ED /* APICaller.swift */,
 				500D228B2970794600869AFC /* FirstView.swift */,
 				71D4F44C2978387D00A7D7C7 /* OnBoardingView.swift */,
 				500D22892970794600869AFC /* ButtonAddReservation.swift */,
@@ -351,6 +354,7 @@
 				500D228F2970794600869AFC /* FilterType.swift in Sources */,
 				94C41EAB29759F1500ABD1AC /* ParamTextField.swift in Sources */,
 				943206F12979477500C18B32 /* DetailView.swift in Sources */,
+				B7C5306D297997D30046C2ED /* APICaller.swift in Sources */,
 				943206E32977ED9900C18B32 /* Reservation.swift in Sources */,
 				94C41EAC29759F1500ABD1AC /* PickerDateTime.swift in Sources */,
 				500D228D2970794600869AFC /* ReservationCardView.swift in Sources */,
