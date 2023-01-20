@@ -11,7 +11,8 @@ struct FirstView: View {
     
     @State private var tmpTableName: String = ""
     @State private var tableList: [Table] = []
-    @State private var isSelected = false
+    @State private var lunchIsSelected = false
+    @State private var dinnerIsSelected = false
     @State private var isShowingCalendar = false
     @State private var date = Date.now
     @State private var isShowingReservation = false
@@ -47,9 +48,9 @@ struct FirstView: View {
                     }
                     
                     HStack {
-                        ForEach(FilterType.allCases, id: \.rawValue) { type in
-                            FilterButton(isSelected: $isSelected, title: type.rawValue)
-                        }
+                        FilterButton(isSelected: $lunchIsSelected, title: FilterType.lunch.rawValue)
+                        FilterButton(isSelected: $dinnerIsSelected, title: FilterType.dinner.rawValue)
+
                     }
                     
                     Text("Reserved Tables")
