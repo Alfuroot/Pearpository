@@ -8,17 +8,21 @@
 import Foundation
 
 public class Table: Codable {
-    var tableName: String?
+    var id: Int?
+    var isReservedLunch: String?
+    var isReservedDinner: String?
+    var isOutdoor: String?
     
-    init(tableName: String) {
-        self.tableName = tableName
+    
+    init(tableName: Int) {
+        self.id = tableName
     }
     
     init(coreDataEntity: CoreTable) {
-        self.tableName = coreDataEntity.tableName
+//        self.id = coreDataEntity.tableName
     }
     
     func copyInEntity(coreDataEntity: CoreTable) {
-        coreDataEntity.tableName = self.tableName
+//        coreDataEntity.tableName = self.id
     }
 }

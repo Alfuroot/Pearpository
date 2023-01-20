@@ -12,7 +12,7 @@ struct ReservationCardView: View {
     
 	var body: some View {
 		VStack(spacing: 4) {
-			Text("Table 3")
+			Text(tableName)
 				.font(.largeTitle).bold()
             
 			Text("Scognamiglio")

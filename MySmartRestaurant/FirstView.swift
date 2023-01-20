@@ -57,10 +57,10 @@ struct FirstView: View {
                     
                     ScrollView {
                         LazyVGrid(columns: columns, spacing: 11) {
-                            ForEach(tableList, id: \.tableName) { table in
-                                ReservationCardView(tableName: table.tableName ?? "Missing")
+                            ForEach(tableList, id: \.id) { table in
+                                ReservationCardView(tableName: "Table\(table.id!)")
                                     .onTapGesture {
-                                        tmpTableName = table.tableName ?? "Missing"
+                                        tmpTableName = "Table\(table.id!)"
                                         isShowingReservation.toggle()
                                     }
                             }
@@ -99,10 +99,6 @@ struct FirstView: View {
         }
         .sheet(isPresented: $isShowingReservation) {
             BookingView(tableName: $tmpTableName)
-        }
-        .onAppear {
-            
-            tableList = PersistenceController.shared.fetchLocalTables()
         }
     }
 }

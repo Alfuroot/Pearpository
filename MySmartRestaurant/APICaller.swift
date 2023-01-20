@@ -61,6 +61,8 @@ public struct APICaller {
         
         request.url = url
         
+        request.setValue("Basic \(auth)", forHTTPHeaderField: "Authorization")
+        
         request.httpMethod = "POST"
         
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -88,8 +90,9 @@ public struct APICaller {
         
         request.url = url
         
-        request.httpMethod = "DELETE"
+        request.setValue("Basic \(auth)", forHTTPHeaderField: "Authorization")
         
+        request.httpMethod = "DELETE"
         
         //        Execution of the API call
         let (_, response) = try await URLSession.shared.data(for: request)
