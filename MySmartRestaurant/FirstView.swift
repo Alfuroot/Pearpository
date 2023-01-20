@@ -15,6 +15,7 @@ struct FirstView: View {
     @State private var isShowingCalendar = false
     @State private var date = Date.now
     @State private var isShowingReservation = false
+    let api = APICaller(username: "Admin", password: "admin")
     
     let columns = [
         GridItem(.flexible()),
@@ -61,8 +62,15 @@ struct FirstView: View {
                                     .onTapGesture {
                                         tmpTableName = table.tableName ?? "Missing"
                                         isShowingReservation.toggle()
-                                }
+                                    }
                             }
+                        }
+                    }
+                    .task {
+                        do {
+                            tableList = try await api.getFromFM(urlTmp: "\(api.baseURI)/Table")
+                        } catch {
+                            print("\(api.baseURI)/Table")
                         }
                     }
                     .overlay {

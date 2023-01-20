@@ -8,26 +8,32 @@ import Foundation
 
 public struct APICaller {
     
+    public let baseURI = "https://napoli.fm-testing.com/fmi/odata/v4/MySmartRestaurant"
     
-    struct JSONReservation: Codable {
-        var value: [Reservation]
-    }
-    struct JSONTable: Codable {
-        var value: [Table]
+    struct JSONValue<T: Codable>: Codable {
+        var value: [T]
     }
     
+    var username: String
+    var password: String
+    var auth: String {(username + ":" + password).data(using: .utf8)!.base64EncodedString()}
     
-    public func getFromFM<T: Codable>(urlTmp: String) async throws -> T {
+    public init(username: String, password: String) {
+        self.username = username
+        self.password = password
+    }
+    
+    public func getFromFM<T: Codable>(urlTmp: String) async throws -> [T] {
         
         guard let url = URL(string: urlTmp) else {
             throw URLError(.badURL)
         }
-        var request: URLRequest = URLRequest(url: URL(string: urlTmp)!)
         
-        request.url = url
+        var request: URLRequest = URLRequest(url: url)
         
+        request.setValue("Basic \(auth)", forHTTPHeaderField: "Authorization")
         request.httpMethod = "GET"
-        
+
         //        Execution of the API call
         let (data, response) = try await URLSession.shared.data(for: request)
         //        Checking for an error
@@ -36,11 +42,12 @@ public struct APICaller {
         } else {
             throw HTTPErrors.httpError
         }
-            
+        
         do {
-            let fetchedData = try JSONDecoder().decode(T.self, from: data)
-            return fetchedData
+            let fetchedData = try JSONDecoder().decode(JSONValue<T>.self, from: data)
+            return fetchedData.value
         } catch {
+            print("Decode Error")
             throw error
         }
     }
@@ -64,7 +71,7 @@ public struct APICaller {
         
         //        Execution of the API call
         let (_, response) = try await URLSession.shared.upload(for: request, from: encoded)
-  
+        
         //        Checking for an error
         if (response as? HTTPURLResponse)?.statusCode ?? 500 < 300 {
         } else {
@@ -82,11 +89,11 @@ public struct APICaller {
         request.url = url
         
         request.httpMethod = "DELETE"
-                
-      
+        
+        
         //        Execution of the API call
         let (_, response) = try await URLSession.shared.data(for: request)
-  
+        
         //        Checking for an error
         if (response as? HTTPURLResponse)?.statusCode ?? 500 < 300 {
         } else {
