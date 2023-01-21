@@ -32,6 +32,7 @@ public struct APICaller {
         var request: URLRequest = URLRequest(url: url)
         
         request.setValue("Basic \(auth)", forHTTPHeaderField: "Authorization")
+        
         request.httpMethod = "GET"
 
         //        Execution of the API call

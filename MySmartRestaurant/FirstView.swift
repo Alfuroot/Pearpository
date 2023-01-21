@@ -59,11 +59,13 @@ struct FirstView: View {
                     ScrollView {
                         LazyVGrid(columns: columns, spacing: 11) {
                             ForEach(tableList, id: \.id) { table in
-                                ReservationCardView(tableName: "Table\(table.id!)")
-                                    .onTapGesture {
-                                        tmpTableName = "Table\(table.id!)"
-                                        isShowingReservation.toggle()
-                                    }
+                                NavigationLink { DetailView() } label: {
+                                    ReservationCardView(tableName: "Table\(table.id!)")
+                                }
+                              
+//                                    .onTapGesture {
+//                                        tmpTableName = "Table\(table.id!)"
+//                                    }
                             }
                         }
                     }

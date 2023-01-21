@@ -71,7 +71,8 @@ struct BookingView: View {
                             // More actions to come
                             let tmpRes = Reservation(foreignTableName: tableName, name: name, numberOfPeople: selectedNumber, date: date, smoking: smokingArea, animals: petArea, glutenFree: isCeliac)
 
-                            PersistenceController.shared.saveNewReservation(tmpRes, tableName)
+                            
+//                            PersistenceController.shared.saveNewReservation(tmpRes, tableName)
                         }
                     }
                     ToolbarItem(placement: .navigationBarLeading) {
