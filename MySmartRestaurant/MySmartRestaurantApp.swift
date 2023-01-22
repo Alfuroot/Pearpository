@@ -9,11 +9,14 @@ import SwiftUI
 
 @main
 struct MySmartRestaurantApp: App {
+    
+    @StateObject var api = APICaller(username: "Admin", password: "admin")
     @Environment(\.managedObjectContext) var managedObjectContext
     
     var body: some Scene {
         WindowGroup {
             FirstView()
+                .environmentObject(api)
         }
     }
 }

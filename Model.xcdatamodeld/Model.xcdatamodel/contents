@@ -10,6 +10,9 @@
         <attribute name="smoking" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
     </entity>
     <entity name="CoreTable" representedClassName="CoreTable" syncable="YES" codeGenerationType="class">
-        <attribute name="tableName" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="isOutdoor" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="isReservedDinner" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="isReservedLunch" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
     </entity>
 </model>

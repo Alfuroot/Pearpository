@@ -6,7 +6,7 @@
 //
 import Foundation
 
-public struct APICaller {
+public class APICaller: ObservableObject {
     
     public let baseURI = "https://napoli.fm-testing.com/fmi/odata/v4/MySmartRestaurant"
     
@@ -29,7 +29,7 @@ public struct APICaller {
             throw URLError(.badURL)
         }
         
-        var request: URLRequest = URLRequest(url: url)
+        var request = URLRequest(url: url)
         
         request.setValue("Basic \(auth)", forHTTPHeaderField: "Authorization")
         
@@ -45,6 +45,7 @@ public struct APICaller {
         }
         
         do {
+            
             let fetchedData = try JSONDecoder().decode(JSONValue<T>.self, from: data)
             return fetchedData.value
         } catch {

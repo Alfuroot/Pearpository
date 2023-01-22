@@ -11,12 +11,14 @@ struct FirstView: View {
     
     @State private var tmpTableName: String = ""
     @State private var tableList: [Table] = []
+    @State private var tableLunch: [Table] = []
+    @State private var tableDinner: [Table] = []
     @State private var lunchIsSelected = false
     @State private var dinnerIsSelected = false
     @State private var isShowingCalendar = false
     @State private var date = Date.now
     @State private var isShowingReservation = false
-    let api = APICaller(username: "Admin", password: "admin")
+    @EnvironmentObject var api: APICaller
     
     let columns = [
         GridItem(.flexible()),
@@ -50,7 +52,6 @@ struct FirstView: View {
                     HStack {
                         FilterButton(isSelected: $lunchIsSelected, title: FilterType.lunch.rawValue)
                         FilterButton(isSelected: $dinnerIsSelected, title: FilterType.dinner.rawValue)
-
                     }
                     
                     Text("Reserved Tables")
@@ -58,20 +59,27 @@ struct FirstView: View {
                     
                     ScrollView {
                         LazyVGrid(columns: columns, spacing: 11) {
-                            ForEach(tableList, id: \.id) { table in
-                                NavigationLink { DetailView() } label: {
-                                    ReservationCardView(tableName: "Table\(table.id!)")
+                            if lunchIsSelected {
+                                ForEach(tableLunch, id: \.id) { table in
+                                    NavigationLink { DetailView() } label: {
+                                        ReservationCardView(tableName: "Table\(table.id!)")
+                                    }
                                 }
-                              
-//                                    .onTapGesture {
-//                                        tmpTableName = "Table\(table.id!)"
-//                                    }
+                            }
+                            if dinnerIsSelected {
+                                ForEach(tableDinner, id: \.id) { table in
+                                    NavigationLink { DetailView() } label: {
+                                        ReservationCardView(tableName: "Table\(table.id!)")
+                                    }
+                                }
                             }
                         }
                     }
                     .task {
                         do {
                             tableList = try await api.getFromFM(urlTmp: "\(api.baseURI)/Table")
+                            tableLunch = tableList.filter { $0.isReservedLunch == "true" }
+                            tableDinner = tableList.filter { $0.isReservedDinner == "true" }
                         } catch {
                             print("\(api.baseURI)/Table")
                         }
