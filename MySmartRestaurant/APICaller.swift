@@ -60,6 +60,7 @@ public class APICaller: ObservableObject {
             throw URLError(.badURL)
         }
         var request: URLRequest = URLRequest(url: URL(string: urlTmp)!)
+        print(request)
         
         request.url = url
         
@@ -83,12 +84,13 @@ public class APICaller: ObservableObject {
         }
     }
     
-    public func deleteRecordInFM<T: Codable>(urlTmp: String, data: T) async throws {
+    public func deleteRecordInFM(urlTmp: String) async throws {
         
         guard let url = URL(string: urlTmp) else {
             throw URLError(.badURL)
         }
-        var request: URLRequest = URLRequest(url: URL(string: urlTmp)!)
+        
+        var request = URLRequest(url: URL(string: urlTmp)!)
         
         request.url = url
         
