@@ -16,6 +16,7 @@ public class Reservation: NSObject, Codable {
     var animals: Bool?
     var glutenFree: Bool?
     
+    // To Create an Object
     init(foreignTableName: String, name: String, numberOfPeople: Int, date: Date, smoking: Bool, animals: Bool, glutenFree: Bool) {
         self.foreignTableName = foreignTableName
         self.name = name
@@ -26,6 +27,7 @@ public class Reservation: NSObject, Codable {
         self.glutenFree = glutenFree
     }
     
+    // To retrieve data from coredata
     init(coreDataEntity: CoreReservation) {
         self.foreignTableName = coreDataEntity.foreignTableName
         self.name = coreDataEntity.name
@@ -36,6 +38,7 @@ public class Reservation: NSObject, Codable {
         self.glutenFree = coreDataEntity.glutenFree
     }
     
+    // Save in CoreData
     func copyInEntity(coreDataEntity: CoreReservation) {
         coreDataEntity.foreignTableName = self.foreignTableName
         coreDataEntity.name = self.name

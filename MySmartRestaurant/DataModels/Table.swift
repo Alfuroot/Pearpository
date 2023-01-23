@@ -13,7 +13,7 @@ public class Table: Codable {
     var isReservedDinner: String?
     var isOutdoor: String?
     
-    
+    // To Create an Object
     init(tableName: Int, isOutdoor: String) {
         self.id = tableName
         self.isReservedLunch = "false"
@@ -21,6 +21,7 @@ public class Table: Codable {
         self.isOutdoor = isOutdoor
     }
     
+    // To retrieve data from coredata
     init(coreDataEntity: CoreTable) {
         self.id = Int(coreDataEntity.id)
         self.isReservedLunch = String(coreDataEntity.isReservedLunch)
@@ -28,6 +29,7 @@ public class Table: Codable {
         self.isOutdoor = String(coreDataEntity.isOutdoor)
     }
     
+    // Save in CoreData
     func copyInEntity(coreDataEntity: CoreTable) {
         coreDataEntity.id = Int16(self.id ?? 0)
         coreDataEntity.isReservedLunch = (self.isReservedLunch)?.boolValue ?? false
@@ -36,6 +38,7 @@ public class Table: Codable {
     }
 }
 
+// To convert String from FileMaker to Bool
 extension String {
     var boolValue: Bool {
         return (self as NSString).boolValue

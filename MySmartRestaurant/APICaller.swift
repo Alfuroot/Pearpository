@@ -10,6 +10,7 @@ public class APICaller: ObservableObject {
     
     public let baseURI = "https://napoli.fm-testing.com/fmi/odata/v4/MySmartRestaurant"
     
+    // Because FileMaker gives you an array of value.
     struct JSONValue<T: Codable>: Codable {
         var value: [T]
     }
@@ -18,6 +19,7 @@ public class APICaller: ObservableObject {
     var password: String
     var auth: String {(username + ":" + password).data(using: .utf8)!.base64EncodedString()}
     
+    // To set username and password
     public init(username: String, password: String) {
         self.username = username
         self.password = password
@@ -37,8 +39,8 @@ public class APICaller: ObservableObject {
 
         //        Execution of the API call
         let (data, response) = try await URLSession.shared.data(for: request)
-        //        Checking for an error
         
+        //        Checking for an error
         if (response as? HTTPURLResponse)?.statusCode ?? 500 < 300 {
         } else {
             throw HTTPErrors.httpError
@@ -47,6 +49,7 @@ public class APICaller: ObservableObject {
         do {
             
             let fetchedData = try JSONDecoder().decode(JSONValue<T>.self, from: data)
+            // In this way we receive an array of elements, not value but its content.
             return fetchedData.value
         } catch {
             print("Decode Error")
@@ -83,7 +86,7 @@ public class APICaller: ObservableObject {
         }
     }
     
-    public func deleteRecordInFM<T: Codable>(urlTmp: String, data: T) async throws {
+    public func deleteRecordInFM(urlTmp: String) async throws {
         
         guard let url = URL(string: urlTmp) else {
             throw URLError(.badURL)
