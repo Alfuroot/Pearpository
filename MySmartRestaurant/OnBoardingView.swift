@@ -10,7 +10,8 @@ import SwiftUI
 struct OnBoardingView: View {
     
     @State var numberOfTables: Int = 8
-    @State var numberOfOutoDoorTables: Int = 0
+    @State var numberOfOutDoorTables: Int = 0
+    @EnvironmentObject var api: APICaller
     
     var body: some View {
         GeometryReader { geo in
@@ -36,27 +37,40 @@ struct OnBoardingView: View {
                     Spacer()
                 }
                 .padding()
-                Picker("Outdoor tables", selection: $numberOfOutoDoorTables) {
-                    ForEach(4...100, id: \.self) {
+                Picker("Outdoor tables", selection: $numberOfOutDoorTables) {
+                    ForEach(0...100, id: \.self) {
                         Text("\($0)")
                     }
                 }
                 .pickerStyle(.wheel)
                 .frame(height: geo.size.height * 0.16)
                 Spacer()
-                Button {
-                   
-                } label: {
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 15)
-                            .fill(.blue)
-                            .frame(width: geo.size.width * 0.88, height: geo.size.height * 0.08)
-                        Text("Confirm")
-                            .foregroundColor(.white)
-                            .font(.title)
-                            .fontWeight(.semibold)
+                NavigationLink( destination: { FirstView() },label: {
+                    Button {
+                        UserDefaults.standard.set(true, forKey: "firstTime")
+                        Task {
+                            try await api.deleteRecordInFM(urlTmp: "\(api.baseURI)/Table?$filter=id ne null".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "")
+                            if numberOfOutDoorTables > 0 {
+                                for i in 1...numberOfOutDoorTables {
+                                    try await api.createRecordInFM(urlTmp: "\(api.baseURI)/Table", data: Table(tableName: i, isOutdoor: "true"))
+                                }
+                            }
+                            for i in numberOfOutDoorTables + 1...numberOfTables + numberOfOutDoorTables {
+                                try await api.createRecordInFM(urlTmp: "\(api.baseURI)/Table", data: Table(tableName: i, isOutdoor: "false"))
+                            }
+                        }
+                    } label: {
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 15)
+                                .fill(.blue)
+                                .frame(width: geo.size.width * 0.88, height: geo.size.height * 0.08)
+                            Text("Confirm")
+                                .foregroundColor(.white)
+                                .font(.title)
+                                .fontWeight(.semibold)
+                        }
                     }
-                }
+                })
             }
             .padding()
         }

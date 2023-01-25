@@ -8,15 +8,18 @@
 import SwiftUI
 
 struct BookingView: View {
+    
     @Environment (\.dismiss) var dismiss
     
-    @Binding var tableName: String
+    @Binding var tableList: [Table]
     @State var name = ""
     @State var selectedNumber = 2
     @State var date = Date.now
     @State var smokingArea = false
     @State var petArea = false
     @State var isCeliac = false
+    @State var selectedTable = 0
+    var api: APICaller
     
     var body: some View {
         NavigationStack {
@@ -62,17 +65,33 @@ struct BookingView: View {
                         Toggle(isOn: $isCeliac) {
                             Text("Gluten Free")
                         }
+                        ForEach(tableList, id: \.id) { table in
+                            if table.isReservedLunch != "true" && table.isReservedDinner != "true" {
+                                Button(action: {
+                                    selectedTable = Int(table.id ?? 0)
+                                }, label: {
+                                    Text("Table "+"\(table.id!)")
+                                        .foregroundColor(selectedTable == Int(table.id ?? 0) ? .blue : .black)
+                                })
+                            }
+                        }
                     }
                     .padding(.horizontal)
                 }
+                
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button("Done") {
                             // More actions to come
-                            let tmpRes = Reservation(foreignTableName: tableName, name: name, numberOfPeople: selectedNumber, date: date, smoking: smokingArea, animals: petArea, glutenFree: isCeliac)
-
-                            
-//                            PersistenceController.shared.saveNewReservation(tmpRes, tableName)
+                            Task {
+                                if selectedTable != 0 {
+                                    try await api.createRecordInFM(urlTmp: "\(api.baseURI)/Reservation", data: Reservation(foreignTableName: selectedTable, name: name, numberOfPeople: selectedNumber, date: ISO8601DateFormatter().string(from: date), smoking: String(smokingArea), animals: String(petArea), glutenFree: String(isCeliac)))
+                                    let tmpTable = Table(isReservedLunch: "true", isReservedDinner: "false")
+                                    try await api.editRecordInFM(urlTmp: "\(api.baseURI)/Table(\(selectedTable))", data: tmpTable)
+                                } else {
+                                    
+                                }
+                            }
                         }
                     }
                     ToolbarItem(placement: .navigationBarLeading) {

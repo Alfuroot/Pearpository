@@ -12,6 +12,7 @@ disabled_rules:
   - indentation_width
   - trailing_whitespace
   - vertical_whitespace_opening_braces
+  - line_length
   
 opt_in_rules:
   - array_init

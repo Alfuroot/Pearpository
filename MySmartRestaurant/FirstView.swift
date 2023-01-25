@@ -43,7 +43,7 @@ struct FirstView: View {
                             .bold()
                         
                         // Number of tables available
-                        Text("2/10")
+                        Text("0/\(tableList.count)")
                             .font(.title)
                             .bold()
                             .padding(.horizontal)
@@ -62,14 +62,14 @@ struct FirstView: View {
                             if lunchIsSelected {
                                 ForEach(tableLunch, id: \.id) { table in
                                     NavigationLink { DetailView() } label: {
-                                        ReservationCardView(tableName: "Table\(table.id!)")
+                                        ReservationCardView(tableName: "Table \(table.id!)")
                                     }
                                 }
                             }
                             if dinnerIsSelected {
                                 ForEach(tableDinner, id: \.id) { table in
                                     NavigationLink { DetailView() } label: {
-                                        ReservationCardView(tableName: "Table\(table.id!)")
+                                        ReservationCardView(tableName: "Table \(table.id!)")
                                     }
                                 }
                             }
@@ -109,7 +109,7 @@ struct FirstView: View {
             }
         }
         .sheet(isPresented: $isShowingReservation) {
-            BookingView(tableName: $tmpTableName)
+            BookingView(tableList: $tableList, api: APICaller(username: "Admin", password: "admin"))
         }
     }
 }

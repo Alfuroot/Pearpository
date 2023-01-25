@@ -8,44 +8,64 @@
 import Foundation
 
 public class Reservation: NSObject, Codable {
-    var foreignTableName: String?
+    var idTable: Int?
     var name: String?
-    var numberOfPeople: Int?
-    var date: Date?
-    var smoking: Bool?
-    var animals: Bool?
-    var glutenFree: Bool?
-    
+    var seats: Int?
+    var date: String?
+    var inSmokingArea: String?
+    var hasAnimals: String?
+    var isCeliac: String?
+
     // To Create an Object
-    init(foreignTableName: String, name: String, numberOfPeople: Int, date: Date, smoking: Bool, animals: Bool, glutenFree: Bool) {
-        self.foreignTableName = foreignTableName
+    init(foreignTableName: Int, name: String, numberOfPeople: Int, date: String, smoking: String, animals: String, glutenFree: String) {
+        self.idTable = foreignTableName
         self.name = name
-        self.numberOfPeople = numberOfPeople
+        self.seats = numberOfPeople
         self.date = date
-        self.smoking = smoking
-        self.animals = animals
-        self.glutenFree = glutenFree
+        self.inSmokingArea = smoking
+        self.hasAnimals = animals
+        self.isCeliac = glutenFree
     }
     
     // To retrieve data from coredata
     init(coreDataEntity: CoreReservation) {
-        self.foreignTableName = coreDataEntity.foreignTableName
+        self.idTable = Int(coreDataEntity.foreignTableName)
         self.name = coreDataEntity.name
-        self.numberOfPeople = Int(coreDataEntity.numberOfPeople)
+        self.seats = Int(coreDataEntity.numberOfPeople)
         self.date = coreDataEntity.date
-        self.smoking = coreDataEntity.smoking
-        self.animals = coreDataEntity.animals
-        self.glutenFree = coreDataEntity.glutenFree
+        self.inSmokingArea = String(coreDataEntity.smoking)
+        self.hasAnimals = String(coreDataEntity.animals)
+        self.isCeliac = String(coreDataEntity.glutenFree)
     }
     
     // Save in CoreData
     func copyInEntity(coreDataEntity: CoreReservation) {
-        coreDataEntity.foreignTableName = self.foreignTableName
+        coreDataEntity.foreignTableName = Int16(self.idTable ?? 0)
         coreDataEntity.name = self.name
-        coreDataEntity.numberOfPeople = Int16(self.numberOfPeople!)
+        coreDataEntity.numberOfPeople = Int16(self.seats!)
         coreDataEntity.date = self.date!
-        coreDataEntity.smoking = self.smoking!
-        coreDataEntity.animals = self.animals!
-        coreDataEntity.glutenFree = self.glutenFree!
+        coreDataEntity.smoking = self.inSmokingArea!.boolValue
+        coreDataEntity.animals = self.hasAnimals!.boolValue
+        coreDataEntity.glutenFree = self.isCeliac!.boolValue
+    }
+}
+
+public class SupportReservation: Codable {
+        var idTable: Int?
+        var name: String?
+        var seats: Int?
+        var date: Date?
+        var inSmokingArea: String?
+        var hasAnimals: String?
+        var isCeliac: String?
+    
+    init(foreignTableName: Int, name: String, numberOfPeople: Int, date: Date, smoking: String, animals: String, glutenFree: String) {
+        self.idTable = foreignTableName
+        self.name = name
+        self.seats = numberOfPeople
+        self.date = date
+        self.inSmokingArea = smoking
+        self.hasAnimals = animals
+        self.isCeliac = glutenFree
     }
 }

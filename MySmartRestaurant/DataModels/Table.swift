@@ -21,6 +21,14 @@ public class Table: Codable {
         self.isOutdoor = isOutdoor
     }
     
+   
+    init(isReservedLunch: String, isReservedDinner: String){
+        self.id = nil
+        self.isReservedLunch = isReservedLunch
+        self.isReservedDinner = isReservedDinner
+        self.isOutdoor = nil
+    }
+    
     // To retrieve data from coredata
     init(coreDataEntity: CoreTable) {
         self.id = Int(coreDataEntity.id)
