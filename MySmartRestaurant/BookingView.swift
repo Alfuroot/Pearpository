@@ -18,7 +18,7 @@ struct BookingView: View {
     @State var smokingArea = false
     @State var petArea = false
     @State var isCeliac = false
-    @State var selectedTable = ""
+    @State var selectedTable = 0
     var api: APICaller
     
     var body: some View {
@@ -68,10 +68,10 @@ struct BookingView: View {
                         ForEach(tableList, id: \.id) { table in
                             if table.isReservedLunch != "true" && table.isReservedDinner != "true" {
                                 Button(action: {
-                                    selectedTable = "\(table.id)"
+                                    selectedTable = Int(table.id ?? 0)
                                 }, label: {
                                     Text("Table "+"\(table.id!)")
-                                        .foregroundColor(selectedTable == "\(table.id)" ? .blue : .black)
+                                        .foregroundColor(selectedTable == Int(table.id ?? 0) ? .blue : .black)
                                 })
                             }
                         }
@@ -84,10 +84,9 @@ struct BookingView: View {
                         Button("Done") {
                             // More actions to come
                             Task {
-                                if selectedTable != "" {
-                                    try await api.createRecordInFM(urlTmp: "", data: Reservation(foreignTableName: selectedTable, name: name, numberOfPeople: selectedNumber, date: date, smoking: smokingArea, animals: petArea, glutenFree: isCeliac))
-                                }
-                                else {
+                                if selectedTable != 0 {
+                                    try await api.createRecordInFM(urlTmp: "\(api.baseURI)/Reservation", data: Reservation(foreignTableName: selectedTable, name: name, numberOfPeople: selectedNumber, date: ISO8601DateFormatter().string(from: date), smoking: String(smokingArea), animals: String(petArea), glutenFree: String(isCeliac)))
+                                } else {
                                     
                                 }
                             }

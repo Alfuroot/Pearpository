@@ -59,8 +59,7 @@ public class APICaller: ObservableObject {
         guard let url = URL(string: urlTmp) else {
             throw URLError(.badURL)
         }
-        var request: URLRequest = URLRequest(url: URL(string: urlTmp)!)
-        print(request)
+        var request = URLRequest(url: URL(string: urlTmp)!)
         
         request.url = url
         
@@ -74,12 +73,14 @@ public class APICaller: ObservableObject {
             throw CodableError.encode
         }
         
+        print(String(data: encoded, encoding: .utf8))
         //        Execution of the API call
         let (_, response) = try await URLSession.shared.upload(for: request, from: encoded)
         
         //        Checking for an error
         if (response as? HTTPURLResponse)?.statusCode ?? 500 < 300 {
         } else {
+            print((response as? HTTPURLResponse)!.statusCode)
             throw HTTPErrors.httpError
         }
     }
