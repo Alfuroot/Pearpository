@@ -9,6 +9,7 @@ import SwiftUI
 
 struct OnBoardingView: View {
     
+    @Binding var isShowingOnboarding: Bool
     @State var numberOfTables: Int = 8
     @State var numberOfOutDoorTables: Int = 0
     @EnvironmentObject var api: APICaller
@@ -16,10 +17,10 @@ struct OnBoardingView: View {
     var body: some View {
         GeometryReader { geo in
             VStack {
-                Text("Wecolme to my Smart Restaurant")
+                Text("Welcome to my Smart Restaurant")
                     .font(.largeTitle)
                 HStack {
-                    Text("How many tables are there indoor?")
+                    Text("How many indoor tables?")
                         .fontWeight(.medium)
                     Spacer()
                 }
@@ -32,7 +33,7 @@ struct OnBoardingView: View {
                 .pickerStyle(.wheel)
                 .frame(height: geo.size.height * 0.16)
                 HStack {
-                    Text("How many tables are there outdoor?")
+                    Text("How many outdoor tables?")
                         .fontWeight(.medium)
                     Spacer()
                 }
@@ -45,9 +46,9 @@ struct OnBoardingView: View {
                 .pickerStyle(.wheel)
                 .frame(height: geo.size.height * 0.16)
                 Spacer()
-                NavigationLink( destination: { FirstView() },label: {
+              
                     Button {
-                        UserDefaults.standard.set(true, forKey: "firstTime")
+                        isShowingOnboarding = false
                         Task {
                             try await api.deleteRecordInFM(urlTmp: "\(api.baseURI)/Table?$filter=id ne null".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "")
                             if numberOfOutDoorTables > 0 {
@@ -70,7 +71,7 @@ struct OnBoardingView: View {
                                 .fontWeight(.semibold)
                         }
                     }
-                })
+                
             }
             .padding()
         }
@@ -79,6 +80,6 @@ struct OnBoardingView: View {
 
 struct OnBoardingView_Previews: PreviewProvider {
     static var previews: some View {
-        OnBoardingView()
+        OnBoardingView(isShowingOnboarding: .constant(true))
     }
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		50049F2229817B890051DD95 /* TableSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50049F2129817B890051DD95 /* TableSelectionView.swift */; };
 		500D228C2970794600869AFC /* FilterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500D22872970794600869AFC /* FilterButton.swift */; };
 		500D228D2970794600869AFC /* ReservationCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500D22882970794600869AFC /* ReservationCardView.swift */; };
 		500D228E2970794600869AFC /* ButtonAddReservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500D22892970794600869AFC /* ButtonAddReservation.swift */; };
@@ -47,6 +48,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		50049F2129817B890051DD95 /* TableSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableSelectionView.swift; sourceTree = "<group>"; };
 		500D22872970794600869AFC /* FilterButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterButton.swift; sourceTree = "<group>"; };
 		500D22882970794600869AFC /* ReservationCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReservationCardView.swift; sourceTree = "<group>"; };
 		500D22892970794600869AFC /* ButtonAddReservation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonAddReservation.swift; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 				500D22872970794600869AFC /* FilterButton.swift */,
 				500D228A2970794600869AFC /* FilterType.swift */,
 				500D22882970794600869AFC /* ReservationCardView.swift */,
+				50049F2129817B890051DD95 /* TableSelectionView.swift */,
 				719790242970051000232432 /* BookingView.swift */,
 				94C41EA329759F0700ABD1AC /* UIDetailView */,
 				946EBE33296F0496003105D0 /* Assets.xcassets */,
@@ -351,6 +354,7 @@
 				500D228E2970794600869AFC /* ButtonAddReservation.swift in Sources */,
 				500D228C2970794600869AFC /* FilterButton.swift in Sources */,
 				943206F32979479600C18B32 /* EditView.swift in Sources */,
+				50049F2229817B890051DD95 /* TableSelectionView.swift in Sources */,
 				943206E42977ED9900C18B32 /* Table.swift in Sources */,
 				943206E72977EDE400C18B32 /* Persistence Controller.swift in Sources */,
 				9484D68529707DF800522801 /* Model.xcdatamodeld in Sources */,

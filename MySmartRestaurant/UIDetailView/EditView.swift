@@ -22,7 +22,7 @@ struct EditView: View {
     @Binding var isEditMode: Bool
     
     var body: some View {
-        NavigationStack {
+    
             GeometryReader { geo in
                 VStack(alignment: .leading) {
                     Group {
@@ -102,8 +102,9 @@ struct EditView: View {
                     }
                 }
                 .padding()
+                .navigationBarBackButtonHidden(true)
+                .navigationBarTitleDisplayMode(.inline)
             }
-        }
     }
 }
 

@@ -29,6 +29,7 @@ struct BookingView: View {
                         .fontWeight(.semibold)
                         .padding()
                     TextField("", text: $name)
+                        .padding(.horizontal)
                         .frame(width: geo.size.width * 0.9, height: geo.size.height * 0.05)
                         .multilineTextAlignment(.leading)
                         .background(RoundedRectangle(cornerRadius: 10)
@@ -82,7 +83,7 @@ struct BookingView: View {
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button("Done") {
-                            // More actions to come
+
                             Task {
                                 if selectedTable != 0 {
                                     try await api.createRecordInFM(urlTmp: "\(api.baseURI)/Reservation", data: Reservation(foreignTableName: selectedTable, name: name, numberOfPeople: selectedNumber, date: ISO8601DateFormatter().string(from: date), smoking: String(smokingArea), animals: String(petArea), glutenFree: String(isCeliac)))
@@ -92,6 +93,7 @@ struct BookingView: View {
                                     
                                 }
                             }
+                            dismiss()
                         }
                     }
                     ToolbarItem(placement: .navigationBarLeading) {

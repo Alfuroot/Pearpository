@@ -9,6 +9,7 @@ import SwiftUI
 
 struct FirstView: View {
     
+    @AppStorage("isShowingOnboarding") var isShowingOnboarding = true
     @State private var tmpTableName: String = ""
     @State private var tableList: [Table] = []
     @State private var tableLunch: [Table] = []
@@ -107,6 +108,9 @@ struct FirstView: View {
                         .cornerRadius(10)
                 }
             }
+        }
+        .sheet(isPresented: $isShowingOnboarding) {
+            OnBoardingView(isShowingOnboarding: $isShowingOnboarding)
         }
         .sheet(isPresented: $isShowingReservation) {
             BookingView(tableList: $tableList, api: APICaller(username: "Admin", password: "admin"))
