@@ -85,6 +85,38 @@ public class APICaller: ObservableObject {
         }
     }
     
+    public func editRecordInFM<T: Codable>(urlTmp: String, data: T) async throws {
+        
+        guard let url = URL(string: urlTmp) else {
+            throw URLError(.badURL)
+        }
+        var request = URLRequest(url: URL(string: urlTmp)!)
+        
+        request.url = url
+        
+        request.setValue("Basic \(auth)", forHTTPHeaderField: "Authorization")
+        
+        request.httpMethod = "PATCH"
+        
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        guard let encoded = try? JSONEncoder().encode(data) else {
+            throw CodableError.encode
+        }
+        
+        print(request.url)
+        print(String(data: encoded, encoding: .utf8))
+        //        Execution of the API call
+        let (_, response) = try await URLSession.shared.upload(for: request, from: encoded)
+        
+        //        Checking for an error
+        if (response as? HTTPURLResponse)?.statusCode ?? 500 < 300 {
+        } else {
+            print((response as? HTTPURLResponse)!.statusCode)
+            throw HTTPErrors.httpError
+        }
+    }
+    
     public func deleteRecordInFM(urlTmp: String) async throws {
         
         guard let url = URL(string: urlTmp) else {

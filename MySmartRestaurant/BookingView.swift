@@ -86,6 +86,8 @@ struct BookingView: View {
                             Task {
                                 if selectedTable != 0 {
                                     try await api.createRecordInFM(urlTmp: "\(api.baseURI)/Reservation", data: Reservation(foreignTableName: selectedTable, name: name, numberOfPeople: selectedNumber, date: ISO8601DateFormatter().string(from: date), smoking: String(smokingArea), animals: String(petArea), glutenFree: String(isCeliac)))
+                                    let tmpTable = Table(isReservedLunch: "true", isReservedDinner: "false")
+                                    try await api.editRecordInFM(urlTmp: "\(api.baseURI)/Table(\(selectedTable))", data: tmpTable)
                                 } else {
                                     
                                 }
