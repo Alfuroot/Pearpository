@@ -97,7 +97,6 @@ struct DetailView: View {
             } else {
                 EditView(isEditMode: $isEditMode)
             }
-        
     }
 }
 

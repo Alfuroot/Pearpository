@@ -19,7 +19,7 @@ struct ReservationCardView: View {
 				.fontWeight(.semibold)
             
 			Text("12:30")
-				.foregroundColor(.secondary)
+				.foregroundColor(.gray)
 				.font(.title2)
                 .bold()
 		}.padding()

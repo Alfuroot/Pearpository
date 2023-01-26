@@ -14,9 +14,8 @@ struct FirstView: View {
     @State private var tableList: [Table] = []
     @State private var tableLunch: [Table] = []
     @State private var tableDinner: [Table] = []
-    @State private var lunchIsSelected = false
+    @State private var lunchIsSelected = true
     @State private var dinnerIsSelected = false
-    @State private var isShowingCalendar = false
     @State private var date = Date.now
     @State private var isShowingReservation = false
     @EnvironmentObject var api: APICaller
@@ -32,21 +31,10 @@ struct FirstView: View {
                     .ignoresSafeArea()
                 VStack(alignment: .leading) {
                     HStack {
-                        Button {
-                            // show calendar
-                            isShowingCalendar.toggle()
-                        } label: {
-                            Image(systemName: "calendar.badge.clock")
-                                .font(.title)
-                                .foregroundColor(.primary)
-                        }
-                        Text("\(date.formatted(date: .abbreviated, time: .omitted))")
-                            .bold()
-                        
-                        // Number of tables available
-                        Text("0/\(tableList.count)")
+                        Image(systemName: "calendar.badge.clock")
                             .font(.title)
-                            .bold()
+                            .foregroundColor(.primary)
+                        DatePicker("Date", selection: $date, displayedComponents: .date).labelsHidden()
                             .padding(.horizontal)
                     }
                     
@@ -54,16 +42,25 @@ struct FirstView: View {
                         FilterButton(isSelected: $lunchIsSelected, title: FilterType.lunch.rawValue)
                         FilterButton(isSelected: $dinnerIsSelected, title: FilterType.dinner.rawValue)
                     }
+                    .padding(.vertical)
                     
-                    Text("Reserved Tables")
-                        .font(.headline)
-                    
+                    HStack {
+                        Text("Reserved Tables")
+                            .font(.headline)
+                        
+                        // Number of tables available
+                        Text("0/\(tableList.count)")
+                            .font(.title2)
+                            .bold()
+                            .padding(.horizontal)
+                    }
                     ScrollView {
                         LazyVGrid(columns: columns, spacing: 11) {
                             if lunchIsSelected {
                                 ForEach(tableLunch, id: \.id) { table in
                                     NavigationLink { DetailView() } label: {
                                         ReservationCardView(tableName: "Table \(table.id!)")
+                                            .foregroundColor(.black)
                                     }
                                 }
                             }
@@ -94,19 +91,6 @@ struct FirstView: View {
                 }
                 .padding()
                 .navigationTitle("My Smart Restaurant")
-                
-                if isShowingCalendar {
-                    Color.black
-                        .opacity(0.6)
-                        .ignoresSafeArea()
-                        .onTapGesture {
-                            isShowingCalendar.toggle()
-                        }
-                    DatePicker("Date", selection: $date, in: Date.now..., displayedComponents: .date)
-                        .datePickerStyle(.graphical)
-                        .background(.white)
-                        .cornerRadius(10)
-                }
             }
         }
         .sheet(isPresented: $isShowingOnboarding) {

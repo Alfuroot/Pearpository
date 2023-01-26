@@ -70,8 +70,7 @@ struct OnBoardingView: View {
                                 .font(.title)
                                 .fontWeight(.semibold)
                         }
-                    }
-                
+                    } 
             }
             .padding()
         }

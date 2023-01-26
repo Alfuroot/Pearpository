@@ -25,64 +25,63 @@ struct BookingView: View {
         GridItem(.adaptive(minimum: 80)),
         GridItem(.adaptive(minimum: 80)),
         GridItem(.adaptive(minimum: 80))
-        
     ]
     var body: some View {
         NavigationStack {
             GeometryReader { geo in
                 ScrollView {
-                VStack(alignment: .leading) {
-                    Text("Name")
-                        .fontWeight(.semibold)
-                        .padding()
-                    TextField("", text: $name)
-                        .padding(.horizontal)
-                        .frame(width: geo.size.width * 0.9, height: geo.size.height * 0.05)
-                        .multilineTextAlignment(.leading)
-                        .background(RoundedRectangle(cornerRadius: 10)
-                            .fill(Color.gray.opacity(0.09)))
-                    Divider()
-                    Text("Number of People")
-                        .fontWeight(.semibold)
-                        .padding()
-                    Picker("Number of people", selection: $selectedNumber) {
-                        ForEach(1...20, id: \.self) {
-                            Text("\($0)")
-                        }
-                    }
-                    .pickerStyle(.wheel)
-                    .frame(height: geo.size.height * 0.16)
-                    Divider()
-                    
-                    DatePicker(selection: $date, in: Date.now...) {
-                        Text("Date to reserve")
-                            .fontWeight(.semibold)
-                    }
-                    .padding()
-                    Divider()
-                    Text("Preferences")
-                        .fontWeight(.semibold)
-                        .padding()
                     VStack(alignment: .leading) {
-                        Group {
-                            Toggle(isOn: $smokingArea) {
-                                Text("Smoking Area")
-                            }
-                            Toggle(isOn: $petArea) {
-                                Text("Animals")
-                            }
-                            Toggle(isOn: $isCeliac) {
-                                Text("Gluten Free")
-                            }
-                        }.padding(.horizontal)
-                        
-                        Divider()
-                       
-                        Text("Select a table")
+                        Text("Name")
                             .fontWeight(.semibold)
                             .padding()
-//                            .frame(maxWidth: .infinity, alignment: .leading)
+                        TextField("", text: $name)
+                            .padding(.horizontal)
+                            .frame(width: geo.size.width * 0.9, height: geo.size.height * 0.05)
+                            .multilineTextAlignment(.leading)
+                            .background(RoundedRectangle(cornerRadius: 10)
+                                .fill(Color.gray.opacity(0.09)))
+                        Divider()
+                        Text("Number of People")
+                            .fontWeight(.semibold)
+                            .padding()
+                        Picker("Number of people", selection: $selectedNumber) {
+                            ForEach(1...20, id: \.self) {
+                                Text("\($0)")
+                            }
+                        }
+                        .pickerStyle(.wheel)
+                        .frame(height: geo.size.height * 0.16)
+                        Divider()
                         
+                        DatePicker(selection: $date, in: Date.now...) {
+                            Text("Date to reserve")
+                                .fontWeight(.semibold)
+                        }
+                        .padding()
+                        Divider()
+                        Text("Preferences")
+                            .fontWeight(.semibold)
+                            .padding()
+                        VStack(alignment: .leading) {
+                            Group {
+                                Toggle(isOn: $smokingArea) {
+                                    Text("Smoking Area")
+                                }
+                                Toggle(isOn: $petArea) {
+                                    Text("Animals")
+                                }
+                                Toggle(isOn: $isCeliac) {
+                                    Text("Gluten Free")
+                                }
+                            }.padding(.horizontal)
+                            
+                            Divider()
+                            
+                            Text("Select a table")
+                                .fontWeight(.semibold)
+                                .padding()
+                            //                            .frame(maxWidth: .infinity, alignment: .leading)
+                            
                             LazyVGrid(columns: columns) {
                                 ForEach(tableList, id: \.id) { table in
                                     if table.isReservedLunch != "true" && table.isReservedDinner != "true" {
@@ -101,9 +100,7 @@ struct BookingView: View {
                                     }
                                 }
                             }
-                            
                         }
-                    
                     }
                     .padding(.horizontal)
                 }
@@ -116,8 +113,7 @@ struct BookingView: View {
                                     try await api.createRecordInFM(urlTmp: "\(api.baseURI)/Reservation", data: Reservation(foreignTableName: selectedTable, name: name, numberOfPeople: selectedNumber, date: ISO8601DateFormatter().string(from: date), smoking: String(smokingArea), animals: String(petArea), glutenFree: String(isCeliac)))
                                     let tmpTable = Table(isReservedLunch: "true", isReservedDinner: "false")
                                     try await api.editRecordInFM(urlTmp: "\(api.baseURI)/Table(\(selectedTable))", data: tmpTable)
-                                } else {
-                                    
+                                } else {  
                                 }
                             }
                             dismiss()
@@ -134,8 +130,8 @@ struct BookingView: View {
     }
 }
 
-//struct BookingView_Previews: PreviewProvider {
+//  struct BookingView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        BookingView()
 //    }
-//}
+//  }
