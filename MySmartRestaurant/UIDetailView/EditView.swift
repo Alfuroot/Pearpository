@@ -19,6 +19,8 @@ struct EditView: View {
     @State var petArea = false
     @State var isCeliac = false
     
+//    @State var reservation: Reservation
+    
     @Binding var isEditMode: Bool
     
     var body: some View {

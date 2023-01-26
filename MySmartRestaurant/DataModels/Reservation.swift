@@ -7,7 +7,8 @@
 
 import Foundation
 
-public class Reservation: NSObject, Codable {
+public class Reservation: NSObject, Codable, Identifiable {
+    public var id: String?
     var idTable: Int?
     var name: String?
     var seats: Int?
