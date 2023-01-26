@@ -22,7 +22,7 @@ public class Table: Codable {
     }
     
    
-    init(isReservedLunch: String, isReservedDinner: String){
+    init(isReservedLunch: String, isReservedDinner: String) {
         self.id = nil
         self.isReservedLunch = isReservedLunch
         self.isReservedDinner = isReservedDinner

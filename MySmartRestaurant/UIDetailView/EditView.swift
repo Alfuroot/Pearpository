@@ -73,14 +73,16 @@ struct EditView: View {
                     
                     Button {
                         // Delete reservation
+                        dismiss()
                 
                     } label: {
                         Text("Delete Reservation")
                             .font(.title2)
-                            .frame(width: UIScreen.main.bounds.width / 1.10, height: UIScreen.main.bounds.height / 12)
+                            .frame(width: UIScreen.main.bounds.width / 1.20, height: UIScreen.main.bounds.height / 15)
                             .foregroundColor(.white)
                             .background(.red)
                             .cornerRadius(12)
+                            .frame(maxWidth: .infinity, alignment: .center)
                     }
                     .padding(.vertical)
                 }
