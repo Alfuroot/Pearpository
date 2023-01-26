@@ -19,7 +19,7 @@ struct DetailView: View {
     
     
     var body: some View {
-        NavigationStack {
+       
             if !isEditMode {
                 VStack {
                     Form {
@@ -93,10 +93,11 @@ struct DetailView: View {
                         }
                     }
                 }
+                .navigationBarTitleDisplayMode(.inline)
             } else {
                 EditView(isEditMode: $isEditMode)
             }
-        }
+        
     }
 }
 

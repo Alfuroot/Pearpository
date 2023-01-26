@@ -21,14 +21,22 @@ struct BookingView: View {
     @State var selectedTable = 0
     var api: APICaller
     
+    let columns = [
+        GridItem(.adaptive(minimum: 80)),
+        GridItem(.adaptive(minimum: 80)),
+        GridItem(.adaptive(minimum: 80))
+        
+    ]
     var body: some View {
         NavigationStack {
             GeometryReader { geo in
+                ScrollView {
                 VStack(alignment: .leading) {
                     Text("Name")
                         .fontWeight(.semibold)
                         .padding()
                     TextField("", text: $name)
+                        .padding(.horizontal)
                         .frame(width: geo.size.width * 0.9, height: geo.size.height * 0.05)
                         .multilineTextAlignment(.leading)
                         .background(RoundedRectangle(cornerRadius: 10)
@@ -55,34 +63,54 @@ struct BookingView: View {
                     Text("Preferences")
                         .fontWeight(.semibold)
                         .padding()
-                    VStack {
-                        Toggle(isOn: $smokingArea) {
-                            Text("Smoking Area")
-                        }
-                        Toggle(isOn: $petArea) {
-                            Text("Animals")
-                        }
-                        Toggle(isOn: $isCeliac) {
-                            Text("Gluten Free")
-                        }
-                        ForEach(tableList, id: \.id) { table in
-                            if table.isReservedLunch != "true" && table.isReservedDinner != "true" {
-                                Button(action: {
-                                    selectedTable = Int(table.id ?? 0)
-                                }, label: {
-                                    Text("Table "+"\(table.id!)")
-                                        .foregroundColor(selectedTable == Int(table.id ?? 0) ? .blue : .black)
-                                })
+                    VStack(alignment: .leading) {
+                        Group {
+                            Toggle(isOn: $smokingArea) {
+                                Text("Smoking Area")
                             }
+                            Toggle(isOn: $petArea) {
+                                Text("Animals")
+                            }
+                            Toggle(isOn: $isCeliac) {
+                                Text("Gluten Free")
+                            }
+                        }.padding(.horizontal)
+                        
+                        Divider()
+                       
+                        Text("Select a table")
+                            .fontWeight(.semibold)
+                            .padding()
+//                            .frame(maxWidth: .infinity, alignment: .leading)
+                        
+                            LazyVGrid(columns: columns) {
+                                ForEach(tableList, id: \.id) { table in
+                                    if table.isReservedLunch != "true" && table.isReservedDinner != "true" {
+                                        Button(action: {
+                                            selectedTable = Int(table.id ?? 0)
+                                        }, label: {
+                                            ZStack {
+                                                RoundedRectangle(cornerRadius: 10)
+                                                    .foregroundColor(selectedTable == Int(table.id ?? 0) ? .blue : .black)
+                                                
+                                                Text("\(table.id!)")
+                                                    .font(.largeTitle)
+                                                    .foregroundColor(.white)
+                                            }
+                                        })
+                                    }
+                                }
+                            }
+                            
                         }
+                    
                     }
                     .padding(.horizontal)
                 }
-                
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button("Done") {
-                            // More actions to come
+                            
                             Task {
                                 if selectedTable != 0 {
                                     try await api.createRecordInFM(urlTmp: "\(api.baseURI)/Reservation", data: Reservation(foreignTableName: selectedTable, name: name, numberOfPeople: selectedNumber, date: ISO8601DateFormatter().string(from: date), smoking: String(smokingArea), animals: String(petArea), glutenFree: String(isCeliac)))
@@ -92,6 +120,7 @@ struct BookingView: View {
                                     
                                 }
                             }
+                            dismiss()
                         }
                     }
                     ToolbarItem(placement: .navigationBarLeading) {
@@ -100,7 +129,6 @@ struct BookingView: View {
                         }
                     }
                 }
-                .padding()
             }
         }
     }

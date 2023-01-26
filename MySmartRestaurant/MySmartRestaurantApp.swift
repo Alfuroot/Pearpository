@@ -15,13 +15,8 @@ struct MySmartRestaurantApp: App {
     
     var body: some Scene {
         WindowGroup {
-            if !UserDefaults.standard.bool(forKey: "firstTime") {
-                OnBoardingView()
-                    .environmentObject(api)
-            } else {
                 FirstView()
                     .environmentObject(api)
-            }
         }
     }
 }
