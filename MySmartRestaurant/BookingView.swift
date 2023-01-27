@@ -18,6 +18,8 @@ struct BookingView: View {
     @State var smokingArea = false
     @State var petArea = false
     @State var isCeliac = false
+    @State var isReservedLunch = false
+    @State var isReservedDinner = false
     @State var selectedTable = 0
     var api: APICaller
     
@@ -99,6 +101,10 @@ struct BookingView: View {
                                         })
                                     }
                                 }
+                            }.onAppear{
+                                Task{
+                                    tableList = try await api.getFromFM(urlTmp: "\(api.baseURI)/Table")
+                                }
                             }
                         }
                     }
@@ -110,10 +116,22 @@ struct BookingView: View {
                             
                             Task {
                                 if selectedTable != 0 {
-                                    try await api.createRecordInFM(urlTmp: "\(api.baseURI)/Reservation", data: Reservation(foreignTableName: selectedTable, name: name, numberOfPeople: selectedNumber, date: ISO8601DateFormatter().string(from: date), smoking: String(smokingArea), animals: String(petArea), glutenFree: String(isCeliac)))
-                                    let tmpTable = Table(isReservedLunch: "true", isReservedDinner: "false")
-                                    try await api.editRecordInFM(urlTmp: "\(api.baseURI)/Table(\(selectedTable))", data: tmpTable)
-                                } else {  
+                                    let hours = Calendar.current.component(.hour, from: date)
+                                    
+                                    if(hours < 16) {
+                                        isReservedLunch = true
+                                    } else {
+                                       isReservedDinner = true
+                                    }
+                                    
+                                    let reservation = Reservation(foreignTableName: selectedTable, name: name, numberOfPeople: selectedNumber, date: ISO8601DateFormatter().string(from: date), smoking: String(smokingArea), animals: String(petArea), glutenFree: String(isCeliac), isReservedLunch: String(isReservedLunch), isReservedDinner: String(isReservedDinner))
+                                    
+                                    print(reservation)
+                                    
+                                    try await api.createRecordInFM(urlTmp: "\(api.baseURI)/Reservation", data: reservation)
+//                                    let tmpTable = Table(isReservedLunch: "true", isReservedDinner: "false")
+//                                    try await api.editRecordInFM(urlTmp: "\(api.baseURI)/Table(\(selectedTable))", data: tmpTable)
+//                                } else {
                                 }
                             }
                             dismiss()

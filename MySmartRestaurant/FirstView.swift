@@ -63,55 +63,65 @@ struct FirstView: View {
                                         .foregroundColor(.black)
                                 }
                             }
-                                //                            if lunchIsSelected {
-                                //                                ForEach(tableLunch, id: \.id) { table in
-                                //                                    NavigationLink { DetailView() } label: {
-                                //                                        ReservationCardView(tableName: "Table \(table.id!)")
-                                //                                            .foregroundColor(.black)
-                                //                                    }
-                                //                                }
-                                //                            }
-                                //                            if dinnerIsSelected {
-                                //                                ForEach(tableDinner, id: \.id) { table in
-                                //                                    NavigationLink { DetailView() } label: {
-                                //                                        ReservationCardView(tableName: "Table \(table.id!)")
-                                //                                    }
-                                //                                }
-                                //                            }
+                            
+                            if lunchIsSelected {
+                                ForEach(reservationList.filter { $0.isReservedLunch == "true" }) { reservation in
+                                    NavigationLink { DetailView(reservation: reservation) } label: {
+                                        ReservationCardView(reservation: reservation)
+                                            .foregroundColor(.black)
+                                    }
+                                }
                             }
-                        }
-                        .task {
-                            do {
-                                reservationList = try await api.getFromFM(urlTmp: "\(api.baseURI)/Reservation")
-                                //                            tableList = try await api.getFromFM(urlTmp: "\(api.baseURI)/Table")
-                                //                            tableLunch = tableList.filter { $0.isReservedLunch == "true" }
-                                //                            tableDinner = tableList.filter { $0.isReservedDinner == "true" }
-                            } catch {
-                                print("\(api.baseURI)/Table")
+                            
+                            if dinnerIsSelected {
+                                ForEach(reservationList.filter { $0.isReservedDinner == "true" }) { reservation in
+                                    NavigationLink { DetailView(reservation: reservation) } label: {
+                                        ReservationCardView(reservation: reservation)
+                                            .foregroundColor(.black)
+                                    }
+                                }
                             }
-                        }
-                        .overlay {
-                            VStack {
-                                Spacer()
-                                ButtonAddReservation(isShowingReservation: $isShowingReservation)
-                            }
+                            //                            if dinnerIsSelected {
+                            //                                ForEach(tableDinner, id: \.id) { table in
+                            //                                    NavigationLink { DetailView() } label: {
+                            //                                        ReservationCardView(tableName: "Table \(table.id!)")
+                            //                                    }
+                            //                                }
+                            //                            }
                         }
                     }
-                    .padding()
-                    .navigationTitle("My Smart Restaurant")
+                    .task {
+                        do {
+                            reservationList = try await api.getFromFM(urlTmp: "\(api.baseURI)/Reservation")
+                            //                            tableList = try await api.getFromFM(urlTmp: "\(api.baseURI)/Table")
+                            //                            tableLunch = tableList.filter { $0.isReservedLunch == "true" }
+                            //                            tableDinner = tableList.filter { $0.isReservedDinner == "true" }
+                        } catch {
+                            print("\(api.baseURI)/Table")
+                        }
+                    }
+                    .overlay {
+                        VStack {
+                            Spacer()
+                            ButtonAddReservation(isShowingReservation: $isShowingReservation)
+                        }
+                    }
                 }
-            }
-            .sheet(isPresented: $isShowingOnboarding) {
-                OnBoardingView(isShowingOnboarding: $isShowingOnboarding)
-            }
-            .sheet(isPresented: $isShowingReservation) {
-                BookingView(tableList: $tableList, api: APICaller(username: "Admin", password: "admin"))
+                .padding()
+                .navigationTitle("My Smart Restaurant")
             }
         }
+        .sheet(isPresented: $isShowingOnboarding) {
+            OnBoardingView(isShowingOnboarding: $isShowingOnboarding)
+        }
+        .sheet(isPresented: $isShowingReservation) {
+            BookingView(tableList: $tableList, api: APICaller(username: "Admin", password: "admin"))
+        }
     }
-    
-    // struct FirstView_Previews: PreviewProvider {
-    //    static var previews: some View {
-    //        FirstView(tableList: [Table(tableName: "aa")])
-    //    }
-    // }
+}
+
+// struct FirstView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        FirstView(tableList: [Table(tableName: "aa")])
+//    }
+// }

@@ -12,6 +12,7 @@ struct ButtonAddReservation: View {
 	var body: some View {
 		Button {
 			// Add reservation
+            
             isShowingReservation.toggle()
 		} label: {
 			Text("Add Reservation")
