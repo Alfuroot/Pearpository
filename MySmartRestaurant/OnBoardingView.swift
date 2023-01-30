@@ -61,15 +61,7 @@ struct OnBoardingView: View {
                             }
                         }
                     } label: {
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 15)
-                                .fill(.blue)
-                                .frame(width: geo.size.width * 0.88, height: geo.size.height * 0.08)
-                            Text("Confirm")
-                                .foregroundColor(.white)
-                                .font(.title)
-                                .fontWeight(.semibold)
-                        }
+                        BigButton(text: "Confirm")
                     } 
             }
             .padding()
