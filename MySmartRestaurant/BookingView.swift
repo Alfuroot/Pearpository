@@ -21,7 +21,7 @@ struct BookingView: View {
     @State var isReservedLunch = false
     @State var isReservedDinner = false
     @State var selectedTable = 0
-    var api: APICaller
+    @EnvironmentObject var api: APICaller
     
     let columns = [
         GridItem(.adaptive(minimum: 80)),

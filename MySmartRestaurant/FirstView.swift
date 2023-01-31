@@ -115,7 +115,7 @@ struct FirstView: View {
             OnBoardingView(isShowingOnboarding: $isShowingOnboarding)
         }
         .sheet(isPresented: $isShowingReservation) {
-            BookingView(tableList: $tableList, api: APICaller(username: "Admin", password: "admin"))
+            BookingView(tableList: $tableList)
         }
     }
 }

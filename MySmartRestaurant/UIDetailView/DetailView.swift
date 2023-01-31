@@ -17,7 +17,7 @@ struct DetailView: View {
     var hasAnimals = true
     var glutenFree = true
     
-    @State var reservation: Reservation
+    var reservation: Reservation
     
     
     var body: some View {
@@ -97,7 +97,7 @@ struct DetailView: View {
                 }
                 .navigationBarTitleDisplayMode(.inline)
             } else {
-                EditView(isEditMode: $isEditMode)
+                EditView(reservation: reservation, isEditMode: $isEditMode)
             }
     }
 }
