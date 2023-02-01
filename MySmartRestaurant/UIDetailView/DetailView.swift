@@ -17,6 +17,8 @@ struct DetailView: View {
     var hasAnimals = true
     var glutenFree = true
     
+    var reservation: Reservation
+    
     
     var body: some View {
        
@@ -24,7 +26,7 @@ struct DetailView: View {
                 VStack {
                     Form {
                         Section {
-                            Text("Andrisani")
+                            Text(reservation.name ?? "mammt")
                         } header: {
                             Text("Name")
                         }
@@ -32,7 +34,7 @@ struct DetailView: View {
                         Section {
                             Text("4")
                         }  header: {
-                            Text("Number of People")
+                            Text("\(reservation.seats ?? 0)")
                         }
                         Section {
                             Text(date.formatted(date: .numeric, time: .omitted))
@@ -41,7 +43,7 @@ struct DetailView: View {
                         }
                         
                         Section {
-                            Text("21.00")
+                            Text(reservation.date ?? "mammt")
                         }  header: {
                             Text("Reservation Time")
                         }
@@ -94,13 +96,13 @@ struct DetailView: View {
                 }
                 .navigationBarTitleDisplayMode(.inline)
             } else {
-                EditView(isEditMode: $isEditMode)
+                EditView(reservation: reservation, isEditMode: $isEditMode)
             }
     }
 }
 
-struct DetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        DetailView()
-    }
-}
+//struct DetailView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        DetailView()
+//    }
+//}

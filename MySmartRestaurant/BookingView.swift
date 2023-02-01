@@ -18,8 +18,11 @@ struct BookingView: View {
     @State var smokingArea = false
     @State var petArea = false
     @State var isCeliac = false
+    @State var isReservedLunch = false
+    @State var isReservedDinner = false
     @State var selectedTable = 0
-    var api: APICaller
+    @State var reservationList: [Reservation] = []
+    @EnvironmentObject var api: APICaller
     
     let columns = [
         GridItem(.adaptive(minimum: 80)),
@@ -99,6 +102,18 @@ struct BookingView: View {
                                         })
                                     }
                                 }
+                            }.onAppear {
+                                Task {
+                                    tableList = try await api.getFromFM(urlTmp: "\(api.baseURI)/Table")
+                                    reservationList = try await api.getFromFM(urlTmp: "\(api.baseURI)/Reservation")
+                                    for res in reservationList {
+                                        if res.isReservedLunch == "true" && res.isReservedDinner == "true" {
+                                            tableList.removeAll(where: {$0.id == res.idTable})
+                                        }
+                                    }
+                                    selectedTable = tableList.first!.id ?? 0
+                                    
+                                }
                             }
                         }
                     }
@@ -110,10 +125,22 @@ struct BookingView: View {
                             
                             Task {
                                 if selectedTable != 0 {
-                                    try await api.createRecordInFM(urlTmp: "\(api.baseURI)/Reservation", data: Reservation(foreignTableName: selectedTable, name: name, numberOfPeople: selectedNumber, date: ISO8601DateFormatter().string(from: date), smoking: String(smokingArea), animals: String(petArea), glutenFree: String(isCeliac)))
-                                    let tmpTable = Table(isReservedLunch: "true", isReservedDinner: "false")
-                                    try await api.editRecordInFM(urlTmp: "\(api.baseURI)/Table(\(selectedTable))", data: tmpTable)
-                                } else {  
+                                    let hours = Calendar.current.component(.hour, from: date)
+                                    
+                                    if (hours < 16) {
+                                        isReservedLunch = true
+                                    } else {
+                                       isReservedDinner = true
+                                    }
+                                    
+                                    let reservation = Reservation(foreignTableName: selectedTable, name: name, numberOfPeople: selectedNumber, date: ISO8601DateFormatter().string(from: date), smoking: String(smokingArea), animals: String(petArea), glutenFree: String(isCeliac), isReservedLunch: String(isReservedLunch), isReservedDinner: String(isReservedDinner))
+                                    
+                                    print(reservation)
+                                    
+                                    try await api.createRecordInFM(urlTmp: "\(api.baseURI)/Reservation", data: reservation)
+//                                    let tmpTable = Table(isReservedLunch: "true", isReservedDinner: "false")
+//                                    try await api.editRecordInFM(urlTmp: "\(api.baseURI)/Table(\(selectedTable))", data: tmpTable)
+//                                } else {
                                 }
                             }
                             dismiss()

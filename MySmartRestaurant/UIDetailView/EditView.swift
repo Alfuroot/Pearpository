@@ -16,8 +16,15 @@ struct EditView: View {
     @State var selectedNumber = 2
     @State var reservationDate = Date.now
     @State var smokingArea = false
-    @State var petArea = false
+    @State var animals = false
     @State var isCeliac = false
+    @State var isReservedLunch = false
+    @State var isReservedDinner = false
+    @State var reservation: Reservation
+    
+    @EnvironmentObject var api: APICaller
+    
+    //    @State var reservation: Reservation
     
     @Binding var isEditMode: Bool
     
@@ -35,6 +42,7 @@ struct EditView: View {
                         .multilineTextAlignment(.leading)
                         .background(RoundedRectangle(cornerRadius: 10)
                             .fill(Color.gray.opacity(0.09)))
+
                 }
                 Divider()
                 Text("Number of People")
@@ -62,7 +70,7 @@ struct EditView: View {
                     Toggle(isOn: $smokingArea) {
                         Text("Smoking Area")
                     }
-                    Toggle(isOn: $petArea) {
+                    Toggle(isOn: $animals) {
                         Text("Animals")
                     }
                     Toggle(isOn: $isCeliac) {
@@ -75,6 +83,9 @@ struct EditView: View {
                     Spacer()
                     Button {
                         // Delete reservation
+                        Task{
+                            try! await api.deleteRecordInFM(urlTmp:"\(api.baseURI)/Reservation('\(reservation.id!)')")
+                        }
                         dismiss()
                         
                     } label: {
@@ -87,16 +98,29 @@ struct EditView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Done") {
-                        // More actions to come
-                        withAnimation {
-                            isEditMode.toggle()
+                        let res = Reservation(foreignTableName: 0, name: name, numberOfPeople: selectedNumber, date: ISO8601DateFormatter().string(from: reservationDate), smoking: String(smokingArea), animals: String(animals), glutenFree: String(isCeliac), isReservedLunch: String(isReservedLunch), isReservedDinner: String(isReservedDinner))
+                        res.id = reservation.id
+                        
+                        let urlTmp = "\(api.baseURI)/Reservation('\(res.id!)')"
+                        
+                        Task {
+                            
+                            print(res.id)
+                            try await api.editRecordInFM(urlTmp: urlTmp, data: res)
+                            
+
+                        }
+                            // More actions to come
+                            withAnimation {
+                                isEditMode.toggle()
+                            }
                         }
                     }
-                }
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button("Cancel") {
-                        withAnimation {
-                            isEditMode.toggle()
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        Button("Cancel") {
+                            withAnimation {
+                                isEditMode.toggle()
+                            }
                         }
                     }
                 }
@@ -106,10 +130,9 @@ struct EditView: View {
             .navigationBarTitleDisplayMode(.inline)
         }
     }
-}
-
-struct EditView_Previews: PreviewProvider {
-    static var previews: some View {
-        EditView(isEditMode: .constant(true))
-    }
-}
+    
+//    struct EditView_Previews: PreviewProvider {
+//        static var previews: some View {
+//            EditView(isEditMode: .constant(true))
+//        }
+//    }

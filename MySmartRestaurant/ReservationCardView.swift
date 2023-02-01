@@ -8,17 +8,17 @@
 import SwiftUI
 
 struct ReservationCardView: View {
-    @State var tableName: String
+    @State var reservation: Reservation
     
 	var body: some View {
 		VStack(spacing: 4) {
-			Text(tableName)
+            Text("\(reservation.idTable ?? 0)")
 				.font(.largeTitle).bold()
             
-			Text("Scognamiglio")
+            Text(reservation.name ?? "mammt")
 				.fontWeight(.semibold)
             
-			Text("12:30")
+            Text(reservation.date ?? "MAI")
 				.foregroundColor(.gray)
 				.font(.title2)
                 .bold()
@@ -30,8 +30,8 @@ struct ReservationCardView: View {
 	}
 }
 
-struct ReservationCardView_Previews: PreviewProvider {
-    static var previews: some View {
-        ReservationCardView(tableName: "")
-    }
-}
+//struct ReservationCardView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ReservationCardView(tableName: "")
+//    }
+//}

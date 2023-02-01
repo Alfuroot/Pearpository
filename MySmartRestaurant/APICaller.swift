@@ -53,6 +53,7 @@ public class APICaller: ObservableObject {
             return fetchedData.value
         } catch {
             print("Decode Error")
+            print(String(data: data, encoding: .utf8))
             throw error
         }
     }
@@ -91,13 +92,16 @@ public class APICaller: ObservableObject {
 
     public func editRecordInFM<T: Codable>(urlTmp: String, data: T) async throws {
         
+        print(urlTmp)
         guard let url = URL(string: urlTmp) else {
+            print("url Error")
             throw URLError(.badURL)
         }
+        
         var request = URLRequest(url: URL(string: urlTmp)!)
         
         request.url = url
-        
+                
         request.setValue("Basic \(auth)", forHTTPHeaderField: "Authorization")
         
         request.httpMethod = "PATCH"

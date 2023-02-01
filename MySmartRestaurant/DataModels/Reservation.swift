@@ -7,7 +7,8 @@
 
 import Foundation
 
-public class Reservation: NSObject, Codable {
+public class Reservation: NSObject, Codable, Identifiable {
+    public var id: String?
     var idTable: Int?
     var name: String?
     var seats: Int?
@@ -15,9 +16,11 @@ public class Reservation: NSObject, Codable {
     var inSmokingArea: String?
     var hasAnimals: String?
     var isCeliac: String?
+    var isReservedLunch: String?
+    var isReservedDinner: String?
 
     // To Create an Object
-    init(foreignTableName: Int, name: String, numberOfPeople: Int, date: String, smoking: String, animals: String, glutenFree: String) {
+    init(foreignTableName: Int, name: String, numberOfPeople: Int, date: String, smoking: String, animals: String, glutenFree: String, isReservedLunch: String, isReservedDinner: String) {
         self.idTable = foreignTableName
         self.name = name
         self.seats = numberOfPeople
@@ -25,6 +28,8 @@ public class Reservation: NSObject, Codable {
         self.inSmokingArea = smoking
         self.hasAnimals = animals
         self.isCeliac = glutenFree
+        self.isReservedLunch = isReservedLunch
+        self.isReservedDinner = isReservedLunch
     }
     
     // To retrieve data from coredata

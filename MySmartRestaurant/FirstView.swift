@@ -12,6 +12,7 @@ struct FirstView: View {
     @AppStorage("isShowingOnboarding") var isShowingOnboarding = true
     @State private var tmpTableName: String = ""
     @State private var tableList: [Table] = []
+    @State private var reservationList: [Reservation] = []
     @State private var tableLunch: [Table] = []
     @State private var tableDinner: [Table] = []
     @State private var lunchIsSelected = true
@@ -56,30 +57,47 @@ struct FirstView: View {
                     }
                     ScrollView {
                         LazyVGrid(columns: columns, spacing: 11) {
+                            ForEach(reservationList) { reservation in
+                                NavigationLink { DetailView(reservation: reservation) } label: {
+                                    ReservationCardView(reservation: reservation)
+                                        .foregroundColor(.black)
+                                }
+                            }
+                            
                             if lunchIsSelected {
-                                ForEach(tableLunch, id: \.id) { table in
-                                    NavigationLink { DetailView() } label: {
-                                        ReservationCardView(tableName: "Table \(table.id!)")
+                                ForEach(reservationList.filter { $0.isReservedLunch == "true" }) { reservation in
+                                    NavigationLink { DetailView(reservation: reservation) } label: {
+                                        ReservationCardView(reservation: reservation)
                                             .foregroundColor(.black)
                                     }
                                 }
                             }
+                            
                             if dinnerIsSelected {
-                                ForEach(tableDinner, id: \.id) { table in
-                                    NavigationLink { DetailView() } label: {
-                                        ReservationCardView(tableName: "Table \(table.id!)")
+                                ForEach(reservationList.filter { $0.isReservedDinner == "true" }) { reservation in
+                                    NavigationLink { DetailView(reservation: reservation) } label: {
+                                        ReservationCardView(reservation: reservation)
+                                            .foregroundColor(.black)
                                     }
                                 }
                             }
+                            //                            if dinnerIsSelected {
+                            //                                ForEach(tableDinner, id: \.id) { table in
+                            //                                    NavigationLink { DetailView() } label: {
+                            //                                        ReservationCardView(tableName: "Table \(table.id!)")
+                            //                                    }
+                            //                                }
+                            //                            }
                         }
                     }
                     .task {
                         do {
-                            tableList = try await api.getFromFM(urlTmp: "\(api.baseURI)/Table")
-                            tableLunch = tableList.filter { $0.isReservedLunch == "true" }
-                            tableDinner = tableList.filter { $0.isReservedDinner == "true" }
+                            reservationList = try await api.getFromFM(urlTmp: "\(api.baseURI)/Reservation")
+                            //                            tableList = try await api.getFromFM(urlTmp: "\(api.baseURI)/Table")
+                            //                            tableLunch = tableList.filter { $0.isReservedLunch == "true" }
+                            //                            tableDinner = tableList.filter { $0.isReservedDinner == "true" }
                         } catch {
-                            print("\(api.baseURI)/Table")
+                            print("\(api.baseURI)/Reservation")
                         }
                     }
                     .overlay {
@@ -102,7 +120,7 @@ struct FirstView: View {
             OnBoardingView(isShowingOnboarding: $isShowingOnboarding)
         }
         .sheet(isPresented: $isShowingReservation) {
-            BookingView(tableList: $tableList, api: APICaller(username: "Admin", password: "admin"))
+            BookingView(tableList: $tableList)
         }
     }
 }
