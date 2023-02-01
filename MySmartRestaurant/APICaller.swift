@@ -75,7 +75,7 @@ public class APICaller: ObservableObject {
         guard let encoded = try? JSONEncoder().encode(data) else {
             throw CodableError.encode
         }
-        print("ENCODOOOOOOOOOOOOOOOOOOO")
+        
         print(String(data: encoded, encoding: .utf8))
         //        Execution of the API call
         let (_, response) = try await URLSession.shared.upload(for: request, from: encoded)
@@ -100,9 +100,7 @@ public class APICaller: ObservableObject {
         var request = URLRequest(url: URL(string: urlTmp)!)
         
         request.url = url
-        
-        
-        
+                
         request.setValue("Basic \(auth)", forHTTPHeaderField: "Authorization")
         
         request.httpMethod = "PATCH"

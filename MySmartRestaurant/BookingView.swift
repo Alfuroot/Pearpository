@@ -101,8 +101,8 @@ struct BookingView: View {
                                         })
                                     }
                                 }
-                            }.onAppear{
-                                Task{
+                            }.onAppear {
+                                Task {
                                     tableList = try await api.getFromFM(urlTmp: "\(api.baseURI)/Table")
                                 }
                             }
@@ -118,7 +118,7 @@ struct BookingView: View {
                                 if selectedTable != 0 {
                                     let hours = Calendar.current.component(.hour, from: date)
                                     
-                                    if(hours < 16) {
+                                    if (hours < 16) {
                                         isReservedLunch = true
                                     } else {
                                        isReservedDinner = true
