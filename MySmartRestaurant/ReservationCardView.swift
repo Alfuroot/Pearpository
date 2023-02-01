@@ -41,7 +41,7 @@ struct ReservationCardView: View {
         ZStack {
             RoundedRectangle(cornerRadius: 10)
                 .fill(.white)
-            VStack {
+            VStack(spacing: 2) {
                 Text("\(reservation.idTable ?? 0)")
                     .font(.largeTitle).bold()
                 
@@ -52,9 +52,10 @@ struct ReservationCardView: View {
                     .foregroundColor(.gray)
                     .font(.title2)
                     .bold()
+                    .frame(width: 120)
             }
         }
-        .frame(width: 160, height: 120)
+        .frame(width: 170, height: 130)
 	}
 }
 

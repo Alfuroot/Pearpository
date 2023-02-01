@@ -53,7 +53,7 @@ struct FirstView: View {
                             .bold()
                             .padding(.horizontal)
                     }
-                    
+                    VStack {
                     ScrollView {
                         LazyVGrid(columns: columns, spacing: 15) {
                             ForEach(reservationList) { reservation in
@@ -89,6 +89,7 @@ struct FirstView: View {
                             //                            }
                         }
                     }
+//                    .padding(.bottom)
                     .task {
                         do {
                             reservationList = try await api.getFromFM(urlTmp: "\(api.baseURI)/Reservation")
@@ -99,15 +100,10 @@ struct FirstView: View {
                             print("\(api.baseURI)/Reservation")
                         }
                     }
-                    .overlay {
-                        VStack {
-                            Spacer()
-                            
-                            Button {
-                                isShowingReservation.toggle()
-                            } label: {
-                                BigButton(text: "Add Reservation")
-                            }
+                        Button {
+                            isShowingReservation.toggle()
+                        } label: {
+                            BigButton(text: "Add Reservation")
                         }
                     }
                 }
