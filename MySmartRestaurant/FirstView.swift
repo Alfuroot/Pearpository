@@ -97,7 +97,7 @@ struct FirstView: View {
                             //                            tableLunch = tableList.filter { $0.isReservedLunch == "true" }
                             //                            tableDinner = tableList.filter { $0.isReservedDinner == "true" }
                         } catch {
-                            print("\(api.baseURI)/Table")
+                            print("\(api.baseURI)/Reservation")
                         }
                     }
                     .overlay {

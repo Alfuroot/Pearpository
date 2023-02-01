@@ -53,6 +53,7 @@ public class APICaller: ObservableObject {
             return fetchedData.value
         } catch {
             print("Decode Error")
+            print(String(data: data, encoding: .utf8))
             throw error
         }
     }

@@ -21,6 +21,7 @@ struct BookingView: View {
     @State var isReservedLunch = false
     @State var isReservedDinner = false
     @State var selectedTable = 0
+    @State var reservationList: [Reservation] = []
     @EnvironmentObject var api: APICaller
     
     let columns = [
@@ -104,6 +105,14 @@ struct BookingView: View {
                             }.onAppear {
                                 Task {
                                     tableList = try await api.getFromFM(urlTmp: "\(api.baseURI)/Table")
+                                    reservationList = try await api.getFromFM(urlTmp: "\(api.baseURI)/Reservation")
+                                    for res in reservationList {
+                                        if res.isReservedLunch == "true" && res.isReservedDinner == "true" {
+                                            tableList.removeAll(where: {$0.id == res.idTable})
+                                        }
+                                    }
+                                    selectedTable = tableList.first!.id ?? 0
+                                    
                                 }
                             }
                         }

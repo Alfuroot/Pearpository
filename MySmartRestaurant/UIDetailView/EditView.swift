@@ -70,7 +70,7 @@ struct EditView: View {
                     Toggle(isOn: $smokingArea) {
                         Text("Smoking Area")
                     }
-                    Toggle(isOn: $petArea) {
+                    Toggle(isOn: $animals) {
                         Text("Animals")
                     }
                     Toggle(isOn: $isCeliac) {
@@ -83,6 +83,9 @@ struct EditView: View {
                     Spacer()
                     Button {
                         // Delete reservation
+                        Task{
+                            try! await api.deleteRecordInFM(urlTmp:"\(api.baseURI)/Reservation('\(reservation.id!)')")
+                        }
                         dismiss()
                         
                     } label: {
