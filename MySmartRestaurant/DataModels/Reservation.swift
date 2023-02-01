@@ -19,6 +19,17 @@ public class Reservation: NSObject, Codable, Identifiable {
     var isReservedLunch: String?
     var isReservedDinner: String?
 
+    // Date Formatter
+    var formattedDate: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        if let convertedDate = dateFormatter.date(from: date!)?.formatted(.dateTime.locale(.current)){
+            return convertedDate
+        } else {
+            return "Failed to convert Date"
+        }
+    }
+    
     // To Create an Object
     init(foreignTableName: Int, name: String, numberOfPeople: Int, date: String, smoking: String, animals: String, glutenFree: String, isReservedLunch: String, isReservedDinner: String) {
         self.idTable = foreignTableName
