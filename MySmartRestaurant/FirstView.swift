@@ -21,10 +21,8 @@ struct FirstView: View {
     @State private var isShowingReservation = false
     @EnvironmentObject var api: APICaller
     
-    let columns = [
-        GridItem(.flexible()),
-        GridItem(.flexible())
-    ]
+    let columns: [GridItem] = Array(repeating: .init(.flexible(), spacing: nil), count: 2)
+    
     var body: some View {
         NavigationStack {
             ZStack {
@@ -55,8 +53,9 @@ struct FirstView: View {
                             .bold()
                             .padding(.horizontal)
                     }
+                    
                     ScrollView {
-                        LazyVGrid(columns: columns, spacing: 11) {
+                        LazyVGrid(columns: columns, spacing: 15) {
                             ForEach(reservationList) { reservation in
                                 NavigationLink { DetailView(reservation: reservation) } label: {
                                     ReservationCardView(reservation: reservation)
