@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		500D228C2970794600869AFC /* FilterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500D22872970794600869AFC /* FilterButton.swift */; };
 		500D228D2970794600869AFC /* ReservationCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500D22882970794600869AFC /* ReservationCardView.swift */; };
-		500D228E2970794600869AFC /* ButtonAddReservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500D22892970794600869AFC /* ButtonAddReservation.swift */; };
+		500D228E2970794600869AFC /* BigButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500D22892970794600869AFC /* BigButton.swift */; };
 		500D228F2970794600869AFC /* FilterType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500D228A2970794600869AFC /* FilterType.swift */; };
 		500D22902970794600869AFC /* FirstView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500D228B2970794600869AFC /* FirstView.swift */; };
 		719790252970051000232432 /* BookingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719790242970051000232432 /* BookingView.swift */; };
@@ -49,7 +49,7 @@
 /* Begin PBXFileReference section */
 		500D22872970794600869AFC /* FilterButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterButton.swift; sourceTree = "<group>"; };
 		500D22882970794600869AFC /* ReservationCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReservationCardView.swift; sourceTree = "<group>"; };
-		500D22892970794600869AFC /* ButtonAddReservation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonAddReservation.swift; sourceTree = "<group>"; };
+		500D22892970794600869AFC /* BigButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BigButton.swift; sourceTree = "<group>"; };
 		500D228A2970794600869AFC /* FilterType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterType.swift; sourceTree = "<group>"; };
 		500D228B2970794600869AFC /* FirstView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstView.swift; sourceTree = "<group>"; };
 		719790242970051000232432 /* BookingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingView.swift; sourceTree = "<group>"; };
@@ -137,7 +137,7 @@
 				B7C5306C297997D30046C2ED /* APICaller.swift */,
 				500D228B2970794600869AFC /* FirstView.swift */,
 				71D4F44C2978387D00A7D7C7 /* OnBoardingView.swift */,
-				500D22892970794600869AFC /* ButtonAddReservation.swift */,
+				500D22892970794600869AFC /* BigButton.swift */,
 				500D22872970794600869AFC /* FilterButton.swift */,
 				500D228A2970794600869AFC /* FilterType.swift */,
 				500D22882970794600869AFC /* ReservationCardView.swift */,
@@ -348,7 +348,7 @@
 				946EBE30296F0495003105D0 /* MySmartRestaurantApp.swift in Sources */,
 				71D4F44D2978387D00A7D7C7 /* OnBoardingView.swift in Sources */,
 				500D22902970794600869AFC /* FirstView.swift in Sources */,
-				500D228E2970794600869AFC /* ButtonAddReservation.swift in Sources */,
+				500D228E2970794600869AFC /* BigButton.swift in Sources */,
 				500D228C2970794600869AFC /* FilterButton.swift in Sources */,
 				943206F32979479600C18B32 /* EditView.swift in Sources */,
 				943206E42977ED9900C18B32 /* Table.swift in Sources */,

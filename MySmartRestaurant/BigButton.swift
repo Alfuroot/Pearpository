@@ -7,21 +7,17 @@
 
 import SwiftUI
 
-struct ButtonAddReservation: View {
-    @Binding var isShowingReservation: Bool
+struct BigButton: View {
+    var text: String
+    var background: Color = .blue
+
 	var body: some View {
-		Button {
-			// Add reservation
-            
-            isShowingReservation.toggle()
-		} label: {
-			Text("Add Reservation")
+			Text(text)
 				.font(.title2)
 				.frame(width: UIScreen.main.bounds.width / 1.20, height: UIScreen.main.bounds.height / 15)
 				.foregroundColor(.white)
-				.background(.blue)
-				.cornerRadius(12)
-		}
+				.background(background)
+				.cornerRadius(12)	
 	}
 }
 

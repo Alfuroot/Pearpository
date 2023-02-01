@@ -42,6 +42,7 @@ struct EditView: View {
                         .multilineTextAlignment(.leading)
                         .background(RoundedRectangle(cornerRadius: 10)
                             .fill(Color.gray.opacity(0.09)))
+
                 }
                 Divider()
                 Text("Number of People")
@@ -69,7 +70,7 @@ struct EditView: View {
                     Toggle(isOn: $smokingArea) {
                         Text("Smoking Area")
                     }
-                    Toggle(isOn: $animals) {
+                    Toggle(isOn: $petArea) {
                         Text("Animals")
                     }
                     Toggle(isOn: $isCeliac) {
@@ -78,25 +79,22 @@ struct EditView: View {
                 }
                 .padding(.horizontal)
                 
-                Button {
-                    // Delete reservation
-                    dismiss()
-                } label: {
-                    Text("Delete Reservation")
-                        .font(.title2)
-                        .frame(width: UIScreen.main.bounds.width / 1.20, height: UIScreen.main.bounds.height / 15)
-                        .foregroundColor(.white)
-                        .background(.red)
-                        .cornerRadius(12)
-                        .frame(maxWidth: .infinity, alignment: .center)
+                Group {
+                    Spacer()
+                    Button {
+                        // Delete reservation
+                        dismiss()
+                        
+                    } label: {
+                        BigButton(text: "Delete Reservation", background: .red)
+                            .frame(maxWidth: .infinity, alignment: .center)
+                    }
+                    .padding(.vertical)
                 }
-                .padding(.vertical)
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Done") {
-                        
-                        
                         let res = Reservation(foreignTableName: 0, name: name, numberOfPeople: selectedNumber, date: ISO8601DateFormatter().string(from: reservationDate), smoking: String(smokingArea), animals: String(animals), glutenFree: String(isCeliac), isReservedLunch: String(isReservedLunch), isReservedDinner: String(isReservedDinner))
                         res.id = reservation.id
                         
@@ -123,10 +121,10 @@ struct EditView: View {
                         }
                     }
                 }
-                .padding()
-                .navigationBarBackButtonHidden(true)
-                .navigationBarTitleDisplayMode(.inline)
             }
+            .padding()
+            .navigationBarBackButtonHidden(true)
+            .navigationBarTitleDisplayMode(.inline)
         }
     }
     

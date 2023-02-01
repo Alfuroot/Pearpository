@@ -103,7 +103,12 @@ struct FirstView: View {
                     .overlay {
                         VStack {
                             Spacer()
-                            ButtonAddReservation(isShowingReservation: $isShowingReservation)
+                            
+                            Button {
+                                isShowingReservation.toggle()
+                            } label: {
+                                BigButton(text: "Add Reservation")
+                            }
                         }
                     }
                 }

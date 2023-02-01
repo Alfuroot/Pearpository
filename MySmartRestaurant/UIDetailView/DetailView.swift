@@ -25,7 +25,6 @@ struct DetailView: View {
             if !isEditMode {
                 VStack {
                     Form {
-                        
                         Section {
                             Text(reservation.name ?? "mammt")
                         } header: {
