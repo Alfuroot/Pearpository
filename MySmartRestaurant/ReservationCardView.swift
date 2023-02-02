@@ -28,7 +28,7 @@ struct ReservationCardView: View {
                     .frame(width: 120)
             }
         }
-        .frame(width: 170, height: 130)
+        .frame(width: UIScreen.main.bounds.width * 0.425, height: UIScreen.main.bounds.height * 0.17)
 	}
 }
 
