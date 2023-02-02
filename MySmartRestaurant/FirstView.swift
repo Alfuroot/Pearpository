@@ -21,10 +21,8 @@ struct FirstView: View {
     @State private var isShowingReservation = false
     @EnvironmentObject var api: APICaller
     
-    let columns = [
-        GridItem(.flexible()),
-        GridItem(.flexible())
-    ]
+    let columns: [GridItem] = Array(repeating: .init(.flexible(), spacing: nil), count: 2)
+    
     var body: some View {
         NavigationStack {
             ZStack {
@@ -55,8 +53,9 @@ struct FirstView: View {
                             .bold()
                             .padding(.horizontal)
                     }
+                    VStack {
                     ScrollView {
-                        LazyVGrid(columns: columns, spacing: 11) {
+                        LazyVGrid(columns: columns, spacing: 15) {
                             ForEach(reservationList) { reservation in
                                 NavigationLink { DetailView(reservation: reservation) } label: {
                                     ReservationCardView(reservation: reservation)
@@ -90,6 +89,7 @@ struct FirstView: View {
                             //                            }
                         }
                     }
+//                    .padding(.bottom)
                     .task {
                         do {
                             reservationList = try await api.getFromFM(urlTmp: "\(api.baseURI)/Reservation")
@@ -100,15 +100,10 @@ struct FirstView: View {
                             print("\(api.baseURI)/Reservation")
                         }
                     }
-                    .overlay {
-                        VStack {
-                            Spacer()
-                            
-                            Button {
-                                isShowingReservation.toggle()
-                            } label: {
-                                BigButton(text: "Add Reservation")
-                            }
+                        Button {
+                            isShowingReservation.toggle()
+                        } label: {
+                            BigButton(text: "Add Reservation")
                         }
                     }
                 }

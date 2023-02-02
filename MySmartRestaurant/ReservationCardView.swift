@@ -11,22 +11,24 @@ struct ReservationCardView: View {
     @State var reservation: Reservation
     
 	var body: some View {
-		VStack(spacing: 4) {
-            Text("\(reservation.idTable ?? 0)")
-				.font(.largeTitle).bold()
-            
-            Text(reservation.name ?? "mammt")
-				.fontWeight(.semibold)
-            
-            Text(reservation.date ?? "MAI")
-				.foregroundColor(.gray)
-				.font(.title2)
-                .bold()
-		}.padding()
-		.background {
-			Color(.white)
-				.cornerRadius(10)
-		}
+        ZStack {
+            RoundedRectangle(cornerRadius: 10)
+                .fill(.white)
+            VStack(spacing: 2) {
+                Text("\(reservation.idTable ?? 0)")
+                    .font(.largeTitle).bold()
+                
+                Text(reservation.name ?? "mammt")
+                    .fontWeight(.semibold)
+                
+                Text(reservation.formattedDate)
+                    .foregroundColor(.gray)
+                    .font(.title2)
+                    .bold()
+                    .frame(width: 120)
+            }
+        }
+        .frame(width: UIScreen.main.bounds.width * 0.425, height: UIScreen.main.bounds.height * 0.17)
 	}
 }
 
