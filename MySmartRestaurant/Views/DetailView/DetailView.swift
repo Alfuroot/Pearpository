@@ -39,45 +39,50 @@ struct DetailView: View {
                         }
                         
                         Section {
-                            Text(reservation.date ?? "mammt")
+                            Text(reservation.date ?? "No date")
                         }  header: {
                             Text("Reservation Time")
                         }
-                        VStack {
-                            if reservation.inSmokingArea?.boolValue ?? false {
-                                HStack {
-                                    Image("smoking")
-                                    Spacer()
-                                    Text("No Smoking Area")
-                                }
-                                Divider()
-                            }
-                            
-                            if reservation.hasAnimals?.boolValue ?? false {
-                                HStack {
-                                    Image(systemName: "pawprint.fill")
-                                    Spacer()
-                                    Text("Animals")
+                        
+                        if (reservation.inSmokingArea?.boolValue ?? false) || (reservation.hasAnimals?.boolValue ?? false) || (reservation.isCeliac?.boolValue ?? false) {
+                            VStack {
+                                if reservation.inSmokingArea?.boolValue ?? false {
+                                    HStack {
+                                        Image("smoking")
+                                        Spacer()
+                                        Text("Smoking Area")
+                                    }
+                                    Divider()
                                 }
                                 
-                                Divider()
-                            }
-                            
-                            
-                            if reservation.isCeliac?.boolValue ?? false {
-                                HStack {
-                                    ZStack {
-                                        Image(systemName: "laurel.leading")
-                                            .font(.title)
-                                            .bold()
-                                        Image(systemName: "xmark")
-                                            .foregroundColor(.red)
-                                            .font(.title)
+                                if reservation.hasAnimals?.boolValue ?? false {
+                                    HStack {
+                                        Image(systemName: "pawprint.fill")
+                                        Spacer()
+                                        Text("Animals")
                                     }
-                                    Spacer()
-                                    Text("Gluten Free")
+                                    
+                                    Divider()
+                                }
+                                
+                                
+                                if reservation.isCeliac?.boolValue ?? false {
+                                    HStack {
+                                        ZStack {
+                                            Image(systemName: "laurel.leading")
+                                                .font(.title)
+                                                .bold()
+                                            Image(systemName: "xmark")
+                                                .foregroundColor(.red)
+                                                .font(.title)
+                                        }
+                                        Spacer()
+                                        Text("Gluten Free")
+                                    }
                                 }
                             }
+                        } else {
+                            /*@START_MENU_TOKEN@*/EmptyView()/*@END_MENU_TOKEN@*/
                         }
                     }
                 }
