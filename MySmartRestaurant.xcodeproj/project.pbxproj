@@ -182,8 +182,8 @@
 				94A9450B298D14F5009A26CE /* FirstView */,
 				94A94511298D1E9A009A26CE /* BookingView */,
 				94A9450E298D1755009A26CE /* OnBoardingView */,
-				94A94514298D4DC8009A26CE /* New Group */,
-				943206F02979477500C18B32 /* DetailView.swift */,
+				94A94514298D4DC8009A26CE /* EditView */,
+				94A94517298D53F4009A26CE /* DetailView */,
 				94A9450A298D148F009A26CE /* ViewCompontents */,
 			);
 			path = Views;
@@ -227,13 +227,21 @@
 			path = BookingView;
 			sourceTree = "<group>";
 		};
-		94A94514298D4DC8009A26CE /* New Group */ = {
+		94A94514298D4DC8009A26CE /* EditView */ = {
 			isa = PBXGroup;
 			children = (
 				943206F22979479500C18B32 /* EditView.swift */,
 				94A94515298D4DDB009A26CE /* EditViewViewModel.swift */,
 			);
-			path = "New Group";
+			path = EditView;
+			sourceTree = "<group>";
+		};
+		94A94517298D53F4009A26CE /* DetailView */ = {
+			isa = PBXGroup;
+			children = (
+				943206F02979477500C18B32 /* DetailView.swift */,
+			);
+			path = DetailView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

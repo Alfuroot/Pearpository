@@ -13,10 +13,6 @@ struct DetailView: View {
     
     @State private var isEditMode = false
     
-    var noSmokingArea = true
-    var hasAnimals = true
-    var glutenFree = true
-    
     @State var reservation: Reservation
     
     
@@ -48,7 +44,7 @@ struct DetailView: View {
                             Text("Reservation Time")
                         }
                         VStack {
-                            if noSmokingArea {
+                            if reservation.inSmokingArea?.boolValue ?? false {
                                 HStack {
                                     Image("smoking")
                                     Spacer()
@@ -57,7 +53,7 @@ struct DetailView: View {
                                 Divider()
                             }
                             
-                            if hasAnimals {
+                            if reservation.hasAnimals?.boolValue ?? false {
                                 HStack {
                                     Image(systemName: "pawprint.fill")
                                     Spacer()
@@ -68,7 +64,7 @@ struct DetailView: View {
                             }
                             
                             
-                            if glutenFree {
+                            if reservation.isCeliac?.boolValue ?? false {
                                 HStack {
                                     ZStack {
                                         Image(systemName: "laurel.leading")
