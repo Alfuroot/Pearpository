@@ -85,7 +85,7 @@ struct BookingView: View {
                                         }, label: {
                                             ZStack {
                                                 RoundedRectangle(cornerRadius: 10)
-                                                    .foregroundColor(viewModel.selectedTable == Int(table.id ?? 0) ? .blue : .black)
+                                                    .foregroundColor(viewModel.selectedTable == Int(table.id ?? 0) ? .blue : Color.gray.opacity(0.7))
                                                 
                                                 Text("\(table.id!)")
                                                     .font(.largeTitle)
