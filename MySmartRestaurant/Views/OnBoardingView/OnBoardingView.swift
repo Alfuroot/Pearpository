@@ -10,9 +10,7 @@ import SwiftUI
 struct OnBoardingView: View {
     
     @Binding var isShowingOnboarding: Bool
-    @State var numberOfTables: Int = 8
-    @State var numberOfOutDoorTables: Int = 0
-    @EnvironmentObject var api: APICaller
+    @StateObject var viewModel = ViewModel()
     
     var body: some View {
         GeometryReader { geo in
@@ -25,7 +23,7 @@ struct OnBoardingView: View {
                     Spacer()
                 }
                 .padding()
-                Picker("Indoor tables", selection: $numberOfTables) {
+                Picker("Indoor tables", selection: $viewModel.numberOfTables) {
                     ForEach(4...100, id: \.self) {
                         Text("\($0)")
                     }
@@ -38,7 +36,7 @@ struct OnBoardingView: View {
                     Spacer()
                 }
                 .padding()
-                Picker("Outdoor tables", selection: $numberOfOutDoorTables) {
+                Picker("Outdoor tables", selection: $viewModel.numberOfOutDoorTables) {
                     ForEach(0...100, id: \.self) {
                         Text("\($0)")
                     }
@@ -50,14 +48,10 @@ struct OnBoardingView: View {
                     Button {
                         isShowingOnboarding = false
                         Task {
-                            try await api.deleteRecordInFM(urlTmp: "\(api.baseURI)/Table?$filter=id ne null".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "")
-                            if numberOfOutDoorTables > 0 {
-                                for i in 1...numberOfOutDoorTables {
-                                    try await api.createRecordInFM(urlTmp: "\(api.baseURI)/Table", data: Table(tableName: i, isOutdoor: "true"))
-                                }
-                            }
-                            for i in numberOfOutDoorTables + 1...numberOfTables + numberOfOutDoorTables {
-                                try await api.createRecordInFM(urlTmp: "\(api.baseURI)/Table", data: Table(tableName: i, isOutdoor: "false"))
+                            do {
+                                try await viewModel.pushTablesInDB()
+                            } catch {
+                                print(error)
                             }
                         }
                     } label: {

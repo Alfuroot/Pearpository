@@ -11,17 +11,8 @@ struct BookingView: View {
     
     @Environment (\.dismiss) var dismiss
     
+    @StateObject var viewModel = ViewModel()
     @Binding var tableList: [Table]
-    @State var name = ""
-    @State var selectedNumber = 2
-    @State var date = Date.now
-    @State var smokingArea = false
-    @State var petArea = false
-    @State var isCeliac = false
-    @State var isReservedLunch = false
-    @State var isReservedDinner = false
-    @State var selectedTable = 0
-    @State var reservationList: [Reservation] = []
     @EnvironmentObject var api: APICaller
     
     let columns = [
@@ -30,6 +21,7 @@ struct BookingView: View {
         GridItem(.adaptive(minimum: 80))
     ]
     var body: some View {
+        
         NavigationStack {
             GeometryReader { geo in
                 ScrollView {
@@ -37,7 +29,7 @@ struct BookingView: View {
                         Text("Name")
                             .fontWeight(.semibold)
                             .padding()
-                        TextField("", text: $name)
+                        TextField("", text: $viewModel.name)
                             .padding(.horizontal)
                             .frame(width: geo.size.width * 0.9, height: geo.size.height * 0.05)
                             .multilineTextAlignment(.leading)
@@ -47,7 +39,7 @@ struct BookingView: View {
                         Text("Number of People")
                             .fontWeight(.semibold)
                             .padding()
-                        Picker("Number of people", selection: $selectedNumber) {
+                        Picker("Number of people", selection: $viewModel.selectedNumber) {
                             ForEach(1...20, id: \.self) {
                                 Text("\($0)")
                             }
@@ -56,7 +48,7 @@ struct BookingView: View {
                         .frame(height: geo.size.height * 0.16)
                         Divider()
                         
-                        DatePicker(selection: $date, in: Date.now...) {
+                        DatePicker(selection: $viewModel.date, in: Date.now...) {
                             Text("Date to reserve")
                                 .fontWeight(.semibold)
                         }
@@ -67,13 +59,13 @@ struct BookingView: View {
                             .padding()
                         VStack(alignment: .leading) {
                             Group {
-                                Toggle(isOn: $smokingArea) {
+                                Toggle(isOn: $viewModel.smokingArea) {
                                     Text("Smoking Area")
                                 }
-                                Toggle(isOn: $petArea) {
+                                Toggle(isOn: $viewModel.petArea) {
                                     Text("Animals")
                                 }
-                                Toggle(isOn: $isCeliac) {
+                                Toggle(isOn: $viewModel.isCeliac) {
                                     Text("Gluten Free")
                                 }
                             }.padding(.horizontal)
@@ -89,11 +81,11 @@ struct BookingView: View {
                                 ForEach(tableList, id: \.id) { table in
                                     if table.isReservedLunch != "true" && table.isReservedDinner != "true" {
                                         Button(action: {
-                                            selectedTable = Int(table.id ?? 0)
+                                            viewModel.selectedTable = Int(table.id ?? 0)
                                         }, label: {
                                             ZStack {
                                                 RoundedRectangle(cornerRadius: 10)
-                                                    .foregroundColor(selectedTable == Int(table.id ?? 0) ? .blue : .black)
+                                                    .foregroundColor(viewModel.selectedTable == Int(table.id ?? 0) ? .blue : .black)
                                                 
                                                 Text("\(table.id!)")
                                                     .font(.largeTitle)
@@ -104,15 +96,7 @@ struct BookingView: View {
                                 }
                             }.onAppear {
                                 Task {
-                                    tableList = try await api.getFromFM(urlTmp: "\(api.baseURI)/Table")
-                                    reservationList = try await api.getFromFM(urlTmp: "\(api.baseURI)/Reservation")
-                                    for res in reservationList {
-                                        if res.isReservedLunch == "true" && res.isReservedDinner == "true" {
-                                            tableList.removeAll(where: {$0.id == res.idTable})
-                                        }
-                                    }
-                                    selectedTable = tableList.first!.id ?? 0
-                                    
+                                    tableList = try await viewModel.loadTables()
                                 }
                             }
                         }
@@ -124,23 +108,10 @@ struct BookingView: View {
                         Button("Done") {
                             
                             Task {
-                                if selectedTable != 0 {
-                                    let hours = Calendar.current.component(.hour, from: date)
-                                    
-                                    if (hours < 16) {
-                                        isReservedLunch = true
-                                    } else {
-                                       isReservedDinner = true
-                                    }
-                                    
-                                    let reservation = Reservation(foreignTableName: selectedTable, name: name, numberOfPeople: selectedNumber, date: ISO8601DateFormatter().string(from: date), smoking: String(smokingArea), animals: String(petArea), glutenFree: String(isCeliac), isReservedLunch: String(isReservedLunch), isReservedDinner: String(isReservedDinner))
-                                    
-                                    print(reservation)
-                                    
-                                    try await api.createRecordInFM(urlTmp: "\(api.baseURI)/Reservation", data: reservation)
-//                                    let tmpTable = Table(isReservedLunch: "true", isReservedDinner: "false")
-//                                    try await api.editRecordInFM(urlTmp: "\(api.baseURI)/Table(\(selectedTable))", data: tmpTable)
-//                                } else {
+                                do {
+                                   try await viewModel.addReservation()
+                                } catch {
+                                    print(error)
                                 }
                             }
                             dismiss()

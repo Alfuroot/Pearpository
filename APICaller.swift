@@ -8,6 +8,7 @@ import Foundation
 
 public class APICaller: ObservableObject {
     
+    static let shared = APICaller(username: "Admin", password: "admin")
     public let baseURI = "https://napoli.fm-testing.com/fmi/odata/v4/MySmartRestaurant"
     
     // Because FileMaker gives you an array of value.
@@ -17,7 +18,7 @@ public class APICaller: ObservableObject {
     
     var username: String
     var password: String
-    var auth: String {(username + ":" + password).data(using: .utf8)!.base64EncodedString()}
+    var auth: String {(username + ":" + password).data(using: .utf8)?.base64EncodedString() ?? ""}
     
     // To set username and password
     public init(username: String, password: String) {
@@ -53,7 +54,7 @@ public class APICaller: ObservableObject {
             return fetchedData.value
         } catch {
             print("Decode Error")
-            print(String(data: data, encoding: .utf8))
+            print(String(data: data, encoding: .utf8) ?? "")
             throw error
         }
     }
