@@ -39,7 +39,7 @@ struct DetailView: View {
                         }
                         
                         Section {
-                            Text(reservation.date ?? "No date")
+                            Text(reservation.formattedTime ?? "No time")
                         }  header: {
                             Text("Reservation Time")
                         }
