@@ -17,7 +17,7 @@ struct DetailView: View {
     var hasAnimals = true
     var glutenFree = true
     
-    var reservation: Reservation
+    @State var reservation: Reservation
     
     
     var body: some View {
@@ -32,9 +32,9 @@ struct DetailView: View {
                         }
                         
                         Section {
-                            Text("4")
-                        }  header: {
                             Text("\(reservation.seats ?? 0)")
+                        }  header: {
+                            Text("Number of seats")
                         }
                         Section {
                             Text(date.formatted(date: .numeric, time: .omitted))
@@ -96,7 +96,7 @@ struct DetailView: View {
                 }
                 .navigationBarTitleDisplayMode(.inline)
             } else {
-                EditView(reservation: reservation, isEditMode: $isEditMode)
+                EditView(reservation: $reservation, isEditMode: $isEditMode)
             }
     }
 }

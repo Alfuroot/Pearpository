@@ -29,6 +29,7 @@
 		94A9450D298D152F009A26CE /* FirstViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A9450C298D152F009A26CE /* FirstViewViewModel.swift */; };
 		94A94510298D1B90009A26CE /* OnBoardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A9450F298D1B90009A26CE /* OnBoardingViewModel.swift */; };
 		94A94513298D1EB7009A26CE /* BookingViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A94512298D1EB7009A26CE /* BookingViewViewModel.swift */; };
+		94A94516298D4DDB009A26CE /* EditViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A94515298D4DDB009A26CE /* EditViewViewModel.swift */; };
 		B7C5306D297997D30046C2ED /* APICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C5306C297997D30046C2ED /* APICaller.swift */; };
 /* End PBXBuildFile section */
 
@@ -76,6 +77,7 @@
 		94A9450C298D152F009A26CE /* FirstViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewViewModel.swift; sourceTree = "<group>"; };
 		94A9450F298D1B90009A26CE /* OnBoardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingViewModel.swift; sourceTree = "<group>"; };
 		94A94512298D1EB7009A26CE /* BookingViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingViewViewModel.swift; sourceTree = "<group>"; };
+		94A94515298D4DDB009A26CE /* EditViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewViewModel.swift; sourceTree = "<group>"; };
 		B7C5306C297997D30046C2ED /* APICaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICaller.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -180,7 +182,7 @@
 				94A9450B298D14F5009A26CE /* FirstView */,
 				94A94511298D1E9A009A26CE /* BookingView */,
 				94A9450E298D1755009A26CE /* OnBoardingView */,
-				943206F22979479500C18B32 /* EditView.swift */,
+				94A94514298D4DC8009A26CE /* New Group */,
 				943206F02979477500C18B32 /* DetailView.swift */,
 				94A9450A298D148F009A26CE /* ViewCompontents */,
 			);
@@ -223,6 +225,15 @@
 				94A94512298D1EB7009A26CE /* BookingViewViewModel.swift */,
 			);
 			path = BookingView;
+			sourceTree = "<group>";
+		};
+		94A94514298D4DC8009A26CE /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				943206F22979479500C18B32 /* EditView.swift */,
+				94A94515298D4DDB009A26CE /* EditViewViewModel.swift */,
+			);
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -394,6 +405,7 @@
 				500D228C2970794600869AFC /* FilterButton.swift in Sources */,
 				943206F32979479600C18B32 /* EditView.swift in Sources */,
 				943206E42977ED9900C18B32 /* Table.swift in Sources */,
+				94A94516298D4DDB009A26CE /* EditViewViewModel.swift in Sources */,
 				943206E72977EDE400C18B32 /* Persistence Controller.swift in Sources */,
 				9484D68529707DF800522801 /* Model.xcdatamodeld in Sources */,
 				94A94510298D1B90009A26CE /* OnBoardingViewModel.swift in Sources */,
