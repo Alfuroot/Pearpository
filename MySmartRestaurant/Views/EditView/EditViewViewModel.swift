@@ -20,7 +20,8 @@ extension EditView {
         @Published var isReservedDinner = false
         
         func editView(reservation: Reservation) {
-            let res = Reservation(foreignTableName: 1, name: name, numberOfPeople: selectedNumber, date: ISO8601DateFormatter().string(from: reservationDate), smoking: String(smokingArea), animals: String(animals), glutenFree: String(isCeliac), isReservedLunch: String(isReservedLunch), isReservedDinner: String(isReservedDinner))
+            let res = Reservation(foreignTableName: reservation.idTable ?? 0, name: name, numberOfPeople: selectedNumber, date: ISO8601DateFormatter().string(from: reservationDate), smoking: String(smokingArea), animals: String(animals), glutenFree: String(isCeliac), isReservedLunch: String(isReservedLunch), isReservedDinner: String(isReservedDinner))
+            res.id = reservation.id
             //Manca il set della foreignKey
             let urlTmp = "\(APICaller.shared.baseURI)/Reservation('\(res.id ?? "")')"
            
@@ -36,6 +37,8 @@ extension EditView {
             smokingArea = reservation.inSmokingArea?.boolValue ?? false
             animals = reservation.hasAnimals?.boolValue ?? false
             isCeliac = reservation.isCeliac?.boolValue ?? false
+            isReservedLunch = reservation.isReservedLunch?.boolValue ?? false
+            isReservedDinner = reservation.isReservedDinner?.boolValue ?? false
         }
     }
 }
