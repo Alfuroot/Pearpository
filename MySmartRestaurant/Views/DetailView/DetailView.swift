@@ -14,7 +14,7 @@ struct DetailView: View {
     @State private var isEditMode = false
     
     @State var reservation: Reservation
-    
+    @Binding var refreshGrid: Bool
     
     var body: some View {
        
@@ -85,6 +85,9 @@ struct DetailView: View {
                             /*@START_MENU_TOKEN@*/EmptyView()/*@END_MENU_TOKEN@*/
                         }
                     }
+                }
+                .onDisappear {
+                    refreshGrid = true
                 }
                 .toolbar {
                     ToolbarItem {
