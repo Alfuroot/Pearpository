@@ -58,8 +58,8 @@ _Parallel_ code means multiple pieces of code run simultaneously, for example ea
 [![](https://img.shields.io/badge/Swift%20Generics-info-informational)](https://docs.swift.org/swift-book/LanguageGuide/Generics.html)
 
 `Generic` code enables you to write flexible, reusable functions and types that can work with any type.
-_Generics_ are one of the most powerful features of Swift, and much of the Swift standard library is built with generic code, for example, Swift’s Array and Dictionary types are both generic collections. You can create an array that holds Int values, or an array that holds String values, or indeed an array for any other type that can be created in Swift. Similarly, you can create a dictionary to store values of any specified type, and there are no limitations on what that type can be.
-
-In `FMProKit` this is foundamental to create a package completely detached from a particular data model allowing to work with any type and how many fields your projects need.
+_Generics_ are one of the most powerful features of Swift, and much of the Swift standard library is built with generic code, for example, Swift’s Array and Dictionary types are both generic collections. You can create an array that holds Int values, or an array that holds String values, or indeed an array for any other type that can be created in Swift.
 
 ---
+
+## :computer: Examples
