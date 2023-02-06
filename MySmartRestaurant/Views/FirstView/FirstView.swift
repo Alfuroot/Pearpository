@@ -56,35 +56,37 @@ struct FirstView: View {
                                 .bold()
                                 .padding(.horizontal)
                         } else if !viewModel.dinnerIsSelected && !viewModel.lunchIsSelected {
-                            Text("0/\(viewModel.tableList.count)")
+                            Text("\(viewModel.reservationList.count)/\(viewModel.tableList.count)")
                                 .font(.title2)
                                 .bold()
                                 .padding(.horizontal)
                         }
                     }
                     VStack {
-                        ScrollView {
-                            LazyVGrid(columns: columns, spacing: 15) {
-                                
+                            List {
                                 if viewModel.lunchIsSelected {
                                     ForEach(viewModel.reservationList.filter { $0.isReservedLunch == "true" }) { reservation in
                                         NavigationLink { DetailView(reservation: reservation) } label: {
-                                            ReservationCardView(reservation: reservation)
-                                                .foregroundColor(.black)
+                                            ListRowView(reservation: reservation)
                                         }
                                     }
-                                }
-                                
-                                if viewModel.dinnerIsSelected {
+                                } else if viewModel.dinnerIsSelected {
                                     ForEach(viewModel.reservationList.filter { $0.isReservedDinner == "true" }) { reservation in
                                         NavigationLink { DetailView(reservation: reservation) } label: {
-                                            ReservationCardView(reservation: reservation)
-                                                .foregroundColor(.black)
+                                            ListRowView(reservation: reservation)
+                                        }
+                                    }
+                                } else if viewModel.dinnerIsSelected && viewModel.lunchIsSelected || !viewModel.dinnerIsSelected && !viewModel.lunchIsSelected {
+                                    ForEach(viewModel.reservationList) { reservation in
+                                        NavigationLink { DetailView(reservation: reservation) } label: {
+                                            ListRowView(reservation: reservation)
                                         }
                                     }
                                 }
                             }
-                        }
+                            .cornerRadius(10)
+                            .listStyle(.plain)
+                        
                         .task {
                             do {
                                 try await viewModel.loadTableAndRes()
@@ -122,4 +124,3 @@ struct FirstView: View {
 //        FirstView(tableList: [Table(tableName: "aa")])
 //    }
 // }
-

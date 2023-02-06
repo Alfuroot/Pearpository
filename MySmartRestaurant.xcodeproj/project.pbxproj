@@ -12,6 +12,7 @@
 		500D228E2970794600869AFC /* BigButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500D22892970794600869AFC /* BigButton.swift */; };
 		500D228F2970794600869AFC /* FilterType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500D228A2970794600869AFC /* FilterType.swift */; };
 		500D22902970794600869AFC /* FirstView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500D228B2970794600869AFC /* FirstView.swift */; };
+		5035B043299173A5007F7247 /* ListRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5035B042299173A5007F7247 /* ListRowView.swift */; };
 		719790252970051000232432 /* BookingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719790242970051000232432 /* BookingView.swift */; };
 		71D4F44D2978387D00A7D7C7 /* OnBoardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D4F44C2978387D00A7D7C7 /* OnBoardingView.swift */; };
 		943206E32977ED9900C18B32 /* Reservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943206E12977ED9900C18B32 /* Reservation.swift */; };
@@ -56,6 +57,7 @@
 		500D22892970794600869AFC /* BigButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BigButton.swift; sourceTree = "<group>"; };
 		500D228A2970794600869AFC /* FilterType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterType.swift; sourceTree = "<group>"; };
 		500D228B2970794600869AFC /* FirstView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstView.swift; sourceTree = "<group>"; };
+		5035B042299173A5007F7247 /* ListRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRowView.swift; sourceTree = "<group>"; };
 		719790242970051000232432 /* BookingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingView.swift; sourceTree = "<group>"; };
 		71D4F44C2978387D00A7D7C7 /* OnBoardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingView.swift; sourceTree = "<group>"; };
 		943206E12977ED9900C18B32 /* Reservation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reservation.swift; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 				500D22892970794600869AFC /* BigButton.swift */,
 				500D22872970794600869AFC /* FilterButton.swift */,
 				500D228A2970794600869AFC /* FilterType.swift */,
+				5035B042299173A5007F7247 /* ListRowView.swift */,
 				500D22882970794600869AFC /* ReservationCardView.swift */,
 			);
 			path = ViewCompontents;
@@ -406,6 +409,7 @@
 				943206E32977ED9900C18B32 /* Reservation.swift in Sources */,
 				500D228D2970794600869AFC /* ReservationCardView.swift in Sources */,
 				719790252970051000232432 /* BookingView.swift in Sources */,
+				5035B043299173A5007F7247 /* ListRowView.swift in Sources */,
 				946EBE30296F0495003105D0 /* MySmartRestaurantApp.swift in Sources */,
 				71D4F44D2978387D00A7D7C7 /* OnBoardingView.swift in Sources */,
 				500D22902970794600869AFC /* FirstView.swift in Sources */,
