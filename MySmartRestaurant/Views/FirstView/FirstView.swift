@@ -100,7 +100,7 @@ struct FirstView: View {
                     }
                 }
                 .padding()
-                .navigationTitle("My Smart Restaurant")
+                .navigationTitle("Reservations")
             }
         }
         .sheet(isPresented: $isShowingOnboarding) {
