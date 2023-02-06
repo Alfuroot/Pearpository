@@ -18,10 +18,12 @@ extension OnBoardingView {
             if numberOfOutDoorTables > 0 {
                 for i in 1...numberOfOutDoorTables {
                     try await APICaller.shared.createRecordInFM(urlTmp: "\(APICaller.shared.baseURI)/Table", data: Table(tableName: i, isOutdoor: "true"))
+                    PersistenceController.shared.saveNewTable(Table(tableName: i, isOutdoor: "true"))
                 }
             }
             for i in numberOfOutDoorTables + 1...numberOfTables + numberOfOutDoorTables {
                 try await APICaller.shared.createRecordInFM(urlTmp: "\(APICaller.shared.baseURI)/Table", data: Table(tableName: i, isOutdoor: "false"))
+                PersistenceController.shared.saveNewTable(Table(tableName: i, isOutdoor: "false"))
             }
         }
     }

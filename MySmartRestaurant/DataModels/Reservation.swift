@@ -56,7 +56,7 @@ public class Reservation: NSObject, Codable, Identifiable {
     
     // To retrieve data from coredata
     init(coreDataEntity: CoreReservation) {
-        self.idTable = Int(coreDataEntity.foreignTableName)
+        self.idTable = Int(coreDataEntity.idTable)
         self.name = coreDataEntity.name
         self.seats = Int(coreDataEntity.numberOfPeople)
         self.date = coreDataEntity.date
@@ -67,7 +67,7 @@ public class Reservation: NSObject, Codable, Identifiable {
     
     // Save in CoreData
     func copyInEntity(coreDataEntity: CoreReservation) {
-        coreDataEntity.foreignTableName = Int16(self.idTable ?? 0)
+        coreDataEntity.idTable = Int16(self.idTable ?? 0)
         coreDataEntity.name = self.name
         coreDataEntity.numberOfPeople = Int16(self.seats!)
         coreDataEntity.date = self.date!

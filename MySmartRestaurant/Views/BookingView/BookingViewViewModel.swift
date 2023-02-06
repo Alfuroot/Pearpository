@@ -22,12 +22,14 @@ extension BookingView {
         @Published var reservationList: [Reservation] = []
         @Published private var tmpTables: [Table] = []
         
+        @MainActor
         func loadTables() async throws -> [Table] {
+            tmpTables = []
             tmpTables = try await APICaller.shared.getFromFM(urlTmp: "\(APICaller.shared.baseURI)/Table")
             reservationList = try await APICaller.shared.getFromFM(urlTmp: "\(APICaller.shared.baseURI)/Reservation")
             for res in reservationList {
                 if res.isReservedLunch == "true" && res.isReservedDinner == "true" {
-                    tmpTables.removeAll(where: {$0.id == res.idTable})
+                    tmpTables.removeAll(where: { $0.id == res.idTable })
                 }
             }
             selectedTable = tmpTables.first!.id ?? 0
@@ -50,9 +52,7 @@ extension BookingView {
                 print(reservation)
                 
                 try await APICaller.shared.createRecordInFM(urlTmp: "\(APICaller.shared.baseURI)/Reservation", data: reservation)
-//                                    let tmpTable = Table(isReservedLunch: "true", isReservedDinner: "false")
-//                                    try await api.editRecordInFM(urlTmp: "\(api.baseURI)/Table(\(selectedTable))", data: tmpTable)
-//                                } else {
+                PersistenceController.shared.saveNewReservation(reservation)
             }
         }
     }

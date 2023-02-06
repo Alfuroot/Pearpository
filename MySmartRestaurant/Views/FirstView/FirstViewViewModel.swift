@@ -21,7 +21,10 @@ extension FirstView {
         @Published var date = Date.now
         @Published var isShowingReservation = false
         
+        @MainActor
         func loadTableAndRes() async throws {
+                tableList.removeAll()
+                reservationList.removeAll()
                 reservationList = try await APICaller.shared.getFromFM(urlTmp: "\(APICaller.shared.baseURI)/Reservation")
                 tableList = try await APICaller.shared.getFromFM(urlTmp: "\(APICaller.shared.baseURI)/Table")
         }

@@ -85,15 +85,6 @@ struct FirstView: View {
                                 }
                             }
                         }
-                        .refreshable {
-                            
-                                do {
-                                    try await viewModel.loadTableAndRes()
-                                } catch {
-                                    print(error)
-                                }
-                            
-                        }
                         .task {
                             do {
                                 try await viewModel.loadTableAndRes()
@@ -115,7 +106,12 @@ struct FirstView: View {
         .sheet(isPresented: $isShowingOnboarding) {
             OnBoardingView(isShowingOnboarding: $isShowingOnboarding)
         }
-        .sheet(isPresented: $viewModel.isShowingReservation) {
+        .sheet(isPresented: $viewModel.isShowingReservation, onDismiss: {
+            Task {
+                try await viewModel.loadTableAndRes()
+                print("\(viewModel.reservationList.first?.name)")
+            }
+        }) {
             BookingView(tableList: $viewModel.tableList)
         }
     }

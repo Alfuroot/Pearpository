@@ -9,39 +9,23 @@ import Foundation
 
 public class Table: Codable {
     var id: Int?
-    var isReservedLunch: String?
-    var isReservedDinner: String?
     var isOutdoor: String?
     
     // To Create an Object
     init(tableName: Int, isOutdoor: String) {
         self.id = tableName
-        self.isReservedLunch = "false"
-        self.isReservedDinner = "false"
         self.isOutdoor = isOutdoor
-    }
-    
-   
-    init(isReservedLunch: String, isReservedDinner: String) {
-        self.id = nil
-        self.isReservedLunch = isReservedLunch
-        self.isReservedDinner = isReservedDinner
-        self.isOutdoor = nil
     }
     
     // To retrieve data from coredata
     init(coreDataEntity: CoreTable) {
         self.id = Int(coreDataEntity.id)
-        self.isReservedLunch = String(coreDataEntity.isReservedLunch)
-        self.isReservedDinner = String(coreDataEntity.isReservedDinner)
         self.isOutdoor = String(coreDataEntity.isOutdoor)
     }
     
     // Save in CoreData
     func copyInEntity(coreDataEntity: CoreTable) {
         coreDataEntity.id = Int16(self.id ?? 0)
-        coreDataEntity.isReservedLunch = (self.isReservedLunch)?.boolValue ?? false
-        coreDataEntity.isReservedDinner = (self.isReservedDinner)?.boolValue ?? false
         coreDataEntity.isOutdoor = (self.isOutdoor)?.boolValue ?? false
     }
 }

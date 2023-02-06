@@ -78,7 +78,7 @@ struct PersistenceController {
         }
     }
     
-    func saveNewReservation(_ reservation: Reservation, _ table: String) {
+    func saveNewReservation(_ reservation: Reservation) {
         
         // Creating a new entity
         let reservationEntity = CoreReservation(context: container.viewContext)

@@ -20,9 +20,9 @@ extension EditView {
         @Published var isReservedDinner = false
         
         func editView(reservation: Reservation) {
-            let res = Reservation(foreignTableName: reservation.idTable ?? 0, name: name, numberOfPeople: selectedNumber, date: ISO8601DateFormatter().string(from: reservationDate), smoking: String(smokingArea), animals: String(animals), glutenFree: String(isCeliac), isReservedLunch: String(isReservedLunch), isReservedDinner: String(isReservedDinner))
+            let res = Reservation(foreignTableName: reservation.idTable ?? 0, name: name, numberOfPeople: selectedNumber, date: ISO8601DateFormatter().string(from: reservationDate), smoking: String(smokingArea), animals: String(animals), glutenFree: String(isCeliac), isReservedLunch: String(reservation.isReservedLunch ?? "false"), isReservedDinner: String(reservation.isReservedDinner ?? "false"))
             res.id = reservation.id
-            //Manca il set della foreignKey
+            // Manca il set della foreignKey
             let urlTmp = "\(APICaller.shared.baseURI)/Reservation('\(res.id ?? "")')"
            
             Task {
@@ -30,7 +30,7 @@ extension EditView {
             }
         }
         
-        func loadValues(reservation: Reservation){
+        func loadValues(reservation: Reservation) {
             name = reservation.name ?? ""
             selectedNumber = reservation.seats ?? 0
             reservationDate = ISO8601DateFormatter().date(from: reservation.date ?? "") ?? Date()

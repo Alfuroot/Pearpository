@@ -18,7 +18,7 @@ struct ReservationCardView: View {
                 Text("\(reservation.idTable ?? 0)")
                     .font(.largeTitle).bold()
                 
-                Text(reservation.name ?? "mammt")
+                Text(reservation.name ?? "Missing")
                     .fontWeight(.semibold)
                 
                 Text(reservation.formattedDate)
@@ -32,7 +32,7 @@ struct ReservationCardView: View {
 	}
 }
 
-//struct ReservationCardView_Previews: PreviewProvider {
+// struct ReservationCardView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        ReservationCardView(tableName: "")
 //    }

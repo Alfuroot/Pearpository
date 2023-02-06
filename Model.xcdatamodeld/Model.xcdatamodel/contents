@@ -1,20 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21512" systemVersion="22A400" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="CoreReservation" representedClassName="CoreReservation" parentEntity="CoreTable" syncable="YES" codeGenerationType="class">
+    <entity name="CoreReservation" representedClassName="CoreReservation" syncable="YES" codeGenerationType="class">
         <attribute name="animals" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="date" optional="YES" attributeType="String"/>
-        <attribute name="foreignTableName" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="glutenFree" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="idTable" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="isReservedDinner" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="isReservedLunch" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="numberOfPeople" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="smoking" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
-        <relationship name="tableid" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CoreTable" inverseName="reservation" inverseEntity="CoreTable"/>
     </entity>
     <entity name="CoreTable" representedClassName="CoreTable" syncable="YES" codeGenerationType="class">
         <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="isOutdoor" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="isReservedDinner" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="isReservedLunch" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
-        <relationship name="reservation" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="CoreReservation" inverseName="tableid" inverseEntity="CoreReservation"/>
     </entity>
 </model>

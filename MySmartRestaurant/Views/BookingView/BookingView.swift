@@ -79,20 +79,17 @@ struct BookingView: View {
                             
                             LazyVGrid(columns: columns) {
                                 ForEach(tableList, id: \.id) { table in
-                                    if table.isReservedLunch != "true" && table.isReservedDinner != "true" {
                                         Button(action: {
                                             viewModel.selectedTable = Int(table.id ?? 0)
                                         }, label: {
                                             ZStack {
                                                 RoundedRectangle(cornerRadius: 10)
                                                     .foregroundColor(viewModel.selectedTable == Int(table.id ?? 0) ? .blue : Color.gray.opacity(0.7))
-                                                
-                                                Text("\(table.id!)")
+                                                Text("\(table.id ?? 0)")
                                                     .font(.largeTitle)
                                                     .foregroundColor(.white)
                                             }
                                         })
-                                    }
                                 }
                             }.onAppear {
                                 Task {
