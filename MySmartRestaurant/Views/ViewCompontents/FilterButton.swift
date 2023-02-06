@@ -20,8 +20,9 @@ struct FilterButton: View {
 				.foregroundColor(isSelected ? .white : .black)
 				.background(
 						RoundedRectangle(cornerRadius: 8)
-							.strokeBorder(.black, lineWidth: 3)
-							.background(RoundedRectangle(cornerRadius: 8).fill(isSelected ? .blue : .white))
+                            .fill(isSelected ? .blue : .white)
+//							.strokeBorder(.black, lineWidth: 1)
+//							.background(RoundedRectangle(cornerRadius: 8).fill(isSelected ? .blue : .white))
 					)
 		}
 	}
@@ -29,6 +30,6 @@ struct FilterButton: View {
 
 struct FilterButton_Previews: PreviewProvider {
     static var previews: some View {
-		FilterButton(isSelected: .constant(false), title: "Lunch")
+		FilterButton(isSelected: .constant(true), title: "Lunch")
     }
 }

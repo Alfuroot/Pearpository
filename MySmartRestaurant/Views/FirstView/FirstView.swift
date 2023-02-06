@@ -85,6 +85,15 @@ struct FirstView: View {
                                 }
                             }
                         }
+                        .refreshable {
+                            
+                                do {
+                                    try await viewModel.loadTableAndRes()
+                                } catch {
+                                    print(error)
+                                }
+                            
+                        }
                         .task {
                             do {
                                 try await viewModel.loadTableAndRes()

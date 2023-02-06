@@ -31,7 +31,7 @@ struct EditView: View {
                         .padding()
                     TextField("", text: $viewModel.name)
                         .padding(.horizontal)
-                        .frame(width: geo.size.width * 0.9, height: geo.size.height * 0.05)
+                        .frame(width: geo.size.width * 0.98, height: geo.size.height * 0.05)
                         .multilineTextAlignment(.leading)
                         .background(RoundedRectangle(cornerRadius: 10)
                             .fill(Color.gray.opacity(0.09)))
