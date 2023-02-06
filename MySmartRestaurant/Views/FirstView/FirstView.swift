@@ -11,7 +11,7 @@ struct FirstView: View {
     
     @StateObject var viewModel = ViewModel()
     @AppStorage("isShowingOnboarding") var isShowingOnboarding = true
-    
+    @State private var refreshGrid = false
     
     let columns: [GridItem] = Array(repeating: .init(.flexible(), spacing: nil), count: 2)
     
@@ -68,7 +68,7 @@ struct FirstView: View {
                                 
                                 if viewModel.lunchIsSelected {
                                     ForEach(viewModel.reservationList.filter { $0.isReservedLunch == "true" }) { reservation in
-                                        NavigationLink { DetailView(reservation: reservation) } label: {
+                                        NavigationLink { DetailView(reservation: reservation, refreshGrid: $refreshGrid) } label: {
                                             ReservationCardView(reservation: reservation)
                                                 .foregroundColor(.black)
                                         }
@@ -77,13 +77,18 @@ struct FirstView: View {
                                 
                                 if viewModel.dinnerIsSelected {
                                     ForEach(viewModel.reservationList.filter { $0.isReservedDinner == "true" }) { reservation in
-                                        NavigationLink { DetailView(reservation: reservation) } label: {
+                                        NavigationLink { DetailView(reservation: reservation, refreshGrid: $refreshGrid) } label: {
                                             ReservationCardView(reservation: reservation)
                                                 .foregroundColor(.black)
                                         }
                                     }
                                 }
                             }
+                            .id(refreshGrid ? UUID() : nil)
+                            .onAppear {
+                                refreshGrid = false
+                            }
+
                         }
                         .task {
                             do {
