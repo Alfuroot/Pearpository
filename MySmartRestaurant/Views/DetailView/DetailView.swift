@@ -52,7 +52,9 @@ struct DetailView: View {
                                         Spacer()
                                         Text("Smoking Area")
                                     }
-                                    Divider()
+                                    if reservation.hasAnimals?.boolValue ?? false {
+                                        Divider()
+                                    }
                                 }
                                 
                                 if reservation.hasAnimals?.boolValue ?? false {
@@ -61,8 +63,9 @@ struct DetailView: View {
                                         Spacer()
                                         Text("Animals")
                                     }
-                                    
-                                    Divider()
+                                    if reservation.isCeliac?.boolValue ?? false {
+                                        Divider()
+                                    }
                                 }
                                 
                                 
@@ -102,8 +105,8 @@ struct DetailView: View {
     }
 }
 
-//struct DetailView_Previews: PreviewProvider {
+// struct DetailView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        DetailView()
 //    }
-//}
+// }
