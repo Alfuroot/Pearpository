@@ -49,10 +49,14 @@ struct DetailView: View {
                                 if reservation.inSmokingArea?.boolValue ?? false {
                                     HStack {
                                         Image("smoking")
+                                            .resizable()
+                                            .frame(width: 25, height: 25)
                                         Spacer()
                                         Text("Smoking Area")
                                     }
-                                    Divider()
+                                    if reservation.hasAnimals?.boolValue ?? false {
+                                        Divider()
+                                    }
                                 }
                                 
                                 if reservation.hasAnimals?.boolValue ?? false {
@@ -61,8 +65,9 @@ struct DetailView: View {
                                         Spacer()
                                         Text("Animals")
                                     }
-                                    
-                                    Divider()
+                                    if reservation.isCeliac?.boolValue ?? false {
+                                        Divider()
+                                    }
                                 }
                                 
                                 
@@ -82,7 +87,7 @@ struct DetailView: View {
                                 }
                             }
                         } else {
-                            /*@START_MENU_TOKEN@*/EmptyView()/*@END_MENU_TOKEN@*/
+                            EmptyView()
                         }
                     }
                 }
