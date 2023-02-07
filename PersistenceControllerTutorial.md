@@ -57,7 +57,7 @@ And at last we can define fetch, create and delete functions:
 
 ```swift
 
-    func fetchCoreDataEntity() -> [myClass] {
+    func fetchFromCoreDataEntity() -> [myClass] {
         let request = NSFetchRequest<myCoreDataEntity>(entityName: "myCoreDataEntity")
         
         let entities = try? container.viewContext.fetch(request)
@@ -84,7 +84,7 @@ And at last we can define fetch, create and delete functions:
         try? container.viewContext.save()
     }
     
-    func deleteAllTables() {
+    func deleteAllFromCoreDataEntity() {
         let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "CoreTables")
         let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
         
