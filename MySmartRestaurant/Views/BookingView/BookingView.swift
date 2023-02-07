@@ -62,13 +62,16 @@ struct BookingView: View {
                                 Toggle(isOn: $viewModel.smokingArea) {
                                     Text("Smoking Area")
                                 }
+                                
                                 Toggle(isOn: $viewModel.petArea) {
                                     Text("Animals")
                                 }
                                 Toggle(isOn: $viewModel.isCeliac) {
                                     Text("Gluten Free")
                                 }
-                            }.padding(.horizontal)
+                            }
+                            .padding(.horizontal)
+                            .tint(Color.accentColor)
                             
                             Divider()
                             
@@ -79,17 +82,17 @@ struct BookingView: View {
                             
                             LazyVGrid(columns: columns) {
                                 ForEach(tableList, id: \.id) { table in
-                                        Button(action: {
-                                            viewModel.selectedTable = Int(table.id ?? 0)
-                                        }, label: {
-                                            ZStack {
-                                                RoundedRectangle(cornerRadius: 10)
-                                                    .foregroundColor(viewModel.selectedTable == Int(table.id ?? 0) ? .blue : Color.gray.opacity(0.7))
-                                                Text("\(table.id ?? 0)")
-                                                    .font(.largeTitle)
-                                                    .foregroundColor(.white)
-                                            }
-                                        })
+                                    Button(action: {
+                                        viewModel.selectedTable = Int(table.id ?? 0)
+                                    }, label: {
+                                        ZStack {
+                                            RoundedRectangle(cornerRadius: 10)
+                                                .foregroundColor(viewModel.selectedTable == Int(table.id ?? 0) ? Color.accentColor : Color.gray.opacity(0.7))
+                                            Text("\(table.id ?? 0)")
+                                                .font(.largeTitle)
+                                                .foregroundColor(.white)
+                                        }
+                                    })
                                 }
                             }.onAppear {
                                 Task {
@@ -106,7 +109,7 @@ struct BookingView: View {
                             
                             Task {
                                 do {
-                                   try await viewModel.addReservation()
+                                    try await viewModel.addReservation()
                                 } catch {
                                     print(error)
                                 }

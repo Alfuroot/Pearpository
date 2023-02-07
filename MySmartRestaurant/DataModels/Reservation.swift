@@ -23,7 +23,7 @@ public class Reservation: NSObject, Codable, Identifiable {
     var formattedDate: String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
-        if let convertedDate = dateFormatter.date(from: date!)?.formatted(.dateTime.locale(.current)){
+        if let convertedDate = dateFormatter.date(from: date!)?.formatted(.dateTime.locale(.current)) {
             return convertedDate
         } else {
             return "Failed to convert Date"

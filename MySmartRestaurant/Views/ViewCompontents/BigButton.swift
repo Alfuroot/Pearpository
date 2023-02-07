@@ -9,7 +9,7 @@ import SwiftUI
 
 struct BigButton: View {
     var text: String
-    var background: Color = .blue
+    var background: Color = .accentColor
 
 	var body: some View {
 			Text(text)

@@ -22,7 +22,7 @@ struct DetailView: View {
                 VStack {
                     Form {
                         Section {
-                            Text(reservation.name ?? "mammt")
+                            Text(reservation.name ?? "No name")
                         } header: {
                             Text("Name")
                         }
@@ -33,7 +33,7 @@ struct DetailView: View {
                             Text("Number of seats")
                         }
                         Section {
-                            Text(date.formatted(date: .numeric, time: .omitted))
+                            Text(formattedDate)
                         }  header: {
                             Text("Date")
                         }
@@ -52,7 +52,7 @@ struct DetailView: View {
                                         Spacer()
                                         Text("Smoking Area")
                                     }
-                                    if reservation.hasAnimals?.boolValue ?? false {
+                                    if reservation.hasAnimals?.boolValue ?? false || reservation.isCeliac?.boolValue ?? false {
                                         Divider()
                                     }
                                 }
@@ -84,8 +84,6 @@ struct DetailView: View {
                                     }
                                 }
                             }
-                        } else {
-                            /*@START_MENU_TOKEN@*/EmptyView()/*@END_MENU_TOKEN@*/
                         }
                     }
                 }
@@ -102,6 +100,17 @@ struct DetailView: View {
             } else {
                 EditView(reservation: $reservation, isEditMode: $isEditMode)
             }
+    }
+    
+    // Date Formatter
+    var formattedDate: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        if let convertedDate = dateFormatter.date(from: reservation.date!)?.formatted(date: .abbreviated, time: .omitted) {
+            return convertedDate
+        } else {
+            return "Failed to convert Date"
+        }
     }
 }
 
