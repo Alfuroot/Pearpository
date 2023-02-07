@@ -13,11 +13,12 @@ MySmartRestaurant offers the basic operations to save data both in local, using 
 
 ---
 
-## :floppy_disk: FileMaker
+## :file_folder: FileMaker
 
 [![](https://img.shields.io/badge/FileMaker-info-informational)](https://www.claris.com/filemaker/)
 
 ### :door: Introduction
+
 `FileMaker` is a cross-platform relational database application from Claris International, a subsidiary of Apple Inc. It integrates a database engine with a graphical user interface (GUI) and security features, allowing users to modify a database by dragging new elements into layouts, screens, or forms. It is available in desktop, server, iOS and web-delivery configurations. 
 
 We developed a very small databased containing 2 tables with a relationship between them: Reservation and Table.
@@ -59,6 +60,12 @@ _Parallel_ code means multiple pieces of code run simultaneously, for example ea
 
 `Generic` code enables you to write flexible, reusable functions and types that can work with any type.
 _Generics_ are one of the most powerful features of Swift, and much of the Swift standard library is built with generic code, for example, Swift’s Array and Dictionary types are both generic collections. You can create an array that holds Int values, or an array that holds String values, or indeed an array for any other type that can be created in Swift.
+
+---
+
+### :floppy_disk: Persistence
+
+To store data, even in the absence of a connection, we use `Core Data`, synchronising local entities with the data in the FileMaker database whenever possible.
 
 ---
 
