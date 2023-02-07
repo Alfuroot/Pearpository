@@ -1,4 +1,4 @@
-# Why creating a custom persitence controller
+# Why create a custom persitence controller
 
 Using auto generated code from coreData is easy but it doesn't give a lot of space to customize its code and edit functions. That why we decided to create
 our personal persistence controller.
