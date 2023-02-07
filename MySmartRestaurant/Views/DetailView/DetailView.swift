@@ -33,7 +33,7 @@ struct DetailView: View {
                             Text("Number of seats")
                         }
                         Section {
-                            Text(date.formatted(date: .numeric, time: .omitted))
+                            Text(formattedDate)
                         }  header: {
                             Text("Date")
                         }
@@ -100,6 +100,17 @@ struct DetailView: View {
             } else {
                 EditView(reservation: $reservation, isEditMode: $isEditMode)
             }
+    }
+    
+    // Date Formatter
+    var formattedDate: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        if let convertedDate = dateFormatter.date(from: reservation.date!)?.formatted(date: .abbreviated, time: .omitted) {
+            return convertedDate
+        } else {
+            return "Failed to convert Date"
+        }
     }
 }
 

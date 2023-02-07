@@ -87,6 +87,10 @@ struct EditView: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Done") {
                         viewModel.editView(reservation: reservation)
+                        let modifiedReservation = Reservation(foreignTableName: reservation.idTable ?? 0, name: viewModel.name, numberOfPeople: viewModel.selectedNumber, date: ISO8601DateFormatter().string(from: viewModel.reservationDate), smoking: String(viewModel.smokingArea), animals: String(viewModel.animals), glutenFree: String(viewModel.isCeliac), isReservedLunch: String(reservation.isReservedLunch ?? "false"), isReservedDinner: String(reservation.isReservedDinner ?? "false"))
+                        
+                        reservation = modifiedReservation
+                    
                         withAnimation {
                             isEditMode.toggle()
                         }
