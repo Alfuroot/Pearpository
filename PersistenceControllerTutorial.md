@@ -1,11 +1,11 @@
-# Why create a custom persitence controller
+# Why creating a custom persitence controller
 
-Using auto generated code from coreData is easy but it doesn't give a lot of space to customize its code and edit functions, that why we decided to create
+Using auto generated code from coreData is easy but it doesn't give a lot of space to customize its code and edit functions. That why we decided to create
 our personal persistence controller.
 
 # Persistence controller creation
 
-In order to do it create a new file and create a struct like this: 
+In order to do it, create a new file and create a struct like this: 
 
 ```swift
 
@@ -31,11 +31,11 @@ struct PersistenceController {
 
 ```
 
-To call the persistence controller in your app since we declared a singleton we will just have to write something like:
+To call the persistence controller in your app, since we declared a singleton, we will just have to write something like:
 ```swift
     PersistenceController.shared.`functionName()`
 ```
-Then you will want to add a save funcion in order to keep changes on your data
+Then, you will want to add a save funcion in order to keep changes on your data
 
 ```swift
 
@@ -53,13 +53,18 @@ func save() {
     
 ```
 
-And at last we can define fetch, create and delete functions: 
+And finally, we can define fetch, create and delete functions: 
 
 ```swift
 
     func fetchFromCoreDataEntity() -> [myClass] {
+    
+        // Defining request
         let request = NSFetchRequest<myCoreDataEntity>(entityName: "myCoreDataEntity")
         
+        // Here you could define request.predicate
+        
+        //creating an array of entities fetched from coreData
         let entities = try? container.viewContext.fetch(request)
         
         
@@ -85,7 +90,11 @@ And at last we can define fetch, create and delete functions:
     }
     
     func deleteAllFromCoreDataEntity() {
-        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "CoreTables")
+        
+        // Define which entities to delete from coreData (we could also filter them with a predicate)
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "myCoreDataEntity")
+        
+        // Define the delete request
         let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
         
         do {
@@ -97,4 +106,4 @@ And at last we can define fetch, create and delete functions:
     }
     
 ```
-Obviously you could add predicates to the deleteRequest and fetchRequest in order to filter data
+You could add predicates to the deleteRequest and fetchRequest in order to filter data.
