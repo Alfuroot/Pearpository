@@ -70,7 +70,7 @@ _Generics_ are one of the most powerful features of Swift, and much of the Swift
 To store data, even in the absence of a connection, we use `Core Data`, synchronising local entities with the data in the FileMaker database whenever possible.
 
 We have implemented a customised PersistenceCotroller in order to better handle any problems that may occur during data synchronisation.
-A more in-depth guide can be found in this file: [PersistenceController](https://it.pornhub.com/view_video.php?viewkey=ph63754bde84a01)
+A more in-depth guide can be found in this file: [PersistenceController](https://github.com/Alfuroot/Pearpository/blob/main/PersistenceControllerTutorial.md)
 
 ---
 
