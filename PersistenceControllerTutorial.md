@@ -33,7 +33,7 @@ struct PersistenceController {
 
 To call the persistence controller in your app since we declared a singleton we will just have to write something like:
 ```swift
-    PersistenceController.shared.`functionName()"`
+    PersistenceController.shared.`functionName()`
 ```
 Then you will want to add a save funcion in order to keep changes on your data
 
