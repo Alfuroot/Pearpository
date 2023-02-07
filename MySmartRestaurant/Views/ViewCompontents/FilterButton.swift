@@ -20,7 +20,7 @@ struct FilterButton: View {
 				.foregroundColor(isSelected ? .white : .black)
 				.background(
 						RoundedRectangle(cornerRadius: 8)
-                            .fill(isSelected ? .blue : .white)
+                            .fill(isSelected ? Color.accentColor : .white)
 //							.strokeBorder(.black, lineWidth: 1)
 //							.background(RoundedRectangle(cornerRadius: 8).fill(isSelected ? .blue : .white))
 					)

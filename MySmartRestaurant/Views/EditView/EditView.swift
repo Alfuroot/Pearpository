@@ -67,6 +67,7 @@ struct EditView: View {
                     }
                 }
                 .padding(.horizontal)
+                .tint(Color.accentColor)
                 
                 Group {
                     Spacer()
