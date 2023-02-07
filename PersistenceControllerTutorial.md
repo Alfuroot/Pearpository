@@ -7,12 +7,49 @@ our personal persistence controller.
 
 In order to do it create a new file and create a struct like this: 
 
-<script src="https://gist.github.com/Alfuroot/83ae3dc1f10930dddbbb974d6840d1f8.js"></script>
+```swift
 
+struct PersistenceController {
+    // A singleton for our entire app to use
+    static let shared = PersistenceController()
+    
+    // Storage for Core Data
+    let container: NSPersistentContainer
+    
+    // An initializer to load Core Data, optionally able
+    // to use an in-memory store.
+    private init() {
+        container = NSPersistentContainer(name: "Model")
+        
+        container.loadPersistentStores { _, error in
+            if let error = error {
+                fatalError("Error: \(error)")
+            }
+        }
+    }
+}
+
+```
+
+To call the persistence controller in your app since we declared a singleton we will just have to write something like:
+```swift
+    PersistenceController.shared.`functionName()"`
+```
 Then you will want to add a save funcion in order to keep changes on your data
 
-<script src="https://gist.github.com/Alfuroot/c3caaceadefc324d46545e463b56e8c0.js"></script>
-
 ```swift
-var mammt: String
-```
+
+func save() {
+        let context = container.viewContext
+        
+        if context.hasChanges {
+            do {
+                try context.save()
+            } catch {
+                // Show some error here
+            }
+        }
+    }
+    
+
+
