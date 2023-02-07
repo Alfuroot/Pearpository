@@ -9,15 +9,12 @@ import SwiftUI
 
 struct EditView: View {
     
-    
     @Environment (\.dismiss) var dismiss
     
     @StateObject var viewModel = ViewModel()
     @Binding var reservation: Reservation
     
     @EnvironmentObject var api: APICaller
-    
-    //    @State var reservation: Reservation
     
     @Binding var isEditMode: Bool
     
@@ -90,7 +87,6 @@ struct EditView: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Done") {
                         viewModel.editView(reservation: reservation)
-                        // More actions to come
                         withAnimation {
                             isEditMode.toggle()
                         }

@@ -27,8 +27,6 @@ struct ListRowView: View {
                     .font(.headline)
                     .bold()
         }
-//        .padding()
-//        .padding(.horizontal, 40)
     }
 }
 

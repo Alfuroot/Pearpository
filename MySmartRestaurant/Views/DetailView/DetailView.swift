@@ -22,7 +22,7 @@ struct DetailView: View {
                 VStack {
                     Form {
                         Section {
-                            Text(reservation.name ?? "mammt")
+                            Text(reservation.name ?? "No name")
                         } header: {
                             Text("Name")
                         }
@@ -52,7 +52,7 @@ struct DetailView: View {
                                         Spacer()
                                         Text("Smoking Area")
                                     }
-                                    if reservation.hasAnimals?.boolValue ?? false {
+                                    if reservation.hasAnimals?.boolValue ?? false || reservation.isCeliac?.boolValue ?? false {
                                         Divider()
                                     }
                                 }
@@ -84,8 +84,6 @@ struct DetailView: View {
                                     }
                                 }
                             }
-                        } else {
-                            /*@START_MENU_TOKEN@*/EmptyView()/*@END_MENU_TOKEN@*/
                         }
                     }
                 }
