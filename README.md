@@ -15,7 +15,7 @@ MySmartRestaurant offers the basic operations to save data both in local, using 
 
 ## :file_folder: FileMaker
 
-[![](https://img.shields.io/badge/FileMaker-info-informational)](https://www.claris.com/filemaker/)
+[![](https://img.shields.io/badge/FileMaker-info-informational)](https://www.claris.com/filemaker/) <--- **Click Me!**
 
 ### :door: Introduction
 
@@ -63,7 +63,9 @@ _Generics_ are one of the most powerful features of Swift, and much of the Swift
 
 ---
 
-### :floppy_disk: Persistence
+## :floppy_disk: Persistence
+
+[![](https://img.shields.io/badge/Core%20Data-info-informational)](https://developer.apple.com/documentation/coredata)
 
 To store data, even in the absence of a connection, we use `Core Data`, synchronising local entities with the data in the FileMaker database whenever possible.
 
@@ -72,4 +74,20 @@ A more in-depth guide can be found in this file: [PersistenceController](https:/
 
 ---
 
-## :computer: Examples
+## :department_store: App Architecture
+
+[![](https://img.shields.io/badge/Architecture-MVVM-informational)](https://learn.microsoft.com/en-us/xamarin/xamarin-forms/enterprise-application-patterns/mvvm)
+
+For MySmartRestaurant, we chose to implement the `Model-View-ViewModel` design pattern, since SwiftUI is designed to interact with that architecture.
+
+There are three core components in the MVVM pattern: the `Model`, the `View`, and the `ViewModel`. Each serves a distinct purpose.
+In addition to understanding the responsibilities of each component, it's also important to understand how they interact with each other. 
+
+The benefits of using the MVVM pattern are as follows:
+
+   - If there's an existing model implementation that encapsulates existing business logic, it can be difficult or risky to change it. In this scenario, the view model acts as an adapter for the model classes and enables you to avoid making any major changes to the model code.
+    Developers can create unit tests for the view model and the model, without using the view. The unit tests for the view model can exercise exactly the same functionality as used by the view.
+   - The app UI can be redesigned without touching the code, provided that the view is implemented entirely in XAML. Therefore, a new version of the view should work with the existing view model.
+   - Designers and developers can work independently and concurrently on their components during the development process. Designers can focus on the view, while developers can work on the view model and model components.
+
+The key to using MVVM effectively lies in understanding how to factor app code into the correct classes, and in understanding how the classes interact.
