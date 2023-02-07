@@ -51,5 +51,50 @@ func save() {
         }
     }
     
+```
 
+And at last we can define fetch, create and delete functions: 
 
+```swift
+
+    func fetchCoreDataEntity() -> [myClass] {
+        let request = NSFetchRequest<myCoreDataEntity>(entityName: "myCoreDataEntity")
+        
+        let entities = try? container.viewContext.fetch(request)
+        
+        
+        if let entities = entities {
+            let list = entities.map {
+                
+                Table(coreDataEntity: $0)
+            }
+            return list
+        }
+        return []
+    }
+    
+    func saveInCoreDataEntity(myObject: MyClass) {
+        
+        // Creating a new entity
+        let myEntity = myCoreDataEntity(context: container.viewContext)
+        
+        myObject.copyInEntity(coreDataEntity: myEntity)
+        
+        // Saving of the new entity in CoreData
+        try? container.viewContext.save()
+    }
+    
+    func deleteAllTables() {
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "CoreTables")
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        
+        do {
+            try container.viewContext.execute(deleteRequest)
+        } catch let error as NSError {
+            // TODO: handle the error
+            print(error.code)
+        }
+    }
+    
+```
+Obviously you could add predicates to the deleteRequest and fetchRequest in order to filter data
